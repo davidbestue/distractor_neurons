@@ -38,3 +38,6 @@ results_1st_close_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=300
            kappa_I=0.5, #OFF
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
+
+
+
