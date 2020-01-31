@@ -2,8 +2,6 @@
 from model import *
 
 
-
-
 ## Regime for remember 1st
 
 fee=1. 
