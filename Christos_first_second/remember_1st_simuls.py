@@ -73,7 +73,7 @@ OFF = pd.DataFrame(res_off)
 OFF['stimul']='ON' 
 OFF['position']='close' 
 
-OFF2= pd.DataFrame( [abs(results_1st_close_off[i][1]) for i in range(len(results_1st_close_off))])
+OFF2= pd.DataFrame( [results_1st_close_off[i][1] for i in range(len(results_1st_close_off))])
 OFF2['stimul']='OFF' 
 OFF2['position']='close' 
 
@@ -129,14 +129,51 @@ ON = pd.DataFrame(res_on)
 ON['stimul']='ON' 
 ON['position']='close' 
 
-ON2= pd.DataFrame( [abs(results_1st_close_on[i][1]) for i in range(len(results_1st_close_on))])
+ON2= pd.DataFrame( [results_1st_close_on[i][1] for i in range(len(results_1st_close_on))])
 ON2['stimul']='ON' 
 ON2['position']='close' 
 
 ON=pd.concat([ON, ON2], ignore_index=True)
 
 
+
+##
+df = pd.concat([OFF, ON], ignore_index=True)
+df.to_excel('/home/david/Desktop/remembers_first_close.xlsx')
+
+###########################################################################################################################
+###########################################################################################################################
+###########################################################################################################################
+###########################################################################################################################
+###########################################################################################################################
+###########################################################################################################################
+###########################################################################################################################
+
+
 ### Far: off
+
+numcores = multiprocessing.cpu_count() 
+print('Number cores: '+ str(numcores))
+results_1st_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
+           angle_separation=180, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
+           GEE=0.068*fee,
+           GII= 0.13*fei,
+           GEI=0.13*fie,
+           GIE=0.042*fii, 
+           sigE=10., sigI=5., 
+           kappa_E=45, 
+           kappa_I=0.35, #ON
+           kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
+           plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
+
+np.mean([abs(results_1st_far_on[i][1]) for i in range(len(results_1st_far_on))]) ###¿¿¿18.31??? 17.8... ok...
+
+ON_f= pd.DataFrame( [results_1st_close_on[i][1] for i in range(len(results_1st_close_on))])
+ON_f['stimul']='ON' 
+ON_f['position']='far' 
+
+
+
 res_off_f=[]
 
 for i in range(n_simuls):
@@ -159,12 +196,35 @@ for i in range(n_simuls):
 ###
 print('abs error OFF, far: ' + str(round(np.mean([abs(res_off_f[i]) for i in range(len(res_off_f))]),2) ) )
 
-OFF_f = pd.DataFrame(res_off_f)
-OFF_f['stimul']='ON' 
-OFF_f['position']='far' 
-
 
 ### Far: on
+
+n_simuls=400
+
+numcores = multiprocessing.cpu_count() 
+print('Number cores: '+ str(numcores))
+results_1st_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
+           angle_separation=180, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
+           GEE=0.068*fee,
+           GII= 0.13*fei,
+           GEI=0.13*fie,
+           GIE=0.042*fii, 
+           sigE=10., sigI=5., 
+           kappa_E=45, 
+           kappa_I=0.35, #ON
+           kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
+           plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
+
+np.mean([abs(results_1st_far_on[i][1]) for i in range(len(results_1st_far_on))]) ###¿¿¿18.31??? 17.8... ok...
+
+ON_f= pd.DataFrame( [results_1st_close_on[i][1] for i in range(len(results_1st_close_on))])
+ON_f['stimul']='ON' 
+ON_f['position']='far' 
+
+
+
+
+
 res_on_f=[]
 
 for i in range(n_simuls):
@@ -189,12 +249,8 @@ print('abs error ON, far: ' + str(round(np.mean([abs(res_on_f[i]) for i in range
 
 
 
-ON_f = pd.DataFrame(res_on_f)
-ON_f['stimul']='ON' 
-ON_f['position']='far' 
+#####
 
 
 
-df = pd.concat([OFF, ON], ignore_index=True)
-#df.to_excel('/home/david/Desktop/remembers_first_close.xlsx')
 
