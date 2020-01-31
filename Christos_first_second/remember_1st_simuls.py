@@ -43,7 +43,7 @@ results_1st_close_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=300
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-np.mean([abs(results_1st_close_off[i][1]) for i in range(len(results_1st_close_off))]) ###¿¿¿16???
+np.mean([abs(results_1st_close_off[i][1]) for i in range(len(results_1st_close_off))]) ###¿¿¿16??? 15.6... okey....
 
 
 #serie
@@ -73,6 +73,13 @@ OFF = pd.DataFrame(res_off)
 OFF['stimul']='ON' 
 OFF['position']='close' 
 
+OFF2= pd.DataFrame( [abs(results_1st_close_off[i][1]) for i in range(len(results_1st_close_off))])
+OFF2['stimul']='OFF' 
+OFF2['position']='close' 
+
+OFF=pd.concat([OFF, OFF2], ignore_index=True)
+
+
 
 ### Close: on
 
@@ -91,7 +98,7 @@ results_1st_close_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-np.mean([abs(results_1st_close_on[i][1]) for i in range(len(results_1st_close_on))]) ###¿¿¿18.31???
+np.mean([abs(results_1st_close_on[i][1]) for i in range(len(results_1st_close_on))]) ###¿¿¿18.31??? 17.8... ok...
 
 ## Serie
 res_on=[]
@@ -122,8 +129,11 @@ ON = pd.DataFrame(res_on)
 ON['stimul']='ON' 
 ON['position']='close' 
 
+ON2= pd.DataFrame( [abs(results_1st_close_on[i][1]) for i in range(len(results_1st_close_on))])
+ON2['stimul']='ON' 
+ON2['position']='close' 
 
-
+ON=pd.concat([ON, ON2], ignore_index=True)
 
 
 ### Far: off
@@ -185,6 +195,6 @@ ON_f['position']='far'
 
 
 
-#df = pd.concat([OFF, ON, OFF_f, ON_f])
-#df.to_excel('/home/David/Desktop/remembers_first.xlsx')
+df = pd.concat([OFF, ON], ignore_index=True)
+#df.to_excel('/home/david/Desktop/remembers_first_close.xlsx')
 
