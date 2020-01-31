@@ -24,7 +24,7 @@ fii=1.
 
 n_simuls=12
 numcores = multiprocessing.cpu_count() 
-print('Numer cores: '+ str(numcores))
+print('Number cores: '+ str(numcores))
 
 
 results_1st_close_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
