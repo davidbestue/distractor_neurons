@@ -63,6 +63,7 @@ print('abs error OFF, close: ' + str(round(np.mean([abs(res_off[i]) for i in ran
 
 OFF = pd.DataFrame(res_off)
 OFF['stimul']='ON' 
+OFF['position']='close' 
 
 
 ### Close: on
@@ -92,3 +93,4 @@ print('abs error ON, close: ' + str(round(np.mean([abs(res_on[i]) for i in range
 
 ON = pd.DataFrame(res_on)
 ON['stimul']='ON' 
+ON['position']='close' 
