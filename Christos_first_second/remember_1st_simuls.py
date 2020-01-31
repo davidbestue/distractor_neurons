@@ -61,6 +61,9 @@ for i in range(n_simuls):
 ###
 print('abs error OFF, close: ' + str(round(np.mean([abs(res_off[i]) for i in range(len(res_off))]),2) ) )
 
+OFF = pd.DataFrame(res_off)
+OFF['stimul']='ON' 
+
 
 ### Close: on
 res_on=[]
@@ -87,3 +90,5 @@ print('abs error ON, close: ' + str(round(np.mean([abs(res_on[i]) for i in range
 
 
 
+ON = pd.DataFrame(res_on)
+ON['stimul']='ON' 
