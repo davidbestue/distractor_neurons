@@ -22,7 +22,7 @@ fii=1.
 #            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False) 
 
 
-n_simuls=250
+n_simuls=5
 # numcores = multiprocessing.cpu_count() 
 # print('Number cores: '+ str(numcores))
 # results_1st_close_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
@@ -84,4 +84,6 @@ for i in range(n_simuls):
 
 ###
 print('abs error ON, close: ' + str(round(np.mean([abs(res_on[i]) for i in range(len(res_on))]),2) ) )
+
+
 
