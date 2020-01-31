@@ -1,4 +1,4 @@
-from linares_plot import *
+#from linares_plot import *
 from math import floor, exp, sqrt, pi
 import cmath
 import numpy
