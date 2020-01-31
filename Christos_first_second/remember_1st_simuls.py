@@ -22,7 +22,7 @@ fii=1.
 #            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False) 
 
 
-# n_simuls=12
+n_simuls=12
 # numcores = multiprocessing.cpu_count() 
 # print('Number cores: '+ str(numcores))
 
