@@ -170,7 +170,7 @@ results_1st_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000,
 
 np.mean([abs(results_1st_far_off[i][1]) for i in range(len(results_1st_far_off))]) ###¿¿¿18.31??? 17.8... ok...
 
-OFF_f= pd.DataFrame( [results_1st_close_off[i][1] for i in range(len(results_1st_close_off))])
+OFF_f= pd.DataFrame( [results_1st_far_off[i][1] for i in range(len(results_1st_far_off))])
 OFF_f['stimul']='OFF' 
 OFF_f['position']='far'  
 
@@ -218,7 +218,7 @@ results_1st_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, 
 
 np.mean([abs(results_1st_far_on[i][1]) for i in range(len(results_1st_far_on))]) ###¿¿¿18.31??? 17.8... ok...
 
-ON_f= pd.DataFrame( [results_1st_close_on[i][1] for i in range(len(results_1st_close_on))])
+ON_f= pd.DataFrame( [results_1st_far_on[i][1] for i in range(len(results_1st_far_on))])
 ON_f['stimul']='ON' 
 ON_f['position']='far' 
 
