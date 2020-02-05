@@ -38,9 +38,9 @@ results_2nd_close_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=300
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
 #np.mean([abs(results_2nd_close_off[i][1]) for i in range(len(results_2nd_close_off))]) 
-OFF= pd.DataFrame( [results_2nd_close_off[i][1] for i in range(len(results_2nd_close_off))])
-OFF['stimul']='OFF' 
-OFF['position']='close' 
+OFF_c= pd.DataFrame( [results_2nd_close_off[i][1] for i in range(len(results_2nd_close_off))])
+OFF_c['stimul']='OFF' 
+OFF_c['position']='close' 
 
 
 
@@ -59,18 +59,17 @@ results_2nd_close_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000
 
 #np.mean([abs(results_2nd_close_on[i][1]) for i in range(len(results_2nd_close_on))]) #
  
-ON= pd.DataFrame( [results_2nd_close_on[i][1] for i in range(len(results_2nd_close_on))])
-ON['stimul']='ON' 
-ON['position']='close' 
+ON_c= pd.DataFrame( [results_2nd_close_on[i][1] for i in range(len(results_2nd_close_on))])
+ON_c['stimul']='ON' 
+ON_c['position']='close' 
 ##
 
-df_c = pd.concat([OFF, ON], ignore_index=True)
+df_c = pd.concat([OFF_c, ON_c], ignore_index=True)
 #### df_c.to_excel('/home/david/Desktop/remembers_second_close.xlsx')
 
 
 ### Far: off
-
-results_1st_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
+results_2nd_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
            angle_separation=180, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
@@ -82,13 +81,13 @@ results_1st_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000,
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-#np.mean([abs(results_1st_far_off[i][1]) for i in range(len(results_1st_far_off))]) ###¿¿¿18.31??? 17.8... ok...
-OFF_f= pd.DataFrame( [results_1st_far_off[i][1] for i in range(len(results_1st_far_off))])
+#np.mean([abs(results_2nd_far_off[i][1]) for i in range(len(results_2nd_far_off))]) 
+OFF_f= pd.DataFrame( [results_2nd_far_off[i][1] for i in range(len(results_2nd_far_off))])
 OFF_f['stimul']='OFF' 
 OFF_f['position']='far'  
 
 ### Far: on
-results_1st_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
+results_2nd_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
            angle_separation=180, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
@@ -100,8 +99,8 @@ results_1st_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, 
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-#np.mean([abs(results_1st_far_on[i][1]) for i in range(len(results_1st_far_on))]) ###¿¿¿18.31??? 17.8... ok...
-ON_f= pd.DataFrame( [results_1st_far_on[i][1] for i in range(len(results_1st_far_on))])
+#np.mean([abs(results_2nd_far_on[i][1]) for i in range(len(results_2nd_far_on))]) 
+ON_f= pd.DataFrame( [results_2nd_far_on[i][1] for i in range(len(results_2nd_far_on))])
 ON_f['stimul']='ON' 
 ON_f['position']='far' 
 
