@@ -1,7 +1,7 @@
 
 from model import *
 
-numcores = multiprocessing.cpu_count() 
+numcores = multiprocessing.cpu_count() -1 
 print('Number cores: '+ str(numcores))
 n_simuls=400
 
