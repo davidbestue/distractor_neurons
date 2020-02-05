@@ -5,11 +5,17 @@ numcores = multiprocessing.cpu_count()
 print('Number cores: '+ str(numcores))
 n_simuls=10
 
-## ### Remember 1st
-fee=1. 
-fei=1. 
-fie=1. 
-fii=1.
+## ### Remember 2nd
+
+# fee=1. 
+# fei=1. 
+# fie=1. 
+# fii=1.
+
+fee=0.98
+fei=0.98
+fie=1.05
+fii=1.12
 
 ## ## Example
 ## an = model(totalTime=1500, targ_onset_1=100, targ_onset_2=800, angle_target_i=90, presentation_period=100,
