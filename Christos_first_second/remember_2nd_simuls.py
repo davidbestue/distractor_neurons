@@ -2,8 +2,8 @@
 from model import *
 
 numcores = multiprocessing.cpu_count() 
-print('Number cores: '+ str(numcores))
-n_simuls=10
+print('Number cores: '+ str(numcores)) -1
+n_simuls=400
 
 ## ### Remember 2nd
 
@@ -54,7 +54,7 @@ results_2nd_close_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=300
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
 #np.mean([abs(results_2nd_close_off[i][1]) for i in range(len(results_2nd_close_off))]) 
-OFF_c= pd.DataFrame( [results_2nd_close_off[i][1] for i in range(len(results_2nd_close_off))])
+OFF_c= pd.DataFrame( [results_2nd_close_off[i][2] for i in range(len(results_2nd_close_off))])
 OFF_c['stimul']='OFF' 
 OFF_c['position']='close' 
 
@@ -75,7 +75,7 @@ results_2nd_close_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000
 
 #np.mean([abs(results_2nd_close_on[i][1]) for i in range(len(results_2nd_close_on))]) #
  
-ON_c= pd.DataFrame( [results_2nd_close_on[i][1] for i in range(len(results_2nd_close_on))])
+ON_c= pd.DataFrame( [results_2nd_close_on[i][2] for i in range(len(results_2nd_close_on))])
 ON_c['stimul']='ON' 
 ON_c['position']='close' 
 ##
@@ -98,7 +98,7 @@ results_2nd_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
 #np.mean([abs(results_2nd_far_off[i][1]) for i in range(len(results_2nd_far_off))]) 
-OFF_f= pd.DataFrame( [results_2nd_far_off[i][1] for i in range(len(results_2nd_far_off))])
+OFF_f= pd.DataFrame( [results_2nd_far_off[i][2] for i in range(len(results_2nd_far_off))])
 OFF_f['stimul']='OFF' 
 OFF_f['position']='far'  
 
@@ -116,7 +116,7 @@ results_2nd_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, 
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
 #np.mean([abs(results_2nd_far_on[i][1]) for i in range(len(results_2nd_far_on))]) 
-ON_f= pd.DataFrame( [results_2nd_far_on[i][1] for i in range(len(results_2nd_far_on))])
+ON_f= pd.DataFrame( [results_2nd_far_on[i][2] for i in range(len(results_2nd_far_on))])
 ON_f['stimul']='ON' 
 ON_f['position']='far' 
 
