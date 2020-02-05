@@ -17,12 +17,10 @@ n_simuls=10
 # fie=1.05
 # fii=1.12
 
-
 fee=0.94
 fei=0.92
 fie=1.14
 fii=1.08
-
 
 
 ## Example
