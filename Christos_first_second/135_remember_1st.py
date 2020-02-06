@@ -65,6 +65,8 @@ df_f.to_excel('/home/david/Desktop/135_remember_first.xlsx')
 
 
 
+#### Borrar esto despues!!!!
+
 fee=0.94
 fei=0.92
 fie=1.14
