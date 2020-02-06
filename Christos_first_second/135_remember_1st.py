@@ -15,7 +15,7 @@ fii=1.
 
 ### Far: off
 results_2nd_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
-           angle_separation=180, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
+           angle_separation=135, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
            GEI=0.13*fie,
@@ -33,7 +33,7 @@ OFF_f['position']='far'
 
 ### Far: on
 results_2nd_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
-           angle_separation=180, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
+           angle_separation=135, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
            GEI=0.13*fie,
