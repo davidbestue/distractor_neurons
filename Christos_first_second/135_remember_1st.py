@@ -14,7 +14,7 @@ fii=1.
 
 
 ### Far: off
-results_2nd_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
+results_1st_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
            angle_separation=135, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
@@ -26,13 +26,13 @@ results_2nd_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000,
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-#np.mean([abs(results_2nd_far_off[i][1]) for i in range(len(results_2nd_far_off))]) 
-OFF_f= pd.DataFrame( [results_2nd_far_off[i][2] for i in range(len(results_2nd_far_off))])
+#np.mean([abs(results_1st_far_off[i][1]) for i in range(len(results_1st_far_off))]) 
+OFF_f= pd.DataFrame( [results_1st_far_off[i][2] for i in range(len(results_1st_far_off))])
 OFF_f['stimul']='OFF' 
 OFF_f['position']='far'  
 
 ### Far: on
-results_2nd_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
+results_1st_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
            angle_separation=135, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
@@ -44,8 +44,8 @@ results_2nd_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, 
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-#np.mean([abs(results_2nd_far_on[i][1]) for i in range(len(results_2nd_far_on))]) 
-ON_f= pd.DataFrame( [results_2nd_far_on[i][2] for i in range(len(results_2nd_far_on))])
+#np.mean([abs(results_1st_far_on[i][1]) for i in range(len(results_1st_far_on))]) 
+ON_f= pd.DataFrame( [results_1st_far_on[i][2] for i in range(len(results_1st_far_on))])
 ON_f['stimul']='ON' 
 ON_f['position']='far' 
 
