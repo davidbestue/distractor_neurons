@@ -37,6 +37,10 @@ results_2nd_close_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=300
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
+
+
+
+
 #np.mean([abs(results_2nd_close_off[i][1]) for i in range(len(results_2nd_close_off))]) 
 OFF_c= pd.DataFrame( [results_2nd_close_off[i][2] for i in range(len(results_2nd_close_off))])
 OFF_c['stimul']='OFF' 
