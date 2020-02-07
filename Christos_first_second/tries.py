@@ -52,3 +52,4 @@ ON['position']='close'
 
 ##
 df = pd.concat([OFF, ON], ignore_index=True)
+df.to_excel('/home/david/Desktop/tries.xlsx')
