@@ -52,11 +52,12 @@ results_1st_close_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=1500
            GIE=0.042*fii, 
            sigE=10., sigI=5., 
            kappa_E=45, 
-           kappa_I=0.5, #ON
+           kappa_I=0.5, #OFF
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-#
+
+
 ON= pd.DataFrame( [results_1st_close_on[i][1] for i in range(len(results_1st_close_on))])
 ON['stimul']='ON' 
 ON['position']='close' 
@@ -216,7 +217,7 @@ results_1st_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=1500,
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-OFF_f= pd.DataFrame( [results_1st_far_off[i][1] for i in range(len(results_1st_far_off))])
+OFF_f= pd.DataFrame( [results_1st_far_off[i][2] for i in range(len(results_1st_far_off))])
 OFF_f['stimul']='OFF' 
 OFF_f['position']='far'  
 
