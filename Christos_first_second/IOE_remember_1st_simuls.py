@@ -60,7 +60,6 @@ results_1st_close_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-#np.mean([abs(results_1st_close_on[i][1]) for i in range(len(results_1st_close_on))]) ###¿¿¿18.31??? 17.8... ok...
 # ON = pd.DataFrame(res_on)
 # ON['stimul']='ON' 
 # ON['position']='close' 
