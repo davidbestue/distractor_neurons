@@ -87,7 +87,6 @@ df.to_excel('/home/david/Desktop/remembers_first_close_51.xlsx')
 #            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
 #            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-# #np.mean([abs(results_1st_far_off[i][1]) for i in range(len(results_1st_far_off))]) ###¿¿¿18.31??? 17.8... ok...
 # OFF_f= pd.DataFrame( [results_1st_far_off[i][1] for i in range(len(results_1st_far_off))])
 # OFF_f['stimul']='OFF' 
 # OFF_f['position']='far'  
@@ -105,7 +104,6 @@ df.to_excel('/home/david/Desktop/remembers_first_close_51.xlsx')
 #            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
 #            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-# #np.mean([abs(results_1st_far_on[i][1]) for i in range(len(results_1st_far_on))]) ###¿¿¿18.31??? 17.8... ok...
 # ON_f= pd.DataFrame( [results_1st_far_on[i][1] for i in range(len(results_1st_far_on))])
 # ON_f['stimul']='ON' 
 # ON_f['position']='far' 
@@ -145,4 +143,3 @@ df.to_excel('/home/david/Desktop/remembers_first_close_51.xlsx')
 ##     print(an[1], an[2])
 ##     res_off.append(an[1])
 ###
-## print('abs error OFF, close: ' + str(round(np.mean([abs(res_off[i]) for i in range(len(res_off))]),2) ) ) ## 16
