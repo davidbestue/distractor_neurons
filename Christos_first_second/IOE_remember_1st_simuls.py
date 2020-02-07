@@ -11,21 +11,20 @@ fei=1.
 fie=1. 
 fii=1.
 
-## ## Example
-## an = model(totalTime=1500, targ_onset_1=100, targ_onset_2=800, angle_target_i=90, presentation_period=100,
-##            angle_separation=100, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
-##            GEE=0.068*fee,
-##            GII= 0.13*fei,
-##            GEI=0.12*fie,
-##            GIE=0.042*fii, 
-##            sigE=10., sigI=5., 
-##            kappa_E=45, 
-##            kappa_I=0.5, 
-##            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
-##            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False) 
+# an = model(totalTime=1500, targ_onset_1=100, targ_onset_2=800, angle_target_i=90, presentation_period=100,
+#            angle_separation=51, tauE=20, tauI=10,  n_stims=2, I0E=0.18, I0I=0.5, 
+#            GEE=0.068*fee,
+#            GII= 0.13*fei,
+#            GEI=0.13*fie,
+#            GIE=0.042*fii, 
+#            sigE=10., sigI=5., 
+#            kappa_E=45, 
+#            kappa_I=0.5, 
+#            kappa_stim=40., N=512, stim_strengthE=9.2, stim_strengthI=0.,
+#            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False) 
 
 ### Close: off
-results_1st_close_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
+results_1st_close_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=1500, targ_onset_1=100, targ_onset_2=800, angle_target_i=90, presentation_period=100,
            angle_separation=51, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
@@ -38,17 +37,14 @@ results_1st_close_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=300
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
 
-# OFF = pd.DataFrame(res_off)
-# OFF['stimul']='ON' 
-# OFF['position']='close' 
-OFF2= pd.DataFrame( [results_1st_close_off[i][1] for i in range(len(results_1st_close_off))])
-OFF2['stimul']='OFF' 
-OFF2['position']='close' 
-OFF=OFF2 #pd.concat([OFF, OFF2], ignore_index=True)
+
+OFF= pd.DataFrame( [results_1st_close_off[i][1] for i in range(len(results_1st_close_off))])
+OFF['stimul']='OFF' 
+OFF['position']='close' 
 
 
 ### Close: on
-results_1st_close_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
+results_1st_close_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=1500, targ_onset_1=100, targ_onset_2=800, angle_target_i=90, presentation_period=100,
            angle_separation=51, tauE=20, tauI=10,  n_stims=2, I0E=0.18, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
@@ -60,23 +56,21 @@ results_1st_close_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000
            kappa_stim=40., N=512, stim_strengthE=9.20, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False)  for n in range(n_simuls)) 
 
-# ON = pd.DataFrame(res_on)
-# ON['stimul']='ON' 
-# ON['position']='close' 
-ON2= pd.DataFrame( [results_1st_close_on[i][1] for i in range(len(results_1st_close_on))])
-ON2['stimul']='ON' 
-ON2['position']='close' 
-ON=ON2
+#
+ON= pd.DataFrame( [results_1st_close_on[i][1] for i in range(len(results_1st_close_on))])
+ON['stimul']='ON' 
+ON['position']='close' 
+
 #ON=pd.concat([ON, ON2], ignore_index=True)
 ##
 df = pd.concat([OFF, ON], ignore_index=True)
-#df.to_excel('/home/david/Desktop/remembers_first_close_51.xlsx')
+#df.to_excel('/home/david/Desktop/remembers_first_close_51_del.xlsx')
 
 
 ### Far: off
 
-results_1st_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
-           angle_separation=180, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
+results_1st_far_off = Parallel(n_jobs = numcores)(delayed(model)(totalTime=1500, targ_onset_1=100, targ_onset_2=800, angle_target_i=90, presentation_period=100,
+           angle_separation=135, tauE=20, tauI=10,  n_stims=2, I0E=0.1, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
            GEI=0.13*fie,
@@ -92,8 +86,8 @@ OFF_f['stimul']='OFF'
 OFF_f['position']='far'  
 
 ### Far: on
-results_1st_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=50, targ_onset_2=500, angle_target_i=90, presentation_period=100,
-           angle_separation=180, tauE=20, tauI=10,  n_stims=2, I0E=0.18, I0I=0.5, 
+results_1st_far_on = Parallel(n_jobs = numcores)(delayed(model)(totalTime=1500, targ_onset_1=100, targ_onset_2=800, angle_target_i=90, presentation_period=100,
+           angle_separation=135, tauE=20, tauI=10,  n_stims=2, I0E=0.18, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
            GEI=0.13*fie,
@@ -117,9 +111,9 @@ df_f = pd.concat([OFF_f, ON_f], ignore_index=True)
 ###########################################################################################################################
 
 df_ =pd.concat([df, df_f], ignore_index=True)
-#df_.to_excel('/home/david/Desktop/remembers_first_I0E.xlsx')
+df_.to_excel('/home/david/Desktop/remembers_first_I0E_del.xlsx')
 
-df_.to_excel('remembers_first_I0E.xlsx')
+###df_.to_excel('remembers_first_I0E_del.xlsx')
 
 ###########################################################################################################################
 ###########################################################################################################################
