@@ -170,7 +170,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     stimon2 = floor(targ_onset_2/dt);
     stimoff2 = floor(targ_onset_2/dt) + floor(presentation_period/dt) ;
     #Simulation
-    #generation of the noise and the connectivity between inhib and exit
+    #generation of the noise and the connectivity between inhib and exitatory
     RE=zeros((N,nsteps));
     RI=zeros((N,nsteps));
     f = lambda x : x*x*(x>0)*(x<1) + reshape(array([cmath.sqrt(4*x[i]-3) for i in range(0, len(x))]).real, (N,1)) * (x>=1)
