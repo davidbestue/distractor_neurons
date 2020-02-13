@@ -206,17 +206,17 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
         #differential equations for connectivity
         IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background;
         II= GEI*dot(WE,rE) +  (I0I-GII*mean(rI))*ones((N,1));
-        #
+        # phantom condition
         if i > float(phantom_onset/dt) and i < float(phantom_onset/dt) + float(phnatom_duration/dt) :
             background= background_on
         else:
             background= background_s
-        ##
+        ## stim condition
         if i>stimon1 and i<stimoff1:
-            IE=IE+stim_strengthE*stimulus_1;
+            IE=IE+stim_strengthE*stimulus_1 + (background_on-background_s);
             II=II+stim_strengthI*stimulus_1;
         if i>stimon2 and i<stimoff2:
-            IE=IE+stim_strengthE*stimulus_2;
+            IE=IE+stim_strengthE*stimulus_2 + (background_on-background_s);
             II=II+stim_strengthI*stimulus_2;
         #
         #rates of exit and inhib
