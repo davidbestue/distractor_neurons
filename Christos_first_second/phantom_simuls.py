@@ -1,7 +1,7 @@
 from model_phantom import *
 #from linares_plot import * 
 
-n_simuls=5
+n_simuls=2
 numcores = multiprocessing.cpu_count() -1 
 print('Number cores: '+ str(numcores))
 
@@ -54,7 +54,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f=err1_on_f.loc[err1_on_f['abs_err']<25]
+err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
 
 err1_off_f = pd.DataFrame([OFF_1_far[i][1] for i in range(len(OFF_1_far))])
@@ -64,7 +64,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f=err1_off_f.loc[err1_off_f['abs_err']<25]
+err1_off_f_cut=err1_off_f.loc[err1_off_f['abs_err']<25]
 
 
 fee=1
@@ -116,7 +116,7 @@ err1_on_c['stimulation']='ON'
 err1_on_c['distance']='close'
 err1_on_c['order']='1st'
 err1_on_c.to_excel('/home/david/Desktop/err1_on_c.xlsx')
-
+err1_on_c_cut = err1_on_c
 
 err1_off_c = pd.DataFrame([OFF_1_close[i][1] for i in range(len(OFF_1_close))])
 err1_off_c.columns=['err']
@@ -125,7 +125,7 @@ err1_off_c['stimulation']='OFF'
 err1_off_c['distance']='close'
 err1_off_c['order']='1st'
 err1_off_c.to_excel('/home/david/Desktop/err1_off_c.xlsx')
-
+err1_off_c_cut = err1_off_c
 
 
 fee=0.94
@@ -175,7 +175,7 @@ err2_on_f['stimulation']='ON'
 err2_on_f['distance']='far'
 err2_on_f['order']='2nd'
 err2_on_f.to_excel('/home/david/Desktop/err2_on_f.xlsx')
-err2_on_f=err2_on_f.loc[err2_on_f['abs_err']<25]
+err2_on_f_cut=err2_on_f.loc[err2_on_f['abs_err']<25]
 
 
 
@@ -186,7 +186,7 @@ err2_off_f['stimulation']='OFF'
 err2_off_f['distance']='far'
 err2_off_f['order']='2nd'
 err2_off_f.to_excel('/home/david/Desktop/err2_off_f.xlsx')
-err2_off_f=err2_off_f.loc[err2_off_f['abs_err']<25]
+err2_off_f_cut=err2_off_f.loc[err2_off_f['abs_err']<25]
 
 
 
@@ -241,7 +241,7 @@ err2_on_c['stimulation']='ON'
 err2_on_c['distance']='close'
 err2_on_c['order']='2nd'
 err2_on_c.to_excel('/home/david/Desktop/err2_on_c.xlsx')
-err2_on_c=err2_on_c.loc[err2_on_c['abs_err']<25]
+err2_on_c_cut=err2_on_c.loc[err2_on_c['abs_err']<25]
 
 
 err2_off_c = pd.DataFrame([OFF_2_close[i][2] for i in range(len(OFF_2_close))])
@@ -251,6 +251,21 @@ err2_off_c['stimulation']='OFF'
 err2_off_c['distance']='close'
 err2_off_c['order']='2nd'
 err2_off_c.to_excel('/home/david/Desktop/err2_off_c.xlsx')
-err2_off_c=err2_off_c.loc[err2_off_c['abs_err']<25]
+err2_off_c_cut=err2_off_c.loc[err2_off_c['abs_err']<25]
+
+
+
+
+##########
+
+df = pd.concat([err2_off_c_cut, err2_on_c_cut, err2_off_f_cut, err2_on_f_cut, 
+               err1_off_c_cut, err1_on_c_cut, err1_off_f_cut, err1_on_f_cut], ignore_index=True)
+
+####df=df.loc[df['abs_err']<180]
+df['performance']=df['abs_err']<15
+
+df.to_excel('/home/david/Desktop/df_phantom.xlsx')
+
+
 
 
