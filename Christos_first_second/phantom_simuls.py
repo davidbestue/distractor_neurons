@@ -1,7 +1,7 @@
 from model_phantom import *
 #from linares_plot import * 
 
-n_simuls=500 # 500
+n_simuls=250 # 500
 numcores = multiprocessing.cpu_count() -1 
 print('Number cores: '+ str(numcores))
 
@@ -94,7 +94,7 @@ ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=2000, targ_ons
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-           phantom_st=2., phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
+           phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
 
 
@@ -115,7 +115,7 @@ OFF_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=2000, targ_on
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-           phantom_st=2., phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
+           phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
 
 
@@ -158,7 +158,7 @@ ON_2_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-           phantom_st=2., phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
+           phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
 
 
@@ -178,7 +178,7 @@ OFF_2_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onse
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-           phantom_st=2., phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
+           phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
 
 
@@ -225,7 +225,7 @@ ON_2_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_ons
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-           phantom_st=2., phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
+           phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
 
 
@@ -246,7 +246,7 @@ OFF_2_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_on
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-           phantom_st=2., phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
+           phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
 
 
