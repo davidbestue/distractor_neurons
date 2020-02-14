@@ -1,7 +1,7 @@
 from model_phantom import *
 #from linares_plot import * 
 
-n_simuls=50 # 500
+n_simuls=100 # 500
 numcores = multiprocessing.cpu_count() -1 
 print('Number cores: '+ str(numcores))
 
@@ -11,8 +11,8 @@ fei=1
 fie=1
 fii=1
 
-ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=2000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
+ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=2000, targ_onset_1=10, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+           angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.08, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
            GEI=0.13*fie,
@@ -32,7 +32,7 @@ fei=1
 fie=1
 fii=1
 
-OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=2000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=2000, targ_onset_1=10, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
@@ -55,19 +55,27 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f2.xlsx')
+####err1_on_f.to_excel('/home/david/Desktop/err1_on_f2.xlsx')
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
 
-# err1_off_f = pd.DataFrame([OFF_1_far[i][1] for i in range(len(OFF_1_far))])
-# err1_off_f.columns=['err']
-# err1_off_f['abs_err']=abs(err1_off_f['err'])
-# err1_off_f['stimulation']='OFF'
-# err1_off_f['distance']='far'
-# err1_off_f['order']='1st'
+err1_off_f = pd.DataFrame([OFF_1_far[i][1] for i in range(len(OFF_1_far))])
+err1_off_f.columns=['err']
+err1_off_f['abs_err']=abs(err1_off_f['err'])
+err1_off_f['stimulation']='OFF'
+err1_off_f['distance']='far'
+err1_off_f['order']='1st'
 # err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
 # err1_off_f_cut=err1_off_f.loc[err1_off_f['abs_err']<25]
+
+
+err1_on_f_oo = err1_on_f.loc[err1_on_f['abs_err']<30]
+err1_off_f_oo = err1_off_f.loc[err1_off_f['abs_err']<30]
+
+err1_on_f_oo.abs_err.mean()
+err1_off_f_oo.abs_err.mean()
+
 
 
 fee=1
