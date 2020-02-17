@@ -198,7 +198,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
 
     background_s= I0E* ones((N,1))
     background_silent = -8. * ones((N,1))
-    print(1)
+    ##print(1)
     background_on = (I0E+phantom_st) * ones((N,1))
     background = background_s 
     ### diferential equations
@@ -288,7 +288,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     err=err_deg(decode, angle_target_i)
     err_2 = err_deg(decode, (angle_target_i+angle_separation) )
 
-    return(decode, err, err_2) #, rE, RE, total_time) #bias_b1, bias_b2)
+    return(decode, err, err_2 )#, rE, RE, total_time) #bias_b1, bias_b2)
 
 
 ###
