@@ -53,7 +53,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f4.xlsx')
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f5.xlsx')
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -65,7 +65,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 #err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f.to_excel('/home/david/Desktop/err1_off_f4.xlsx')
+err1_off_f.to_excel('/home/david/Desktop/err1_off_f5.xlsx')
 
 # err1_off_f_cut=err1_off_f.loc[err1_off_f['abs_err']<25]
 # err1_on_f_oo = err1_on_f.loc[err1_on_f['abs_err']<30]
