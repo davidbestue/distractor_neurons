@@ -2,7 +2,7 @@ from model_phantom import *
 #from linares_plot import * 
 
 n_simuls=1000 # 50
-numcores = multiprocessing.cpu_count() -1 
+numcores = multiprocessing.cpu_count() -5
 print('Number cores: '+ str(numcores))
 
 fee=1
