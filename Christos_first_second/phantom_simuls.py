@@ -1,7 +1,7 @@
 from model_phantom import *
 #from linares_plot import * 
 
-n_simuls=1000 # 50
+n_simuls=2 ###1000 # 50
 numcores = multiprocessing.cpu_count() -1 
 print('Number cores: '+ str(numcores))
 
@@ -71,8 +71,8 @@ err1_off_f.to_excel('/home/david/Desktop/err1_off_f4.xlsx')
 # err1_on_f_oo = err1_on_f.loc[err1_on_f['abs_err']<30]
 # err1_off_f_oo = err1_off_f.loc[err1_off_f['abs_err']<30]
 
-err1_on_f_oo.abs_err.mean()
-err1_off_f_oo.abs_err.mean()
+# err1_on_f_oo.abs_err.mean()
+# err1_off_f_oo.abs_err.mean()
 
 
 
