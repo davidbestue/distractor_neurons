@@ -53,7 +53,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f5.xlsx')
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f6.xlsx')
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -65,7 +65,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 #err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f.to_excel('/home/david/Desktop/err1_off_f5.xlsx')
+err1_off_f.to_excel('/home/david/Desktop/err1_off_f6.xlsx')
 
 # err1_off_f_cut=err1_off_f.loc[err1_off_f['abs_err']<25]
 # err1_on_f_oo = err1_on_f.loc[err1_on_f['abs_err']<30]
@@ -125,7 +125,7 @@ err1_on_c['stimulation']='ON'
 err1_on_c['distance']='close'
 err1_on_c['order']='1st'
 #err1_on_c.to_excel('/home/david/Desktop/err1_on_c.xlsx')
-err1_on_c.to_excel('/home/david/Desktop/err1_on_c4.xlsx')
+err1_on_c.to_excel('/home/david/Desktop/err1_on_c6.xlsx')
 
 # err1_on_c_cut = err1_on_c
 
@@ -136,7 +136,7 @@ err1_off_c['stimulation']='OFF'
 err1_off_c['distance']='close'
 err1_off_c['order']='1st'
 #err1_off_c.to_excel('/home/david/Desktop/err1_off_c.xlsx')
-err1_off_c.to_excel('/home/david/Desktop/err1_off_c4.xlsx')
+err1_off_c.to_excel('/home/david/Desktop/err1_off_c6.xlsx')
 #err1_off_c_cut = err1_off_c
 
 
@@ -187,7 +187,7 @@ err2_on_f['stimulation']='ON'
 err2_on_f['distance']='far'
 err2_on_f['order']='2nd'
 #err2_on_f.to_excel('/home/david/Desktop/err2_on_f.xlsx')
-err2_on_f.to_excel('/home/david/Desktop/err2_on_f4.xlsx')
+err2_on_f.to_excel('/home/david/Desktop/err2_on_f6.xlsx')
 
 #err2_on_f_cut=err2_on_f.loc[err2_on_f['abs_err']<25]
 
@@ -200,7 +200,7 @@ err2_off_f['stimulation']='OFF'
 err2_off_f['distance']='far'
 err2_off_f['order']='2nd'
 #err2_off_f.to_excel('/home/david/Desktop/err2_off_f.xlsx')
-err2_off_f.to_excel('/home/david/Desktop/err2_off_f4.xlsx')
+err2_off_f.to_excel('/home/david/Desktop/err2_off_f6.xlsx')
 
 ##err2_off_f_cut=err2_off_f.loc[err2_off_f['abs_err']<25]
 
@@ -257,7 +257,7 @@ err2_on_c['stimulation']='ON'
 err2_on_c['distance']='close'
 err2_on_c['order']='2nd'
 #err2_on_c.to_excel('/home/david/Desktop/err2_on_c.xlsx')
-err2_on_c.to_excel('/home/david/Desktop/err2_on_c4.xlsx')
+err2_on_c.to_excel('/home/david/Desktop/err2_on_c6.xlsx')
 
 #err2_on_c_cut=err2_on_c.loc[err2_on_c['abs_err']<25]
 
@@ -269,7 +269,7 @@ err2_off_c['stimulation']='OFF'
 err2_off_c['distance']='close'
 err2_off_c['order']='2nd'
 #err2_off_c.to_excel('/home/david/Desktop/err2_off_c.xlsx')
-err2_off_c.to_excel('/home/david/Desktop/err2_off_c4.xlsx')
+err2_off_c.to_excel('/home/david/Desktop/err2_off_c6.xlsx')
 
 #err2_off_c_cut=err2_off_c.loc[err2_off_c['abs_err']<25]
 
