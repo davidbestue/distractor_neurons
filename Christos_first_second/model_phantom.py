@@ -197,6 +197,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     f = lambda x : x*x*(x>0)*(x<1) + reshape(array([cmath.sqrt(4*x[i]-3) for i in range(0, len(x))]).real, (N,1)) * (x>=1)
 
     background_s= I0E* ones((N,1))
+    background_silent = -2. * ones((N,1))
     background_on = (I0E+phantom_st) * ones((N,1))
     background = background_s 
     ### diferential equations
@@ -207,6 +208,9 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
         IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background;
         II= GEI*dot(WE,rE) +  (I0I-GII*mean(rI))*ones((N,1));
         # phantom condition
+        if i< stimon1:
+            IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background_silent;
+
         if i > float(phantom_onset/dt) and i < float(phantom_onset/dt) + float(phnatom_duration/dt) :
             background= background_on
         else:
