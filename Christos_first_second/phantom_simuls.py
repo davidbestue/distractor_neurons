@@ -10,7 +10,7 @@ fei=1
 fie=1
 fii=1
 
-ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=7000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=5000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
@@ -30,7 +30,7 @@ fei=1
 fie=1
 fii=1
 
-OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=7000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=5000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fei,
@@ -53,7 +53,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f8.xlsx') #5sec for f7
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f7.xlsx') #5sec for f7
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -65,7 +65,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 #err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f.to_excel('/home/david/Desktop/err1_off_f8.xlsx')
+err1_off_f.to_excel('/home/david/Desktop/err1_off_f7.xlsx')
 
 # err1_off_f_cut=err1_off_f.loc[err1_off_f['abs_err']<25]
 # err1_on_f_oo = err1_on_f.loc[err1_on_f['abs_err']<30]
