@@ -141,16 +141,26 @@ err1_off_c.to_excel('/home/david/Desktop/err1_off_c6.xlsx')
 
 
 fee=0.94
-fei=0.92
-fie=1.14
-fii=1.08
+fii=0.92
+fei=1.14
+fie=1.08
+
+# fee=0.94
+# fei=0.92
+# fie=1.14
+# fii=1.08
+
+# GEE=0.068*fee,
+# GII= 0.13*fei,
+# GEI=0.13*fie,
+# GIE=0.042*fii, 
 
 ON_2_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
-           GII= 0.13*fei,
-           GEI=0.13*fie,
-           GIE=0.042*fii, 
+           GII= 0.13*fii,
+           GEI=0.13*fei,
+           GIE=0.042*fie, 
            sigE=7., sigI=5.,            
            kappa_E=45, 
            kappa_I=0.3, 
@@ -161,16 +171,16 @@ ON_2_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset
 
 
 fee=0.94
-fei=0.92
-fie=1.14
-fii=1.08
+fii=0.92
+fei=1.14
+fie=1.08
 
 OFF_2_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
            GEE=0.068*fee,
-           GII= 0.13*fei,
-           GEI=0.13*fie,
-           GIE=0.042*fii, 
+           GII= 0.13*fii,
+           GEI=0.13*fei,
+           GIE=0.042*fie, 
            sigE=7., sigI=5.,            
            kappa_E=45, 
            kappa_I=0.3, 
@@ -208,16 +218,16 @@ err2_off_f.to_excel('/home/david/Desktop/err2_off_f6.xlsx')
 
 
 fee=0.94
-fei=0.92
-fie=1.14
-fii=1.08
+fii=0.92
+fei=1.14
+fie=1.08
 
 ON_2_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=60, tauE=20, tauI=10,  n_stims=2, I0E=0.08, I0I=0.5, 
            GEE=0.068*fee,
-           GII= 0.13*fei,
-           GEI=0.13*fie,
-           GIE=0.042*fii, 
+           GII= 0.13*fii,
+           GEI=0.13*fei,
+           GIE=0.042*fie, 
            sigE=7., sigI=5.,            
            kappa_E=45, 
            kappa_I=0.3, 
@@ -229,16 +239,16 @@ ON_2_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_ons
 
 
 fee=0.94
-fei=0.92
-fie=1.14
-fii=1.08
+fii=0.92
+fei=1.14
+fie=1.08
 
 OFF_2_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=60, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
            GEE=0.068*fee,
-           GII= 0.13*fei,
-           GEI=0.13*fie,
-           GIE=0.042*fii, 
+           GII= 0.13*fii,
+           GEI=0.13*fei,
+           GIE=0.042*fie, 
            sigE=7., sigI=5.,            
            kappa_E=45, 
            kappa_I=0.3, 
