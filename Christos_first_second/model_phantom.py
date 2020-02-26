@@ -206,7 +206,8 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
         noiseE = sigE*random.randn(N,1);
         noiseI = sigI*random.randn(N,1);
         #differential equations for connectivity
-        IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background;
+        ## ## everything defining the excitatory current must end in the excitatory (GEE, GIE) and viceversa
+        IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background; 
         II= GEI*dot(WE,rE) +  (I0I-GII*mean(rI))*ones((N,1));
         # phantom condition
         if i< stimon1:
