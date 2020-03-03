@@ -5,17 +5,22 @@ n_simuls=1000 # 50
 numcores = multiprocessing.cpu_count() -5
 print('Number cores: '+ str(numcores))
 
-fee=1
-fei=1
-fie=1
-fii=1
 
-ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=10000, targ_onset_1=10, targ_onset_2=20000, angle_target_i=90, presentation_period=100,
+
+fee=1
+fei=1.35
+fie=0.92
+fii=0.9
+
+
+
+
+ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
-           GII= 0.13*fei,
-           GEI=0.13*fie,
-           GIE=0.042*fii, 
+           GII= 0.13*fii,
+           GEI=0.13*fei,
+           GIE=0.042*fie, 
            sigE=7., sigI=5.,            
            kappa_E=45, 
            kappa_I=0.3, 
@@ -26,16 +31,16 @@ ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=10000, targ_onse
 
 
 fee=1
-fei=1
-fie=1
-fii=1
+fei=1.35
+fie=0.92
+fii=0.9
 
-OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=10000, targ_onset_1=10, targ_onset_2=20000, angle_target_i=90, presentation_period=100,
+OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
            GEE=0.068*fee,
-           GII= 0.13*fei,
-           GEI=0.13*fie,
-           GIE=0.042*fii, 
+           GII= 0.13*fii,
+           GEI=0.13*fei,
+           GIE=0.042*fie, 
            sigE=7., sigI=5.,            
            kappa_E=45, 
            kappa_I=0.3, 
@@ -53,7 +58,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f13.xlsx') #5sec for f7
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f15.xlsx') #5sec for f7
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -65,7 +70,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 #err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f.to_excel('/home/david/Desktop/err1_off_f13.xlsx')
+err1_off_f.to_excel('/home/david/Desktop/err1_off_f15.xlsx')
 
 
 
@@ -86,9 +91,9 @@ fii=1
 ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=60, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
-           GII= 0.13*fei,
-           GEI=0.13*fie,
-           GIE=0.042*fii, 
+           GII= 0.13*fii,
+           GEI=0.13*fei,
+           GIE=0.042*fie, 
            sigE=7., sigI=5.,            
            kappa_E=45, 
            kappa_I=0.3, 
@@ -107,9 +112,9 @@ fii=1
 OFF_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=60, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
            GEE=0.068*fee,
-           GII= 0.13*fei,
-           GEI=0.13*fie,
-           GIE=0.042*fii, 
+           GII= 0.13*fii,
+           GEI=0.13*fei,
+           GIE=0.042*fie, 
            sigE=7., sigI=5.,            
            kappa_E=45, 
            kappa_I=0.3, 
