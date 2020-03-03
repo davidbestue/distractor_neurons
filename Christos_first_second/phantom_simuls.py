@@ -7,7 +7,7 @@ print('Number cores: '+ str(numcores))
 
 
 
-fee=1
+fee=1.005
 fei=1.35
 fie=0.92
 fii=0.9
@@ -30,7 +30,7 @@ ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset
 
 
 
-fee=1
+fee=1.005
 fei=1.35
 fie=0.92
 fii=0.9
@@ -58,7 +58,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f15.xlsx') #5sec for f7
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f16.xlsx') #5sec for f7
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -70,7 +70,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 #err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f.to_excel('/home/david/Desktop/err1_off_f15.xlsx')
+err1_off_f.to_excel('/home/david/Desktop/err1_off_f16.xlsx')
 
 
 
@@ -82,7 +82,7 @@ err1_off_f.to_excel('/home/david/Desktop/err1_off_f15.xlsx')
 # err1_off_f_oo.abs_err.mean()
 
 
-fee=1
+fee=1.005
 fei=1.35
 fie=0.92
 fii=0.9
@@ -103,7 +103,7 @@ ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_ons
 
 
 
-fee=1
+fee=1.005
 fei=1.35
 fie=0.92
 fii=0.9
@@ -131,7 +131,7 @@ err1_on_c['stimulation']='ON'
 err1_on_c['distance']='close'
 err1_on_c['order']='1st'
 #err1_on_c.to_excel('/home/david/Desktop/err1_on_c.xlsx')
-err1_on_c.to_excel('/home/david/Desktop/err1_on_c15.xlsx')
+err1_on_c.to_excel('/home/david/Desktop/err1_on_c16.xlsx')
 
 # err1_on_c_cut = err1_on_c
 
@@ -142,7 +142,7 @@ err1_off_c['stimulation']='OFF'
 err1_off_c['distance']='close'
 err1_off_c['order']='1st'
 #err1_off_c.to_excel('/home/david/Desktop/err1_off_c.xlsx')
-err1_off_c.to_excel('/home/david/Desktop/err1_off_c15.xlsx')
+err1_off_c.to_excel('/home/david/Desktop/err1_off_c16.xlsx')
 #err1_off_c_cut = err1_off_c
 
 
