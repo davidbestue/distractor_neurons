@@ -1,7 +1,7 @@
 from model_phantom import *
 #from linares_plot import * 
 
-n_simuls=200 # 50
+n_simuls=100 # 50
 numcores = multiprocessing.cpu_count() -5
 print('Number cores: '+ str(numcores))
 
@@ -12,15 +12,14 @@ print('Number cores: '+ str(numcores))
 # fie=0.92
 # fii=0.9
 
-fee=1.
-fei=0.91
+fee=0.98
+fei=0.78
 fie=1.15
-fii=1.
+fii=0.89
 
 
 
-
-ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=5000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
@@ -35,7 +34,7 @@ ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset
 
 
 
-OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=5000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
@@ -82,10 +81,10 @@ err1_off_f.to_excel('/home/david/Desktop/err1_off_f17.xlsx')
 # err1_off_f_oo.abs_err.mean()
 
 
-fee=1.005
-fei=1.35
-fie=0.92
-fii=0.9
+fee=0.98
+fei=0.78
+fie=1.15
+fii=0.89
 
 ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
@@ -103,10 +102,10 @@ ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_ons
 
 
 
-fee=1.005
-fei=1.35
-fie=0.92
-fii=0.9
+fee=0.98
+fei=0.78
+fie=1.15
+fii=0.89
 
 OFF_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
@@ -131,7 +130,7 @@ err1_on_c['stimulation']='ON'
 err1_on_c['distance']='close'
 err1_on_c['order']='1st'
 #err1_on_c.to_excel('/home/david/Desktop/err1_on_c.xlsx')
-err1_on_c.to_excel('/home/david/Desktop/err1_on_c16.xlsx')
+err1_on_c.to_excel('/home/david/Desktop/err1_on_c17.xlsx')
 
 # err1_on_c_cut = err1_on_c
 
@@ -142,8 +141,12 @@ err1_off_c['stimulation']='OFF'
 err1_off_c['distance']='close'
 err1_off_c['order']='1st'
 #err1_off_c.to_excel('/home/david/Desktop/err1_off_c.xlsx')
-err1_off_c.to_excel('/home/david/Desktop/err1_off_c16.xlsx')
+err1_off_c.to_excel('/home/david/Desktop/err1_off_c17.xlsx')
 #err1_off_c_cut = err1_off_c
+
+
+
+
 
 
 fee=0.94
