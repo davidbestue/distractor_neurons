@@ -12,10 +12,15 @@ print('Number cores: '+ str(numcores))
 # fie=0.92
 # fii=0.9
 
-fee=0.9
-fei=0.78
-fie=1.0
-fii=0.89
+# fee=0.9
+# fei=0.78
+# fie=1.0
+# fii=0.89
+
+fee=0.85
+fei=0.65
+fie=0.88
+fii=0.
 
 
 ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=2000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
@@ -56,7 +61,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f21.xlsx') #5sec for f7
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f22.xlsx') #5sec for f7
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -68,7 +73,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 #err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f.to_excel('/home/david/Desktop/err1_off_f21.xlsx')
+err1_off_f.to_excel('/home/david/Desktop/err1_off_f22.xlsx')
 
 
 
