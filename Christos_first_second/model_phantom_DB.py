@@ -218,8 +218,8 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     background_on = (I0E+phantom_st) * ones((N,1))
     background = background_s 
     ##noise
-    noisepopE = Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N))
-    noisepopI = Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N))
+    noisepopE = np.array( Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N)) )
+    noisepopI = np.array( Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N)) )
     ### diferential equations
     for i in range(0, nsteps):
         noiseE = np.reshape(sigE*noisepopE[:,i], (N,1))
