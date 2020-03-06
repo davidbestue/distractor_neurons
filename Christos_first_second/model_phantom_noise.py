@@ -202,9 +202,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     ##print(1)
     background_on = (I0E+phantom_st) * ones((N,1))
     background = background_s 
-
     ##noise
-
     noisemodel=sd.ornstein_uhlenbeck_process(k=k_noise) # k=1/tau fluctuations
     times = np.arange(0,nsteps*dt,dt)
     noisepopE = []
@@ -212,8 +210,9 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     for i in range(N):
         noisepopE.append(noisemodel(times))
         noisepopI.append(noisemodel(times))
-        noisepopE=np.squeeze(noisepopE)
-        noisepopI=np.squeeze(noisepopI)
+    #
+    noisepopE=np.squeeze(noisepopE)
+    noisepopI=np.squeeze(noisepopI)
     #
     ### diferential equations
     for i in range(0, nsteps):
