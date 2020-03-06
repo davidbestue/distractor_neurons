@@ -208,9 +208,12 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     noisepopE = []
     noisepopI = []
     for i_noise in range(N):
-        noisepopE.append(noisemodel(times))
-        noisepopI.append(noisemodel(times))
-    #
+        nE=noisemodel(times)
+        nI=noisemodel(times)
+        noisepopE.append(nE)
+        noisepopI.append(nI)
+    ###
+    
     noisepopE=np.squeeze(noisepopE)
     noisepopI=np.squeeze(noisepopI)
     #
