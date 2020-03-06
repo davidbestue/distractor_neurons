@@ -215,7 +215,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
         noisepopE.append(nE)
         noisepopI.append(nI)
     ###
-
+    ###
     noisepopE=np.squeeze(noisepopE)
     noisepopI=np.squeeze(noisepopI)
     #
