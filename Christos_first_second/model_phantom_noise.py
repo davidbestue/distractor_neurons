@@ -221,8 +221,8 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     #
     ### diferential equations
     for i in range(0, nsteps):
-        noiseE = sigE*noisepopE[:,i] #random.randn(N,1);
-        noiseI = sigI*noisepopI[:,i] #random.randn(N,1);
+        noiseE = np.reshape(sigE*noisepopE[:,i], (N,1))
+        noiseI = np.reshape(sigI*noisepopI[:,i], (N,1))
         #noiseE = sigE*random.randn(N,1);
         #noiseI = sigI*random.randn(N,1);
         #differential equations for connectivity
