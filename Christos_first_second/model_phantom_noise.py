@@ -207,7 +207,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     times = np.arange(0,nsteps*dt,dt)
     noisepopE = []
     noisepopI = []
-    for i in range(N):
+    for i_noise in range(N):
         noisepopE.append(noisemodel(times))
         noisepopI.append(noisemodel(times))
     #
