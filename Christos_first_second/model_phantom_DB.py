@@ -16,7 +16,7 @@ from sklearn.linear_model import LinearRegression
 import scipy.signal
 from scipy.optimize import curve_fit 
 import pandas as pd
-import sdepy as sd
+##import sdepy as sd
 
 ## Fucntions to use
 
