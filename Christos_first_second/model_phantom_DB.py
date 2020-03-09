@@ -120,21 +120,6 @@ def model_I0E(center_angle, size_windows, N=512):
 
 
 
-def Uhlenbeck(totaltime, dt, kappa, mu=1, sigma=1):
-    tau=totaltime*kappa ##1 means very slow and 0.1 fast buildup
-    n = int(totaltime / dt) 
-    t = np.linspace(0., totaltime, n)  # Vector of times.
-    sigma_bis = sigma * np.sqrt(2. / tau)
-    sqrtdt = np.sqrt(dt)
-    x = np.zeros(n)
-    for i in range(n - 1):
-        x[i + 1] = x[i] + dt * (-(x[i] - mu) / tau) + \
-            sigma_bis * sqrtdt * np.random.randn()
-    return x
-
-
-
-
 def ornstein_uhlenbeck(t_final, delta_t , theta ):
     sigma = 1.
     # The time array of the trajectory
@@ -237,8 +222,6 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     background = background_s 
     ##noise
     numcores = multiprocessing.cpu_count()
-    #noisepopE = np.array( Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N)) )
-    #noisepopI = np.array( Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N)) )
     noisepopE = np.array( Parallel(n_jobs = numcores)(delayed(ornstein_uhlenbeck)(t_final=totalTime, delta_t=dt, theta=k_noise)  for n in range(N)) )
     noisepopI = np.array( Parallel(n_jobs = numcores)(delayed(ornstein_uhlenbeck)(t_final=totalTime, delta_t=dt, theta=k_noise)  for n in range(N)) )
     ## diferential equations
