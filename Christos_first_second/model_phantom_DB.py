@@ -218,6 +218,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     background_on = (I0E+phantom_st) * ones((N,1))
     background = background_s 
     ##noise
+    numcores = multiprocessing.cpu_count()
     noisepopE = np.array( Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N)) )
     noisepopI = np.array( Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N)) )
     ### diferential equations
