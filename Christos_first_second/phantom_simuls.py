@@ -29,13 +29,13 @@ fie=1.
 fii=1.
 
 
-ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=2000, targ_onset_1=100, targ_onset_2=10000, angle_target_i=90, presentation_period=100,
+ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=6000, targ_onset_1=100, targ_onset_2=10000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5., k_noise=0.8,           
+           sigE=7., sigI=5., k_noise=0.5,           
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -44,13 +44,13 @@ ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=2000, targ_onset
 
 
 
-OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=2000, targ_onset_1=100, targ_onset_2=10000, angle_target_i=90, presentation_period=100,
+OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=6000, targ_onset_1=100, targ_onset_2=10000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5., k_noise=0.8,            
+           sigE=7., sigI=5., k_noise=0.5,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
