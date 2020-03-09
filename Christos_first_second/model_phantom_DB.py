@@ -135,6 +135,24 @@ def Uhlenbeck(totaltime, dt, kappa, mu=1, sigma=1):
 
 
 
+def ornstein_uhlenbeck(t_final, delta_t , theta ):
+    sigma = 1.
+    # The time array of the trajectory
+    time = np.arange(0, t_final, delta_t)
+    # Initialise the array y
+    y = np.zeros(time.size)
+    # Generate a Wiener process
+    dw = np.random.normal(loc = 0, scale = np.sqrt(delta_t), size = time.size)
+    # Integrate the process
+    for i in range(1,time.size):
+        y[i] = y[i-1] - theta*y[i-1]*delta_t + sigma*dw[i]
+
+    return(y)
+
+
+
+
+
 
 def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_target_i, angle_separation, tauE=9, 
           tauI=4,  n_stims=2, I0E=0.1, I0I=0.5, GEE=0.022, GEI=0.019, GIE=0.01 , GII=0.1, sigE=0.5, sigI=1.6, k_noise=0.8,
@@ -219,9 +237,11 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     background = background_s 
     ##noise
     numcores = multiprocessing.cpu_count()
-    noisepopE = np.array( Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N)) )
-    noisepopI = np.array( Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N)) )
-    ### diferential equations
+    #noisepopE = np.array( Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N)) )
+    #noisepopI = np.array( Parallel(n_jobs = numcores)(delayed(Uhlenbeck)(totaltime=totalTime, dt=dt, kappa=k_noise)  for n in range(N)) )
+    noisepopE = np.array( Parallel(n_jobs = numcores)(delayed(ornstein_uhlenbeck)(t_final=totalTime, delta_t=dt, theta=k_noise)  for n in range(N)) )
+    noisepopI = np.array( Parallel(n_jobs = numcores)(delayed(ornstein_uhlenbeck)(t_final=totalTime, delta_t=dt, theta=k_noise)  for n in range(N)) )
+    ## diferential equations
     for i in range(0, nsteps):
         noiseE = np.reshape(sigE*noisepopE[:,i], (N,1))
         noiseI = np.reshape(sigI*noisepopI[:,i], (N,1))
