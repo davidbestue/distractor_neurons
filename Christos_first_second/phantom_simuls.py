@@ -35,7 +35,7 @@ ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=6000, targ_onset
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5., k_noise=0.4,           
+           sigE=7., sigI=5., k_noise=0.35,           
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -50,7 +50,7 @@ OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=6000, targ_onse
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5., k_noise=0.4,            
+           sigE=7., sigI=5., k_noise=0.35,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -67,7 +67,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f29.xlsx') #5sec for f7
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f30.xlsx') #5sec for f7
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -79,7 +79,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 #err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f.to_excel('/home/david/Desktop/err1_off_f29.xlsx')
+err1_off_f.to_excel('/home/david/Desktop/err1_off_f30.xlsx')
 
 
 
