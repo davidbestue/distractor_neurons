@@ -122,7 +122,7 @@ def model_I0E(center_angle, size_windows, N=512):
 
 def Uhlenbeck(totaltime, dt, kappa, mu=1, sigma=1):
     tau=totaltime*kappa ##1 means very slow and 0.1 fast buildup
-    n = int(T / dt) 
+    n = int(totaltime / dt) 
     t = np.linspace(0., T, n)  # Vector of times.
     sigma_bis = sigma * np.sqrt(2. / tau)
     sqrtdt = np.sqrt(dt)
