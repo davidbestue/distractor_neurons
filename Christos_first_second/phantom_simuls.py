@@ -3,8 +3,8 @@ from model_phantom_DB import *
 
 #from linares_plot import * 
 
-n_simuls=1000# 50
-numcores = multiprocessing.cpu_count() -5
+n_simuls=500# 50
+numcores = multiprocessing.cpu_count() -3
 print('Number cores: '+ str(numcores))
 
 
@@ -32,7 +32,7 @@ fii=1.
 
 #k_noise=0.5, 
 
-ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=6000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
@@ -47,7 +47,7 @@ ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=6000, targ_onset
 
 
 
-OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=6000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-3.5, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
@@ -70,7 +70,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f34.xlsx') #5sec for f7
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f35.xlsx') #5sec for f7
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -82,7 +82,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 #err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f.to_excel('/home/david/Desktop/err1_off_f34.xlsx')
+err1_off_f.to_excel('/home/david/Desktop/err1_off_f35.xlsx')
 
 
 
@@ -94,10 +94,10 @@ err1_off_f.to_excel('/home/david/Desktop/err1_off_f34.xlsx')
 # err1_off_f_oo.abs_err.mean()
 
 
-fee=0.98
-fei=0.78
-fie=1.15
-fii=0.89
+# fee=0.98
+# fei=0.78
+# fie=1.15
+# fii=0.89
 
 ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
            angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
@@ -105,7 +105,7 @@ ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_ons
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5.,            
+           sigE=7., sigI=5., k_noise=0.5,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -116,12 +116,12 @@ ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_ons
 
 
 OFF_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
+           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=-3.5, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5.,            
+           sigE=7., sigI=5., k_noise=0.5,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -138,7 +138,7 @@ err1_on_c['stimulation']='ON'
 err1_on_c['distance']='close'
 err1_on_c['order']='1st'
 #err1_on_c.to_excel('/home/david/Desktop/err1_on_c.xlsx')
-err1_on_c.to_excel('/home/david/Desktop/err1_on_c18.xlsx')
+err1_on_c.to_excel('/home/david/Desktop/err1_on_c35.xlsx')
 
 # err1_on_c_cut = err1_on_c
 
@@ -149,7 +149,7 @@ err1_off_c['stimulation']='OFF'
 err1_off_c['distance']='close'
 err1_off_c['order']='1st'
 #err1_off_c.to_excel('/home/david/Desktop/err1_off_c.xlsx')
-err1_off_c.to_excel('/home/david/Desktop/err1_off_c18.xlsx')
+err1_off_c.to_excel('/home/david/Desktop/err1_off_c35.xlsx')
 #err1_off_c_cut = err1_off_c
 
 
@@ -169,7 +169,7 @@ ON_2_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5.,            
+           sigE=7., sigI=5., k_noise=0.5,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -189,7 +189,7 @@ OFF_2_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onse
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5.,            
+           sigE=7., sigI=5., k_noise=0.5,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -204,7 +204,7 @@ err2_on_f['abs_err']=abs(err2_on_f['err'])
 err2_on_f['stimulation']='ON'
 err2_on_f['distance']='far'
 err2_on_f['order']='2nd'
-err2_on_f.to_excel('/home/david/Desktop/err2_on_f16.xlsx')
+err2_on_f.to_excel('/home/david/Desktop/err2_on_f35.xlsx')
 
 
 
@@ -215,7 +215,7 @@ err2_off_f['abs_err']=abs(err2_off_f['err'])
 err2_off_f['stimulation']='OFF'
 err2_off_f['distance']='far'
 err2_off_f['order']='2nd'
-err2_off_f.to_excel('/home/david/Desktop/err2_off_f16.xlsx')
+err2_off_f.to_excel('/home/david/Desktop/err2_off_f35.xlsx')
 
 
 
@@ -230,7 +230,7 @@ ON_2_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_ons
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5.,            
+           sigE=7., sigI=5.,  k_noise=0.5,           
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -251,7 +251,7 @@ OFF_2_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_on
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5.,            
+           sigE=7., sigI=5., k_noise=0.5,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -268,7 +268,7 @@ err2_on_c['abs_err']=abs(err2_on_c['err'])
 err2_on_c['stimulation']='ON'
 err2_on_c['distance']='close'
 err2_on_c['order']='2nd'
-err2_on_c.to_excel('/home/david/Desktop/err2_on_c16.xlsx')
+err2_on_c.to_excel('/home/david/Desktop/err2_on_c35.xlsx')
 
 
 err2_off_c = pd.DataFrame([OFF_2_close[i][2] for i in range(len(OFF_2_close))])
@@ -277,7 +277,7 @@ err2_off_c['abs_err']=abs(err2_off_c['err'])
 err2_off_c['stimulation']='OFF'
 err2_off_c['distance']='close'
 err2_off_c['order']='2nd'
-err2_off_c.to_excel('/home/david/Desktop/err2_off_c16.xlsx')
+err2_off_c.to_excel('/home/david/Desktop/err2_off_c35.xlsx')
 
 
 
