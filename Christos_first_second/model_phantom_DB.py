@@ -143,7 +143,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
           tauI=4,  n_stims=2, I0E=0.1, I0I=0.5, GEE=0.022, GEI=0.019, GIE=0.01 , GII=0.1, sigE=0.5, sigI=1.6, k_noise=0.8,
           kappa_E=100, kappa_I=1.75, kappa_stim=100, N=512, plot_connectivity=False, plot_rate=False, 
           plot_hm=True , plot_fit=True, stim_strengthE=1., stim_strengthI=1., 
-          phantom_st = 0.2, phantom_onset=500, phnatom_duration=200):
+          phantom_st = 0.2, phantom_onset=500, phantom_on='off', phnatom_duration=200):
     #
     st_sim =time.time()
     dt=2
@@ -234,9 +234,14 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
         ## ## everything defining the excitatory current must end in the excitatory (GEE, GIE) and viceversa
         IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background; 
         II= GEI*dot(WE,rE) +  (I0I-GII*mean(rI))*ones((N,1));
+        
         # phantom condition
-        #if i< stimon1:
-        #    IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background_silent;
+        if phantom_on == 'off':
+            if i< stimon1:
+                IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background_silent; ##before 1st stim, inhibition of the network
+        if phantom_on == 'on':
+            if i< float(phantom_onset/dt):
+                IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background_silent;
 
         if i > float(phantom_onset/dt) and i < float(phantom_onset/dt) + float(phnatom_duration/dt) :
             background= background_on
