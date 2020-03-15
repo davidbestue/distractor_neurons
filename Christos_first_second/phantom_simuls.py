@@ -7,7 +7,6 @@ n_simuls=500# 50
 numcores = multiprocessing.cpu_count() -3
 print('Number cores: '+ str(numcores))
 
-
 # fee=1.005
 # fei=1.35
 # fie=0.92
