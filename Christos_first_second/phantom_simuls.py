@@ -4,7 +4,7 @@ from model_phantom_DB import *
 #from linares_plot import * 
 
 n_simuls=500# 50
-numcores = multiprocessing.cpu_count() -3
+numcores = multiprocessing.cpu_count() -2
 print('Number cores: '+ str(numcores))
 
 # fee=1.005
@@ -40,7 +40,7 @@ ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset
            sigE=7., sigI=5., k_noise=0.6,            
            kappa_E=45, 
            kappa_I=0.3, 
-           kappa_stim=40., N=512, stim_strengthE=10, stim_strengthI=0.,
+           kappa_stim=40., N=512, stim_strengthE=10., stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
            phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
