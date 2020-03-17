@@ -32,7 +32,7 @@ fii=1.
 #k_noise=0.5, 
 
 ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=1.2, I0I=0.5, 
+           angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=1.8, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
@@ -69,7 +69,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f37.xlsx') #5sec for f7
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f38.xlsx') #5sec for f7
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -100,7 +100,7 @@ err1_off_f.to_excel('/home/david/Desktop/err1_off_f37.xlsx')
 
 
 ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=1.2, I0I=0.5, 
+           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=1.8, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
@@ -138,7 +138,7 @@ err1_on_c['stimulation']='ON'
 err1_on_c['distance']='close'
 err1_on_c['order']='1st'
 #err1_on_c.to_excel('/home/david/Desktop/err1_on_c.xlsx')
-err1_on_c.to_excel('/home/david/Desktop/err1_on_c37.xlsx')
+err1_on_c.to_excel('/home/david/Desktop/err1_on_c38.xlsx')
 
 # err1_on_c_cut = err1_on_c
 
