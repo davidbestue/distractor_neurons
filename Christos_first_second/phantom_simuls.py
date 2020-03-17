@@ -32,7 +32,7 @@ fii=1.
 #k_noise=0.5, 
 
 ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=2.3, I0I=0.5, 
+           angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
@@ -40,7 +40,7 @@ ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset
            sigE=7., sigI=5., k_noise=0.6,            
            kappa_E=45, 
            kappa_I=0.3, 
-           kappa_stim=40., N=512, stim_strengthE=7., stim_strengthI=0.,
+           kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
            phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
@@ -55,7 +55,7 @@ OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onse
            sigE=7., sigI=5., k_noise=0.6,         
            kappa_E=45, 
            kappa_I=0.3, 
-           kappa_stim=40., N=512, stim_strengthE=7., stim_strengthI=0.,
+           kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
            phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
@@ -100,7 +100,7 @@ err1_off_f.to_excel('/home/david/Desktop/err1_off_f39.xlsx')
 
 
 ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=2.3, I0I=0.5, 
+           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
@@ -108,7 +108,7 @@ ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_ons
            sigE=7., sigI=5., k_noise=0.6,            
            kappa_E=45, 
            kappa_I=0.3, 
-           kappa_stim=40., N=512, stim_strengthE=7., stim_strengthI=0.,
+           kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
            phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
@@ -124,7 +124,7 @@ OFF_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_on
            sigE=7., sigI=5., k_noise=0.6,            
            kappa_E=45, 
            kappa_I=0.3, 
-           kappa_stim=40., N=512, stim_strengthE=7., stim_strengthI=0.,
+           kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
            phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)  for n in range(n_simuls)) 
 
