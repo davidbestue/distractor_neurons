@@ -138,7 +138,7 @@ err1_on_c['stimulation']='ON'
 err1_on_c['distance']='close'
 err1_on_c['order']='1st'
 #err1_on_c.to_excel('/home/david/Desktop/err1_on_c.xlsx')
-err1_on_c.to_excel('/home/david/Desktop/err1_on_c40.xlsx')
+err1_on_c.to_excel('/home/david/Desktop/err1_on_c41.xlsx')
 
 # err1_on_c_cut = err1_on_c
 
@@ -149,7 +149,7 @@ err1_off_c['stimulation']='OFF'
 err1_off_c['distance']='close'
 err1_off_c['order']='1st'
 #err1_off_c.to_excel('/home/david/Desktop/err1_off_c.xlsx')
-err1_off_c.to_excel('/home/david/Desktop/err1_off_c40.xlsx')
+err1_off_c.to_excel('/home/david/Desktop/err1_off_c41.xlsx')
 #err1_off_c_cut = err1_off_c
 
 
