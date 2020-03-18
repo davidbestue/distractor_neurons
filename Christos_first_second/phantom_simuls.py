@@ -100,7 +100,7 @@ err1_off_f.to_excel('/home/david/Desktop/err1_off_f46.xlsx')
 
 
 ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=58, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
+           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
@@ -116,7 +116,7 @@ ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_ons
 
 
 OFF_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=58, tauE=20, tauI=10,  n_stims=2, I0E=-3.5, I0I=0.5, 
+           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=-3.5, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
@@ -225,7 +225,7 @@ fei=1.14
 fie=1.08
 
 ON_2_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=58, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
+           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
@@ -246,7 +246,7 @@ fei=1.14
 fie=1.08
 
 OFF_2_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=58, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
+           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
