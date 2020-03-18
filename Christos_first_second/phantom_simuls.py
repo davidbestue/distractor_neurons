@@ -3,7 +3,7 @@ from model_phantom_DB import *
 
 #from linares_plot import * 
 
-n_simuls=500# 50
+n_simuls=5000# 50
 numcores = multiprocessing.cpu_count() -2
 print('Number cores: '+ str(numcores))
 
@@ -37,7 +37,7 @@ ON_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=10., sigI=7., k_noise=0.6,            
+           sigE=7., sigI=5., k_noise=0.6,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -52,7 +52,7 @@ OFF_1_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onse
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=10., sigI=7., k_noise=0.6,         
+           sigE=7., sigI=5., k_noise=0.6,         
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -69,7 +69,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f44.xlsx') #5sec for f7
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f46.xlsx') #5sec for f7
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -81,7 +81,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 #err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f.to_excel('/home/david/Desktop/err1_off_f44.xlsx')
+err1_off_f.to_excel('/home/david/Desktop/err1_off_f46.xlsx')
 
 
 
@@ -105,7 +105,7 @@ ON_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_ons
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=10., sigI=7., k_noise=0.6,            
+           sigE=7., sigI=5., k_noise=0.6,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -121,7 +121,7 @@ OFF_1_close = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_on
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=10., sigI=7., k_noise=0.6,            
+           sigE=7., sigI=5., k_noise=0.6,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
@@ -138,7 +138,7 @@ err1_on_c['stimulation']='ON'
 err1_on_c['distance']='close'
 err1_on_c['order']='1st'
 #err1_on_c.to_excel('/home/david/Desktop/err1_on_c.xlsx')
-err1_on_c.to_excel('/home/david/Desktop/err1_on_c44.xlsx')
+err1_on_c.to_excel('/home/david/Desktop/err1_on_c46.xlsx')
 
 # err1_on_c_cut = err1_on_c
 
@@ -149,7 +149,7 @@ err1_off_c['stimulation']='OFF'
 err1_off_c['distance']='close'
 err1_off_c['order']='1st'
 #err1_off_c.to_excel('/home/david/Desktop/err1_off_c.xlsx')
-err1_off_c.to_excel('/home/david/Desktop/err1_off_c44.xlsx')
+err1_off_c.to_excel('/home/david/Desktop/err1_off_c46.xlsx')
 #err1_off_c_cut = err1_off_c
 
 
@@ -204,7 +204,7 @@ err2_on_f['abs_err']=abs(err2_on_f['err'])
 err2_on_f['stimulation']='ON'
 err2_on_f['distance']='far'
 err2_on_f['order']='2nd'
-err2_on_f.to_excel('/home/david/Desktop/err2_on_f36.xlsx')
+err2_on_f.to_excel('/home/david/Desktop/err2_on_f46.xlsx')
 
 
 
@@ -215,7 +215,7 @@ err2_off_f['abs_err']=abs(err2_off_f['err'])
 err2_off_f['stimulation']='OFF'
 err2_off_f['distance']='far'
 err2_off_f['order']='2nd'
-err2_off_f.to_excel('/home/david/Desktop/err2_off_f36.xlsx')
+err2_off_f.to_excel('/home/david/Desktop/err2_off_f46.xlsx')
 
 
 
@@ -268,7 +268,7 @@ err2_on_c['abs_err']=abs(err2_on_c['err'])
 err2_on_c['stimulation']='ON'
 err2_on_c['distance']='close'
 err2_on_c['order']='2nd'
-err2_on_c.to_excel('/home/david/Desktop/err2_on_c44.xlsx')
+err2_on_c.to_excel('/home/david/Desktop/err2_on_c46.xlsx')
 
 
 err2_off_c = pd.DataFrame([OFF_2_close[i][2] for i in range(len(OFF_2_close))])
@@ -277,7 +277,7 @@ err2_off_c['abs_err']=abs(err2_off_c['err'])
 err2_off_c['stimulation']='OFF'
 err2_off_c['distance']='close'
 err2_off_c['order']='2nd'
-err2_off_c.to_excel('/home/david/Desktop/err2_off_c44.xlsx')
+err2_off_c.to_excel('/home/david/Desktop/err2_off_c46.xlsx')
 
 
 
