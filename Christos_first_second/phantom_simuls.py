@@ -281,5 +281,3 @@ err2_off_c.to_excel('/home/david/Desktop/err2_off_c41.xlsx')
 
 
 
-
-
