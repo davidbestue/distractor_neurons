@@ -313,7 +313,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     total_time= end_sim - st_sim 
     total_time = round(total_time, 1)
     #print('Simulation time: ' + str(total_time) + 's')
-    ####
+    ###
     decode = decode_rE(flipud(rE))
     err=err_deg(decode, angle_target_i)
     err_2 = err_deg(decode, (angle_target_i+angle_separation) )
