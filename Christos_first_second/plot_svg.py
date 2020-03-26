@@ -5,6 +5,8 @@ import itertools
 #Palettes
 print(sns.color_palette("tab10").as_hex())
 sns.palplot(sns.color_palette("tab10"))
+plt.show(block=False)
+plt.close()
 
 c_on = 'darkorange' #'#ff7f0e'
 c_off = 'dodgerblue' #'#1f77b4'
@@ -53,8 +55,25 @@ fie=1
 fii=1
 
 
-on_close_1= model(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
+# on_close_1= model(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+#            angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
+#            GEE=0.068*fee,
+#            GII= 0.13*fii,
+#            GEI=0.13*fei,
+#            GIE=0.042*fie, 
+#            sigE=7., sigI=5., k_noise=0.6,           
+#            kappa_E=45, 
+#            kappa_I=0.3, 
+#            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
+#            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
+#            phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)
+
+# hemap(on_close_1)
+# plt.show(block=False)
+# #plt.savefig("1_o2_ON.svg")
+
+off_close_1= model(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=-3.5, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
@@ -64,8 +83,8 @@ on_close_1= model(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_tar
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-           phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)
+           phantom_st=2., phantom_onset=50000, phnatom_duration=100)
 
-hemap(on_close_1)
+hemap(off_close_1)
 plt.show(block=False)
 #plt.savefig("1_o2_ON.svg")
