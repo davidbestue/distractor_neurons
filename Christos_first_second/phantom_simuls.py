@@ -3,7 +3,7 @@ from model_phantom_DB import *
 
 #from linares_plot import * 
 
-n_simuls=5000# 50
+n_simuls=250# 50
 numcores = multiprocessing.cpu_count() -2
 print('Number cores: '+ str(numcores))
 
@@ -69,7 +69,7 @@ err1_on_f['stimulation']='ON'
 err1_on_f['distance']='far'
 err1_on_f['order']='1st'
 #err1_on_f.to_excel('/home/david/Desktop/err1_on_f.xlsx')
-err1_on_f.to_excel('/home/david/Desktop/err1_on_f47.xlsx') #5sec for f7
+err1_on_f.to_excel('/home/david/Desktop/err1_on_f48.xlsx') #5sec for f7
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
@@ -81,7 +81,7 @@ err1_off_f['stimulation']='OFF'
 err1_off_f['distance']='far'
 err1_off_f['order']='1st'
 #err1_off_f.to_excel('/home/david/Desktop/err1_off_f.xlsx')
-err1_off_f.to_excel('/home/david/Desktop/err1_off_f47.xlsx')
+err1_off_f.to_excel('/home/david/Desktop/err1_off_f48.xlsx')
 
 
 
