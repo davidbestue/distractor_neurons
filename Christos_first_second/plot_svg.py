@@ -72,19 +72,37 @@ fii=1
 # plt.show(block=False)
 # #plt.savefig("1_o2_ON.svg")
 
-off_close_1= model(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=-3.5, I0I=0.5, 
+# off_close_1= model(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+#            angle_separation=57, tauE=20, tauI=10,  n_stims=2, I0E=-3.5, I0I=0.5, 
+#            GEE=0.068*fee,
+#            GII= 0.13*fii,
+#            GEI=0.13*fei,
+#            GIE=0.042*fie, 
+#            sigE=7., sigI=5., k_noise=0.6,           
+#            kappa_E=45, 
+#            kappa_I=0.3, 
+#            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
+#            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
+#            phantom_st=2., phantom_onset=50000, phnatom_duration=100)
+
+# hemap(off_close_1)
+# plt.show(block=False)
+# plt.savefig("1_close_off.pdf")
+
+
+on_far_1= model(totalTime= 3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+           angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
            GEE=0.068*fee,
            GII= 0.13*fii,
            GEI=0.13*fei,
            GIE=0.042*fie, 
-           sigE=7., sigI=5., k_noise=0.6,           
+           sigE=7., sigI=5., k_noise=0.6,            
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-           phantom_st=2., phantom_onset=50000, phnatom_duration=100)
+           phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)
 
-hemap(off_close_1)
+hemap(on_far_1)
 plt.show(block=False)
-#plt.savefig("1_o2_ON.svg")
+#plt.savefig("1_close_off.pdf")
