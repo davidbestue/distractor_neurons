@@ -228,10 +228,10 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     for i in range(0, nsteps):
         #noiseE = np.reshape(sigE*noisepopE[:,i], (N,1))
         #noiseI = np.reshape(sigI*noisepopI[:,i], (N,1))
-        noiseE = sigE*random.randn(N,1);
-        noiseI = sigI*random.randn(N,1);
-        #noiseE = sigE*1.44*random.randn(N,1);
-        #noiseI = sigI*1.44*random.randn(N,1);
+        #noiseE = sigE*random.randn(N,1);
+        #noiseI = sigI*random.randn(N,1);
+        noiseE = sigE*1.44*random.randn(N,1);
+        noiseI = sigI*1.44*random.randn(N,1);
         #differential equations for connectivity
         ## ## everything defining the excitatory current must end in the excitatory (GEE, GIE) and viceversa
         IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background; 
