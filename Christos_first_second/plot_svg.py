@@ -163,7 +163,7 @@ fii=1
 
 # hemap(on_far_1)
 # plt.show(block=False)
-#plt.savefig("1_far_on.pdf")
+# plt.savefig("1_far_on_small_drift.pdf")
 
 
 
@@ -264,7 +264,7 @@ off_far_2= model(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_targ
 
 hemap2f(off_far_2)
 plt.show(block=False)
-##plt.savefig("2_far_off.pdf")
+# plt.savefig("2_far_off_rg.pdf")
 
 
 # fee=0.94
