@@ -249,28 +249,28 @@ fii=1.08
 
 
 
-# off_far_2= model(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-#            angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
-#            GEE=0.068*fee,
-#            GII= 0.13*fei,
-#            GEI=0.13*fie,
-#            GIE=0.042*fii, 
-#            sigE=7., sigI=5.7, k_noise=0.6,             
-#            kappa_E=45, 
-#            kappa_I=0.3, 
-#            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
-#            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-#            phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)
+off_far_2= model(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+           angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
+           GEE=0.068*fee,
+           GII= 0.13*fei,
+           GEI=0.13*fie,
+           GIE=0.042*fii, 
+           sigE=7., sigI=5.7, k_noise=0.6,             
+           kappa_E=45, 
+           kappa_I=0.3, 
+           kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
+           plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
+           phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)
 
-# hemap2f(off_far_2)
-# plt.show(block=False)
-# plt.savefig("2_far_off.pdf")
+hemap2f(off_far_2)
+plt.show(block=False)
+##plt.savefig("2_far_off.pdf")
 
 
-fee=0.94
-fei=0.92
-fie=1.14
-fii=1.08
+# fee=0.94
+# fei=0.92
+# fie=1.14
+# fii=1.08
 
 # phantom_on= model(totalTime=2000, targ_onset_1=10000, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
 #            angle_separation=0, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
@@ -289,19 +289,19 @@ fii=1.08
 # plt.show(block=False)
 # plt.savefig("phantom_on.pdf")
 
-phantom_off= model(totalTime=2000, targ_onset_1=10000, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
-           angle_separation=0, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
-           GEE=0.068*fee,
-           GII= 0.13*fei,
-           GEI=0.13*fie,
-           GIE=0.042*fii, 
-           sigE=7., sigI=5., k_noise=0.6,             
-           kappa_E=45, 
-           kappa_I=0.3, 
-           kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
-           plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-           phantom_st=1.2, phantom_onset=100, phantom_on = 'on', phnatom_duration=500)
+# phantom_off= model(totalTime=2000, targ_onset_1=10000, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
+#            angle_separation=0, tauE=20, tauI=10,  n_stims=2, I0E=-2., I0I=0.5, 
+#            GEE=0.068*fee,
+#            GII= 0.13*fei,
+#            GEI=0.13*fie,
+#            GIE=0.042*fii, 
+#            sigE=7., sigI=5., k_noise=0.6,             
+#            kappa_E=45, 
+#            kappa_I=0.3, 
+#            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
+#            plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
+#            phantom_st=1.2, phantom_onset=100, phantom_on = 'on', phnatom_duration=500)
 
-hemap_p(phantom_off)
-plt.show(block=False)
-# plt.savefig("phantom_on.pdf")
+# hemap_p(phantom_off)
+# plt.show(block=False)
+# plt.savefig("phantom_off.pdf")
