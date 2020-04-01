@@ -255,7 +255,7 @@ off_far_2= model(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_targ
            GII= 0.13*fei,
            GEI=0.13*fie,
            GIE=0.042*fii, 
-           sigE=7., sigI=5.7, k_noise=0.6,             
+           sigE=7., sigI=5., k_noise=0.6,             
            kappa_E=45, 
            kappa_I=0.3, 
            kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
