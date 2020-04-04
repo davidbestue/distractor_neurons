@@ -84,7 +84,6 @@ err1_off_f['order']='1st'
 err1_off_f.to_excel('/home/david/Desktop/err1_off_f51.xlsx')
 
 
-
 # err1_off_f_cut=err1_off_f.loc[err1_off_f['abs_err']<25]
 # err1_on_f_oo = err1_on_f.loc[err1_on_f['abs_err']<30]
 # err1_off_f_oo = err1_off_f.loc[err1_off_f['abs_err']<30]
