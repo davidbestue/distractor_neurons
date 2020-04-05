@@ -91,7 +91,6 @@ err1_off_f.to_excel('/home/david/Desktop/err1_off_f51.xlsx')
 # err1_on_f_oo.abs_err.mean()
 # err1_off_f_oo.abs_err.mean()
 
-
 # fee=0.98
 # fei=0.78
 # fie=1.15
