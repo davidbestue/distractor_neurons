@@ -73,7 +73,6 @@ err1_on_f.to_excel('/home/david/Desktop/err1_on_f51.xlsx') #5sec for f7
 
 #err1_on_f_cut=err1_on_f.loc[err1_on_f['abs_err']<25]
 
-
 err1_off_f = pd.DataFrame([OFF_1_far[i][1] for i in range(len(OFF_1_far))])
 err1_off_f.columns=['err']
 err1_off_f['abs_err']=abs(err1_off_f['err'])
