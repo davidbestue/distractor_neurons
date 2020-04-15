@@ -204,7 +204,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
         stimulus=stimulus2
         stimulus=reshape(stimulus, (N,1))
     ###
-    ###
+    ####
     stimon1 = floor(targ_onset_1/dt);
     stimoff1 = floor(targ_onset_1/dt) + floor(presentation_period/dt) ;
     stimon2 = floor(targ_onset_2/dt);
