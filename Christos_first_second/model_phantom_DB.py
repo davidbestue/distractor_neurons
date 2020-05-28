@@ -132,7 +132,7 @@ def ornstein_uhlenbeck(t_final, delta_t , theta ):
     for i in range(1,time.size):
         y[i] = y[i-1] - theta*y[i-1]*delta_t + sigma*dw[i]
 
-    return(y)
+    return(y) 
 
 
 
@@ -320,7 +320,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     err=err_deg(decode, angle_target_i)
     err_2 = err_deg(decode, (angle_target_i+angle_separation) )
 
-    return(decode, err, err_2, rE, RE, total_time) #bias_b1, bias_b2)
+    return(decode, err, err_2)#, rE, RE, total_time) #bias_b1, bias_b2)
 
 
 ###
