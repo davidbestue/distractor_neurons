@@ -3,7 +3,7 @@ from model_phantom_DB import *
 
 #from linares_plot import * 
 
-n_simuls=100
+n_simuls=1000
 numcores = multiprocessing.cpu_count() -2
 print('Number cores: '+ str(numcores))
 
@@ -12,6 +12,7 @@ fee=0.94
 fei=1.9
 fie=0.75
 fii=1.50
+
 
 
 ON_2_far = Parallel(n_jobs = numcores)(delayed(model)(totalTime=3000, targ_onset_1=100, targ_onset_2=1000, angle_target_i=90, presentation_period=100,
