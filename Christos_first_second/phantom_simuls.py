@@ -133,7 +133,7 @@ err1_on_c.columns=['err']
 err1_on_c['abs_err']=abs(err1_on_c['err'])
 err1_on_c['stimulation']='ON'
 err1_on_c['distance']='close'
-err1_on_c['order']='1st' ##
+err1_on_c['order']='1st' ###
 #err1_on_c.to_excel('/home/david/Desktop/err1_on_c.xlsx')
 err1_on_c.to_excel('/home/david/Desktop/err1_on_c51.xlsx')
 
