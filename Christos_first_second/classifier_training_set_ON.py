@@ -50,34 +50,34 @@ pd.DataFrame(y_on).to_excel(path_save_targets_ON)
 ##############################################################################################################################################
 
 
-print('Simulations OFF')
+# print('Simulations OFF')
 
 
 
-path_save_re_OFF= '/home/david/Desktop/Christos_neuron/simuls_off_class_re.xlsx'
-path_save_targets_OFF= '/home/david/Desktop/Christos_neuron/simuls_off_class_targets.xlsx'
+# path_save_re_OFF= '/home/david/Desktop/Christos_neuron/simuls_off_class_re.xlsx'
+# path_save_targets_OFF= '/home/david/Desktop/Christos_neuron/simuls_off_class_targets.xlsx'
 
 
-outputs_OFF= Parallel(n_jobs = numcores)(delayed(model)(totalTime=1000, targ_onset_1=0, targ_onset_2=4000, angle_target_i=iPos, presentation_period=100, 
-    angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-3.5, I0I=0.5, 
-    GEE=0.068, 
-    GII= 0.13,
-    GEI=0.13,
-    GIE=0.042, 
-    sigE=7., sigI=5., k_noise=0.6,           
-    kappa_E=45, 
-    kappa_I=0.3, 
-    kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
-    plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-    phantom_st=1.2, phantom_onset=50000, phnatom_duration=100, just_final_re=True) for iPos in Targets) 
+# outputs_OFF= Parallel(n_jobs = numcores)(delayed(model)(totalTime=1000, targ_onset_1=0, targ_onset_2=4000, angle_target_i=iPos, presentation_period=100, 
+#     angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=-3.5, I0I=0.5, 
+#     GEE=0.068, 
+#     GII= 0.13,
+#     GEI=0.13,
+#     GIE=0.042, 
+#     sigE=7., sigI=5., k_noise=0.6,           
+#     kappa_E=45, 
+#     kappa_I=0.3, 
+#     kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
+#     plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
+#     phantom_st=1.2, phantom_onset=50000, phnatom_duration=100, just_final_re=True) for iPos in Targets) 
 
 
 
-X_off = np.array(outputs_OFF).reshape(ch*reps_, N)
-y_off = np.array(Targets)
+# X_off = np.array(outputs_OFF).reshape(ch*reps_, N)
+# y_off = np.array(Targets)
 
-pd.DataFrame(X_off).to_excel(path_save_re_OFF) 
-pd.DataFrame(y_off).to_excel(path_save_targets_OFF) 
+# pd.DataFrame(X_off).to_excel(path_save_re_OFF) 
+# pd.DataFrame(y_off).to_excel(path_save_targets_OFF) 
 
 
 

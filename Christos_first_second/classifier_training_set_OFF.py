@@ -16,33 +16,33 @@ reps_=100
 Targets = list(np.arange(0, 360, ch_size))* reps_
 
 
-path_save_re_ON= '/home/david/Desktop/Christos_neuron/simuls_on_class_re.xlsx'
-path_save_targets_ON= '/home/david/Desktop/Christos_neuron/simuls_on_class_targets.xlsx'
+# path_save_re_ON= '/home/david/Desktop/Christos_neuron/simuls_on_class_re.xlsx'
+# path_save_targets_ON= '/home/david/Desktop/Christos_neuron/simuls_on_class_targets.xlsx'
 
 
-print('Simulations ON')
+# print('Simulations ON')
 
-outputs_ON= Parallel(n_jobs = numcores)(delayed(model)(totalTime=1000, targ_onset_1=0, targ_onset_2=4000, angle_target_i=iPos, presentation_period=100, 
-    angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
-    GEE=0.068, 
-    GII= 0.13,
-    GEI=0.13,
-    GIE=0.042, 
-    sigE=7., sigI=5., k_noise=0.6,           
-    kappa_E=45, 
-    kappa_I=0.3, 
-    kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
-    plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
-    phantom_st=1.2, phantom_onset=50000, phnatom_duration=100, just_final_re=True) for iPos in Targets) 
-
-
-
-X_on = np.array(outputs_ON).reshape(ch*reps_, N)
-y_on = np.array(Targets)
+# outputs_ON= Parallel(n_jobs = numcores)(delayed(model)(totalTime=1000, targ_onset_1=0, targ_onset_2=4000, angle_target_i=iPos, presentation_period=100, 
+#     angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
+#     GEE=0.068, 
+#     GII= 0.13,
+#     GEI=0.13,
+#     GIE=0.042, 
+#     sigE=7., sigI=5., k_noise=0.6,           
+#     kappa_E=45, 
+#     kappa_I=0.3, 
+#     kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
+#     plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
+#     phantom_st=1.2, phantom_onset=50000, phnatom_duration=100, just_final_re=True) for iPos in Targets) 
 
 
-pd.DataFrame(X_on).to_excel(path_save_re_ON) 
-pd.DataFrame(y_on).to_excel(path_save_targets_ON) 
+
+# X_on = np.array(outputs_ON).reshape(ch*reps_, N)
+# y_on = np.array(Targets)
+
+
+# pd.DataFrame(X_on).to_excel(path_save_re_ON) 
+# pd.DataFrame(y_on).to_excel(path_save_targets_ON) 
 
 
 ##############################################################################################################################################
@@ -51,8 +51,6 @@ pd.DataFrame(y_on).to_excel(path_save_targets_ON)
 
 
 print('Simulations OFF')
-
-
 
 path_save_re_OFF= '/home/david/Desktop/Christos_neuron/simuls_off_class_re.xlsx'
 path_save_targets_OFF= '/home/david/Desktop/Christos_neuron/simuls_off_class_targets.xlsx'
