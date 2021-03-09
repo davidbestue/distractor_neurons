@@ -15,7 +15,6 @@ ch = int(360/ch_size)
 reps_=5
 
 
-
 Targets = list(np.arange(0, 360, ch_size))* reps_
 
 
@@ -36,7 +35,6 @@ outputs_ON= Parallel(n_jobs = numcores)(delayed(model)(totalTime=1000, targ_onse
 
 X_on = np.array(outputs_ON).reshape(ch*reps_, N)
 y_on = np.array(Targets)
-
 
 
 
@@ -63,50 +61,62 @@ y_off = np.array(Targets)
 
 
 
-import numpy as np
-import matplotlib.pyplot as plt
-from itertools import cycle
-from sklearn import svm, datasets
-from sklearn.metrics import roc_curve, auc
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import label_binarize
-from sklearn.multiclass import OneVsRestClassifier
-from scipy import interp
-from sklearn.metrics import roc_auc_score
+# import numpy as np
+# import matplotlib.pyplot as plt
+# from itertools import cycle
+# from sklearn import svm, datasets
+# from sklearn.metrics import roc_curve, auc
+# from sklearn.model_selection import train_test_split
+# from sklearn.preprocessing import label_binarize
+# from sklearn.multiclass import OneVsRestClassifier
+# from scipy import interp
+# from sklearn.metrics import roc_auc_score
 
-X=X_on
-y=y_on
-
-
-# Binarize the output
-y= label_binarize(y, classes=np.arange(0, 360,ch_size))
-n_classes = y.shape[1]
-
-random_state = np.random.RandomState(0)
-n_samples, n_features = X.shape
+# X=X_on
+# y=y_on
+# #####np.random.shuffle(y)
 
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.5, random_state=0)
+# # Binarize the output
+# y= label_binarize(y, classes=np.arange(0, 360,ch_size))
+# n_classes = y.shape[1]
 
-classifier = OneVsRestClassifier(svm.SVC(kernel='linear', probability=True, random_state=random_state))
-
-y_score = classifier.fit(X_train, y_train).decision_function(X_test)
-
-
-# Compute ROC curve and ROC area for each class
-fpr = dict()
-tpr = dict()
-roc_auc = dict()
-for i in range(n_classes):
-    fpr[i], tpr[i], _ = roc_curve(y_test[:, i], y_score[:, i])
-    roc_auc[i] = auc(fpr[i], tpr[i])
-
-# Compute micro-average ROC curve and ROC area
-fpr["micro"], tpr["micro"], _ = roc_curve(y_test.ravel(), y_score.ravel())
-roc_auc["micro"] = auc(fpr["micro"], tpr["micro"])
+# random_state = np.random.RandomState(0)
+# n_samples, n_features = X.shape
 
 
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.5, random_state=0)
 
+# classifier = OneVsRestClassifier(svm.SVC(kernel='linear', probability=True, random_state=random_state))
+
+# y_score = classifier.fit(X_train, y_train).decision_function(X_test)
+
+
+# # Compute ROC curve and ROC area for each class
+# fpr = dict()
+# tpr = dict()
+# roc_auc = dict()
+# for i in range(n_classes):
+#     fpr[i], tpr[i], _ = roc_curve(y_test[:, i], y_score[:, i])
+#     roc_auc[i] = auc(fpr[i], tpr[i])
+
+# # Compute micro-average ROC curve and ROC area
+# fpr["micro"], tpr["micro"], _ = roc_curve(y_test.ravel(), y_score.ravel())
+# roc_auc["micro"] = auc(fpr["micro"], tpr["micro"])
+
+
+# plt.figure()
+# lw = 2
+# plt.plot(fpr[2], tpr[2], color='darkorange',
+#          lw=lw, label='ROC curve (area = %0.2f)' % roc_auc[2])
+# plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
+# # plt.xlim([0.0, 1.0])
+# # plt.ylim([0.0, 1.05])
+# plt.xlabel('False Positive Rate')
+# plt.ylabel('True Positive Rate')
+# plt.title('Receiver operating characteristic example')
+# plt.legend(loc="lower right", fontsize=15)
+# plt.show()
 
 
 
