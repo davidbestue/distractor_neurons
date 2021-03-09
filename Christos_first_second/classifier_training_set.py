@@ -5,8 +5,6 @@
 
 from model_phantom_DB import *
 numcores = multiprocessing.cpu_count() - 3
-from joblib import Parallel, delayed
-import multiprocessing
 
 
 N=512
