@@ -11,14 +11,19 @@ import multiprocessing
 
 
 N=512
-ch_size = 90
+ch_size = 1
 ch = int(360/ch_size)
-reps_=3
+reps_=100
 
+
+fee=1
+fii=1
+fei=1
+fie=1
 
 
 rEs_on = []
-targets = []
+targets_on = []
 
 for iPos in np.arange(0, 360, ch_size):
     for n in range(reps_):
@@ -34,19 +39,67 @@ for iPos in np.arange(0, 360, ch_size):
                    kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
                    plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
                    phantom_st=1.2, phantom_onset=50000, phnatom_duration=100)
-        targets.append(iPos)
+        targets_on.append(iPos)
         rEs_on.append(on_far_X[3])
 
 
 
 
 
+X_on = np.array(rEs_on).reshape(ch*reps_, N)
+y_on = np.array(targets_on)
 
 
 
 
 
-paths_save_= '/home/david/Desktop/IDIBAPS/Simulations_radial/results_simulations_radial_linear_noiser2.xlsx'
+
+
+from model_phantom_DB import *
+numcores = multiprocessing.cpu_count() - 3
+from joblib import Parallel, delayed
+import multiprocessing
+
+
+N=512
+ch_size = 180
+ch = int(360/ch_size)
+reps_=2
+
+
+
+Positions = list(np.arange(0, 360, ch_size))* reps_
+
+
+outputs= Parallel(n_jobs = numcores)(delayed(model)(totalTime=1000, targ_onset_1=0, targ_onset_2=4000, angle_target_i=iPos, presentation_period=100, 
+	angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
+	GEE=0.068, 
+	GII= 0.13,
+    GEI=0.13,
+    GIE=0.042, 
+    sigE=7., sigI=5., k_noise=0.6,           
+    kappa_E=45, 
+    kappa_I=0.3, 
+    kappa_stim=40., N=512, stim_strengthE=9.4, stim_strengthI=0.,
+    plot_connectivity=False, plot_rate=False, plot_hm=False , plot_fit=False, 
+    phantom_st=1.2, phantom_onset=50000, phnatom_duration=100, just_final_re=True) for iPos in Positions) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 frames=[]
 
@@ -75,6 +128,6 @@ for idx, TIMES in enumerate(list(np.arange(0,4000, 1000) + 450 ) ): ##4000
 
 ##
 df_tot= pd.concat(frames)
-df_tot.to_excel(paths_save_)
+###df_tot.to_excel(paths_save_)
 
 

@@ -143,7 +143,7 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
           tauI=4,  n_stims=2, I0E=0.1, I0I=0.5, GEE=0.022, GEI=0.019, GIE=0.01 , GII=0.1, sigE=0.5, sigI=1.6, k_noise=0.8,
           kappa_E=100, kappa_I=1.75, kappa_stim=100, N=512, plot_connectivity=False, plot_rate=False, 
           plot_hm=True , plot_fit=True, stim_strengthE=1., stim_strengthI=1., 
-          phantom_st = 0.2, phantom_onset=500, phantom_on='off', phnatom_duration=200):
+          phantom_st = 0.2, phantom_onset=500, phantom_on='off', phnatom_duration=200, just_final_re=False):
     #
     st_sim =time.time()
     dt=2
@@ -320,7 +320,10 @@ def model(totalTime, targ_onset_1, targ_onset_2, presentation_period, angle_targ
     err=err_deg(decode, angle_target_i)
     err_2 = err_deg(decode, (angle_target_i+angle_separation) )
 
-    return(decode, err, err_2, rE, RE, total_time) #bias_b1, bias_b2)
+    if just_final_re==True:
+        return rE
+    else:
+        return(decode, err, err_2, rE, RE, total_time) #bias_b1, bias_b2)
 
 
 ###
