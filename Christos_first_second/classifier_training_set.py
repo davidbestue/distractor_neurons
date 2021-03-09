@@ -16,6 +16,11 @@ reps_=5
 Targets = list(np.arange(0, 360, ch_size))* reps_
 
 
+path_save_re_ON= '/home/david/Desktop/Christos_neuron/simuls_on_class_re.xlsx'
+path_save_targets_ON= '/home/david/Desktop/Christos_neuron/simuls_on_class_targets.xlsx'
+
+
+
 outputs_ON= Parallel(n_jobs = numcores)(delayed(model)(totalTime=1000, targ_onset_1=0, targ_onset_2=4000, angle_target_i=iPos, presentation_period=100, 
     angle_separation=170, tauE=20, tauI=10,  n_stims=2, I0E=0.05, I0I=0.5, 
     GEE=0.068, 
@@ -34,6 +39,15 @@ outputs_ON= Parallel(n_jobs = numcores)(delayed(model)(totalTime=1000, targ_onse
 X_on = np.array(outputs_ON).reshape(ch*reps_, N)
 y_on = np.array(Targets)
 
+
+pd.DataFrame(X_on).to_excel(path_save_re_ON) 
+pd.DataFrame(y_on).to_excel(path_save_targets_ON) 
+
+
+
+
+path_save_re_OFF= '/home/david/Desktop/Christos_neuron/simuls_off_class_re.xlsx'
+path_save_targets_OFF= '/home/david/Desktop/Christos_neuron/simuls_off_class_targets.xlsx'
 
 
 outputs_OFF= Parallel(n_jobs = numcores)(delayed(model)(totalTime=1000, targ_onset_1=0, targ_onset_2=4000, angle_target_i=iPos, presentation_period=100, 
@@ -54,7 +68,8 @@ outputs_OFF= Parallel(n_jobs = numcores)(delayed(model)(totalTime=1000, targ_ons
 X_off = np.array(outputs_OFF).reshape(ch*reps_, N)
 y_off = np.array(Targets)
 
-
+pd.DataFrame(X_off).to_excel(path_save_re_OFF) 
+pd.DataFrame(y_off).to_excel(path_save_targets_OFF) 
 
 
 
