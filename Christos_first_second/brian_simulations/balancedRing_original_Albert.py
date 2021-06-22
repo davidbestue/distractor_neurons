@@ -143,7 +143,6 @@ if loadconnections:
 #  W = cPickle.load(f_in)
 #  C6=Connection(networkI, networkI, 'gi', weight=gII*(W<0))
 #  f_in.close()
-
 else:
   fE = float(KE)/float(NE)
   fI = float(KI)/float(NI)
