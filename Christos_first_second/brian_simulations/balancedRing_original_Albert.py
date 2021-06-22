@@ -168,10 +168,10 @@ if saveconnections:
   CEI = sparse.csr_matrix(C3.W)
   CIE = sparse.csr_matrix(C5.W)
   CII = sparse.csr_matrix(C6.W)
-  np.savez_compressed('connections_sp', CEEd=CEE.data, CEEi=CEE.indices, CEEp=CEE.indptr, CEEs=CEE.shape,
-             CEId=CEI.data, CEIi=CEI.indices, CEIp=CEI.indptr, CEIs=CEI.shape,
-             CIEd=CIE.data, CIEi=CIE.indices, CIEp=CIE.indptr, CIEs=CIE.shape,
-             CIId=CII.data, CIIi=CII.indices, CIIp=CII.indptr, CIIs=CII.shape)
+  # np.savez_compressed('connections_sp', CEEd=CEE.data, CEEi=CEE.indices, CEEp=CEE.indptr, CEEs=CEE.shape,
+  #            CEId=CEI.data, CEIi=CEI.indices, CEIp=CEI.indptr, CEIs=CEI.shape,
+  #            CIEd=CIE.data, CIEi=CIE.indices, CIEp=CIE.indptr, CIEs=CIE.shape,
+  #            CIId=CII.data, CIIi=CII.indices, CIIp=CII.indptr, CIIs=CII.shape)
 #  f_out = open('connections','w')
 #  cPickle.dump(C1.W,f_out)
 #  cPickle.dump(C2.W,f_out)
@@ -204,7 +204,7 @@ run(runtime-stim_off,report='text')
 
 rates=counts.count/(runtime-stim_off)
 
-io.savemat('results_balancedRing',{'rate':rates, 'spktm': spikes.it})
+#io.savemat('results_balancedRing',{'rate':rates, 'spktm': spikes.it})
 
 plt.plot(spikes.it[1],spikes.it[0],'k.',markersize=2)
 plt.show()
