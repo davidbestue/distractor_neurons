@@ -1,4 +1,6 @@
 #import brian_no_units
+
+
 from brian import *
 import scipy.io as io
 import cPickle
@@ -147,11 +149,19 @@ else:
   fE = float(KE)/float(NE)
   fI = float(KI)/float(NI)
   C1=Connection(networkE, networkE, 'gea', weight=gEEA, sparseness=lambda i,j: conn(float(i)/NE-float(j)/NE,sigEE,fE))
+  print('1')
   C2=Connection(networkE, networkE, 'gen', weight=gEEN/gEEA*C1.W)
+  print('2')
   C3=Connection(networkE, networkI, 'gea', weight=gEIA, sparseness=lambda i,j: conn(float(i)/NE-float(j)/NI,sigEI,fE))
+  print('3')
   C4=Connection(networkE, networkI, 'gen', weight=gEIN/gEIA*C3.W)
+  print('4')
   C5=Connection(networkI, networkE, 'gi', weight=gIE, sparseness=lambda i,j: conn(float(i)/NI-float(j)/NE,sigIE,fI))
+  print('5')
   C6=Connection(networkI, networkI, 'gi', weight=gII, sparseness=lambda i,j: conn(float(i)/NI-float(j)/NI,sigII,fI))
+  print('6')
+
+
 
 if saveconnections:
   CEE = sparse.csr_matrix(C1.W)
