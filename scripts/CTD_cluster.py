@@ -18,12 +18,11 @@ from sklearn.model_selection import KFold
 import random
 
 
-numcores = multiprocessing.cpu_count() - 4
+numcores = multiprocessing.cpu_count() - 2
 numcores
 
 
 path_CTD = '/home/david/Desktop/IDIBAPS/Gottlib'
-
 
 
 ##functions
@@ -89,62 +88,76 @@ def decoder_cv(df_train, df_test, splits=100, percentage_training=0.8):
     return mean_error
     
 
+#####################
+#####################
+##################### Cross temporal decoding of all the condition (put together correct and incorrect)
+#####################
+#####################
+#####################
 
-####################################################### pfc_100
+files_ = ['pfc_100.xlsx', 'pfc_200.xlsx','pfc_300.xlsx', 'pfc_900.xlsx', 
+'lip_100.xlsx', 'lip_200.xlsx','lip_300.xlsx', 'lip_900.xlsx']
 
-pfc_100 = pd.read_excel( os.path.join(path_CTD, 'pfc_100.xlsx'))
+save_files = ['hm_pfc_100.xlsx', 'hm_pfc_200.xlsx', 'hm_pfc_300.xlsx', 'hm_pfc_900.xlsx', 
+'hm_lip_100.xlsx', 'hm_lip_200.xlsx', 'hm_lip_300.xlsx', 'hm_lip_900.xlsx']
 
-############### pfc_100
 
-heatmaps_pfc_100=[]
-
-for n_neuron,neuron_ in enumerate(pfc_100.neuron.unique()):
-    print(n_neuron, neuron_)
-    ## get the neuron
-    dfN = pfc_100.loc[pfc_100['neuron']==neuron_]
-    ## column of times centered to stim onset
-    dfN['times_centered'] = dfN['times'] - dfN['fixationtime']
-    #
-    #cross-decoding for 1 neuron
-    ### empty matrix to append the cross temporal decoding
-    all_times = np.arange(-500,2100, 100)
-    train_test = np.empty( (len(all_times), len(all_times) ) )
-    train_test[:] = np.nan
-    #
-    ### times I am interested in (no need to get more times)
-    dfN = dfN.loc[(dfN['times_centered']>=-500) & (dfN['times_centered']<=2000) ]
-    list_times = dfN.times_centered.unique()
-    list_times_sorted =np.sort(list_times)
-    #list_times_sorted
-    #
-    for training_time in list_times_sorted:
-        #print(training_time)
-        dfn_train = dfN.loc[(dfN['times_centered']==training_time), ['firing', 'target_angle', 'trial']]         
-        dfn_train = dfn_train.loc[dfn_train.iloc[:,0]<9999] ###Take off nans
-        paralel_train = [dfn_train for i in range(len(list_times_sorted))]
+for idx, file in enumerate(files_):
+    print(idx,file)
+    condition = pd.read_excel( os.path.join(path_CTD, file))
+    ### condition = condition.loc[condition['performance_code']==1] ##get just the correct ones
+    ############## 
+    heatmaps_=[]
+    for n_neuron,neuron_ in enumerate(condition.neuron.unique()):
+        print(n_neuron, neuron_)
+        ## get the neuron
+        dfN = condition.loc[condition['neuron']==neuron_]
+        ## column of times centered to stim onset
+        dfN['times_centered'] = dfN['times'] - dfN['fixationtime']
         #
-        paralel_test = []
-        for times_testing in list_times_sorted:
-            dfn_test =dfN.loc[(dfN['times_centered']==times_testing), ['firing', 'target_angle', 'trial']]
-            dfn_test = dfn_test.loc[dfn_test.iloc[:,0]<9999] ###Take off nans
-            paralel_test.append(dfn_test)
+        #cross-decoding for 1 neuron
+        ### empty matrix to append the cross temporal decoding
+        all_times = np.arange(-500,2100, 100)
+        train_test = np.empty( (len(all_times), len(all_times) ) )
+        train_test[:] = np.nan
         #
-        cross_temp = Parallel(n_jobs = numcores)(delayed(decoder_cv)(training, testing)  for training, testing in zip(paralel_train, paralel_test) )   #### reconstruction standard (paralel)
+        ### times I am interested in (no need to get more times)
+        dfN = dfN.loc[(dfN['times_centered']>=-500) & (dfN['times_centered']<=2000) ]
+        list_times = dfN.times_centered.unique()
+        list_times_sorted =np.sort(list_times)
+        #list_times_sorted
         #
-        idx_append_row = np.where(training_time == all_times )[0][0]
-        idx_append_col1 = np.where(list_times_sorted[0] == all_times)[0][0]
-        idx_append_col2 = np.where(list_times_sorted[-1] == all_times)[0][0]
-        train_test[idx_append_row, idx_append_col1:idx_append_col2+1] = cross_temp
-    ##
-    heatmaps_pfc_100.append(train_test)
+        for training_time in list_times_sorted:
+            #print(training_time)
+            dfn_train = dfN.loc[(dfN['times_centered']==training_time), ['firing', 'target_angle', 'trial']]         
+            dfn_train = dfn_train.loc[dfn_train.iloc[:,0]<9999] ###Take off nans
+            paralel_train = [dfn_train for i in range(len(list_times_sorted))]
+            #
+            paralel_test = []
+            for times_testing in list_times_sorted:
+                dfn_test =dfN.loc[(dfN['times_centered']==times_testing), ['firing', 'target_angle', 'trial']]
+                dfn_test = dfn_test.loc[dfn_test.iloc[:,0]<9999] ###Take off nans
+                paralel_test.append(dfn_test)
+            #
+            cross_temp = Parallel(n_jobs = numcores)(delayed(decoder_cv)(training, testing)  for training, testing in zip(paralel_train, paralel_test) )   #### reconstruction standard (paralel)
+            #
+            idx_append_row = np.where(training_time == all_times )[0][0]
+            idx_append_col1 = np.where(list_times_sorted[0] == all_times)[0][0]
+            idx_append_col2 = np.where(list_times_sorted[-1] == all_times)[0][0]
+            train_test[idx_append_row, idx_append_col1:idx_append_col2+1] = cross_temp
+        ##
+        heatmaps_.append(train_test)
+    ###
+    ###
+    path_save = os.path.join(path_CTD, save_files[idx])
+    #
+    writer = pd.ExcelWriter(path_save)
+    for idx, neuron_name in  enumerate(condition.neuron.unique()):
+        hm_ = pd.DataFrame(heatmaps_[idx])
+        hm_.to_excel(writer, sheet_name=str(neuron_name)) #each dataframe in a excel sheet
+    #
+    writer.save()   #save reconstructions (heatmaps)
+#
 
-###
-###
-path_save = os.path.join(path_CTD, 'hm_pfc_100.xlsx')
 
-writer = pd.ExcelWriter(path_save)
-for idx, neuron_name in  enumerate(pfc_100.neuron.unique()):
-    hm_ = pd.DataFrame(heatmaps_pfc_100[idx])
-    hm_.to_excel(writer, sheet_name=str(neuron_name)) #each dataframe in a excel sheet
-
-writer.save()   #save reconstructions (heatmaps)
+#
