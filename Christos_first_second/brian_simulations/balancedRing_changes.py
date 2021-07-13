@@ -171,7 +171,7 @@ if saveconnections:
             CEId=CEI.data, CEIi=CEI.indices, CEIp=CEI.indptr, CEIs=CEI.shape, 
             CIEd=CIE.data, CIEi=CIE.indices, CIEp=CIE.indptr, CIEs=CIE.shape, 
             CIId=CII.data, CIIi=CII.indices, CIIp=CII.indptr, CIIs=CII.shape)
-#  f_out = open('connections','w')
+#  f_out = open('connections','w') #
 #  cPickle.dump(C1.W,f_out)
 #  cPickle.dump(C2.W,f_out)
 #  cPickle.dump(C3.W,f_out)
