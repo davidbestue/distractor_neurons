@@ -117,18 +117,18 @@ networkI.Iext=0*mV
 
 if loadconnections:
   loader = np.load('connections_sp.npz', allow_pickle=True)
-  WW = sparse.csr_matrix((loader['CEEd'], loader['CEEi'], loader['CEEp']), shape=loader['CEEs'])
+  WW = csr_matrix((loader['CEEd'], loader['CEEi'], loader['CEEp']), shape=loader['CEEs'])
   WW[WW != 0] = 1
   C1=Connection(networkE, networkE, 'gea', weight=gEEA*WW)
   C2=Connection(networkE, networkE, 'gen', weight=gEEN*WW)
-  WW = sparse.csr_matrix((loader['CEId'], loader['CEIi'], loader['CEIp']), shape=loader['CEIs'])
+  WW = csr_matrix((loader['CEId'], loader['CEIi'], loader['CEIp']), shape=loader['CEIs'])
   WW[WW != 0] = 1
   C3=Connection(networkE, networkI, 'gea', weight=gEIA*WW)
   C4=Connection(networkE, networkI, 'gen', weight=gEIN*WW)
-  WW = sparse.csr_matrix((loader['CIEd'], loader['CIEi'], loader['CIEp']), shape=loader['CIEs'])
+  WW = csr_matrix((loader['CIEd'], loader['CIEi'], loader['CIEp']), shape=loader['CIEs'])
   WW[WW != 0] = 1
   C5=Connection(networkI, networkE, 'gi', weight=gIE*WW)
-  WW = sparse.csr_matrix((loader['CIId'], loader['CIIi'], loader['CIIp']), shape=loader['CIIs'])
+  WW = csr_matrix((loader['CIId'], loader['CIIi'], loader['CIIp']), shape=loader['CIIs'])
   WW[WW != 0] = 1
   C6=Connection(networkI, networkI, 'gi', weight=gII*WW)
 #  f_in = open('connections','rb')
