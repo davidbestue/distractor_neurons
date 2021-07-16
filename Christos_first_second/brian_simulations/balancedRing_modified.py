@@ -24,6 +24,7 @@ epsI=0
 runtime=10*second
 
 N=1000 #10000 # total number of neurons
+print(N)
 K=1500 #250 # total number of inputs
 tauE=20*ms 
 tauI=10*ms 
