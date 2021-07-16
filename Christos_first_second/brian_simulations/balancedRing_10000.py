@@ -14,8 +14,8 @@ import pickle
 defaultclock.reinit()
 defaultclock.dt = 0.1*ms
 
-loadconnections = False #True
-saveconnections =  True #True #False
+loadconnections = True #True
+saveconnections =  False #True #False
 
 stim_on=2000*ms
 stim_off=3000*ms
@@ -207,11 +207,11 @@ rates=counts.count/(runtime-last_sec)
 
 #### Save the files
 
-io.savemat('/home/david/Desktop/brian_simulations/results_simulation_10000',{'rate':rates, 'spktm': spikes.it})
+io.savemat('/home/david/Desktop/brian_simulations/results_simulation2_10000',{'rate':rates, 'spktm': spikes.it})
 
 ##spiketime in the dictionary format
 dict_spiketimes = spikes.spiketimes
-pickle.dump( dict_spiketimes, open( "/home/david/Desktop/brian_simulations/dict_spiketimes_10000.pkl", "wb" ) )
+pickle.dump( dict_spiketimes, open( "/home/david/Desktop/brian_simulations/dict_spiketimes2_10000.pkl", "wb" ) )
 
 
 
