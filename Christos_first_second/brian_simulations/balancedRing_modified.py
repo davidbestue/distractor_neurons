@@ -14,8 +14,8 @@ import pickle
 defaultclock.reinit()
 defaultclock.dt = 0.1*ms
 
-loadconnections = False #True
-saveconnections =  True #False
+loadconnections = True #True
+saveconnections =  False #True #False
 
 stim_on=2000*ms
 stim_off=3000*ms
@@ -125,17 +125,23 @@ if loadconnections:
   WW = csr_matrix((loader['CEEd'], loader['CEEi'], loader['CEEp']), shape=loader['CEEs'])
   WW[WW != 0] = 1
   C1=Connection(networkE, networkE, 'gea', weight=gEEA*WW)
+  print('C1l')
   C2=Connection(networkE, networkE, 'gen', weight=gEEN*WW)
+  print('C2l')
   WW = csr_matrix((loader['CEId'], loader['CEIi'], loader['CEIp']), shape=loader['CEIs'])
   WW[WW != 0] = 1
   C3=Connection(networkE, networkI, 'gea', weight=gEIA*WW)
+  print('C3l')
   C4=Connection(networkE, networkI, 'gen', weight=gEIN*WW)
+  print('C4l')
   WW = csr_matrix((loader['CIEd'], loader['CIEi'], loader['CIEp']), shape=loader['CIEs'])
   WW[WW != 0] = 1
   C5=Connection(networkI, networkE, 'gi', weight=gIE*WW)
+  print('C5l')
   WW = csr_matrix((loader['CIId'], loader['CIIi'], loader['CIIp']), shape=loader['CIIs'])
   WW[WW != 0] = 1
   C6=Connection(networkI, networkI, 'gi', weight=gII*WW)
+  print('C6l')
 else:
   fE = float(KE)/float(NE)
   fI = float(KI)/float(NI)
@@ -180,9 +186,9 @@ run(stim_on,report='text')
 
 ##2nd step of the simulation: stim presentation
 pos=arange(NE)
-networkE.Iext=stimE*exp(-0.5*(pos/float(NE)-0.8)**2/(epsE**2))#stimE*(1.+epsE*cos(2*pi*(pos/float(NE)-0.5)))
+networkE.Iext=stimE*exp(-0.5*(pos/float(NE)-0.5)**2/(epsE**2))#stimE*(1.+epsE*cos(2*pi*(pos/float(NE)-0.5)))
 pos=arange(NI)
-networkI.Iext=stimI*(1.+epsI*cos(2*pi*(pos/float(NI)-0.8)))
+networkI.Iext=stimI*(1.+epsI*cos(2*pi*(pos/float(NI)-0.5)))
 run(stim_off-stim_on,report='text')
 
 ##3rd step of the simulation: delay period
@@ -198,11 +204,11 @@ rates=counts.count/(runtime-stim_off)
 
 #### Save the files
 
-io.savemat('/home/david/Desktop/brian_simulations/results_simulation2',{'rate':rates, 'spktm': spikes.it})
+io.savemat('/home/david/Desktop/brian_simulations/results_simulation3',{'rate':rates, 'spktm': spikes.it})
 
 ##spiketime in the dictionary format
 dict_spiketimes = spikes.spiketimes
-pickle.dump( dict_spiketimes, open( "/home/david/Desktop/brian_simulations/dict_spiketimes2.pkl", "wb" ) )
+pickle.dump( dict_spiketimes, open( "/home/david/Desktop/brian_simulations/dict_spiketimes3.pkl", "wb" ) )
 
 
 
