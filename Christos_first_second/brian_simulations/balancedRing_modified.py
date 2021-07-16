@@ -8,6 +8,8 @@ from StringIO import StringIO
 from scipy import sparse
 from scipy.sparse import csr_matrix
 import matplotlib.pyplot as plt
+import pickle
+
 
 defaultclock.reinit()
 defaultclock.dt = 0.1*ms
@@ -169,17 +171,21 @@ if saveconnections:
 mystpEEA=STP(C1,taud=taud,tauf=tauf,U=Ustp)
 mystpEEN=STP(C2,taud=taud,tauf=tauf,U=Ustp)
 
+
 spikes=SpikeMonitor(networkE)
 
+### 1st step simulation: until stim on
 run(stim_on,report='text')
 
+
+##2nd step of the simulation: stim presentation
 pos=arange(NE)
 networkE.Iext=stimE*exp(-0.5*(pos/float(NE)-0.5)**2/(epsE**2))#stimE*(1.+epsE*cos(2*pi*(pos/float(NE)-0.5)))
 pos=arange(NI)
 networkI.Iext=stimI*(1.+epsI*cos(2*pi*(pos/float(NI)-0.5)))
-
 run(stim_off-stim_on,report='text')
 
+##3rd step of the simulation: delay period
 networkE.Iext=0*mV
 networkI.Iext=0*mV
 
@@ -189,9 +195,14 @@ run(runtime-stim_off,report='text')
 
 rates=counts.count/(runtime-stim_off)
 
+
+#### Save the files
+
 io.savemat('/home/david/Desktop/brian_simulations/results_simulation',{'rate':rates, 'spktm': spikes.it})
 
-# plt.plot(spikes.it[1],spikes.it[0],'k.',markersize=2)
-# plt.show()
+##spiketime in the dictionary format
+dict_spiketimes = spikes.spiketimes
+pickle.dump( dict_spiketimes, open( "/home/david/Desktop/brian_simulations/dict_spiketimes.pkl", "wb" ) )
+
 
 
