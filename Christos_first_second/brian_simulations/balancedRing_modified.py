@@ -198,11 +198,11 @@ rates=counts.count/(runtime-stim_off)
 
 #### Save the files
 
-io.savemat('/home/david/Desktop/brian_simulations/results_simulation',{'rate':rates, 'spktm': spikes.it})
+io.savemat('/home/david/Desktop/brian_simulations/results_simulation2',{'rate':rates, 'spktm': spikes.it})
 
 ##spiketime in the dictionary format
 dict_spiketimes = spikes.spiketimes
-pickle.dump( dict_spiketimes, open( "/home/david/Desktop/brian_simulations/dict_spiketimes.pkl", "wb" ) )
+pickle.dump( dict_spiketimes, open( "/home/david/Desktop/brian_simulations/dict_spiketimes2.pkl", "wb" ) )
 
 
 
