@@ -202,7 +202,6 @@ run(runtime-stim_off,report='text')
 
 last_sec=10*second - 1*second
 rates=counts.count/(runtime-last_sec)
-
 #### rates=counts.count/(runtime-stim_off)
 
 
