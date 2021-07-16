@@ -199,7 +199,11 @@ counts=SpikeCounter(networkE)
 
 run(runtime-stim_off,report='text')
 
-rates=counts.count/(runtime-stim_off)
+
+last_sec=10*second - 1*second
+rates=counts.count/(runtime-last_sec)
+
+#### rates=counts.count/(runtime-stim_off)
 
 
 #### Save the files
