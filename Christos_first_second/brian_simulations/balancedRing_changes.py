@@ -5,7 +5,8 @@ import scipy.io as io
 import cPickle
 import sys
 from StringIO import StringIO
-from scipy import sparse
+from scipy import sparsenes
+from scipy.sparse import csr_matrix
 import matplotlib.pyplot as plt
 
 defaultclock.reinit()
@@ -148,25 +149,26 @@ else:
   fE = float(KE)/float(NE)
   fI = float(KI)/float(NI)
   C1=Connection(networkE, networkE, 'gea', weight=gEEA, sparseness=lambda i,j: conn(float(i)/NE-float(j)/NE,sigEE,fE))
-  #print('1')
+  print('1')
   C2=Connection(networkE, networkE, 'gen', weight=gEEN/gEEA*C1.W)
-  #print('2')
+  print('2')
   C3=Connection(networkE, networkI, 'gea', weight=gEIA, sparseness=lambda i,j: conn(float(i)/NE-float(j)/NI,sigEI,fE))
-  #print('3')
+  print('3')
   C4=Connection(networkE, networkI, 'gen', weight=gEIN/gEIA*C3.W)
-  #print('4')
+  print('4')
   C5=Connection(networkI, networkE, 'gi', weight=gIE, sparseness=lambda i,j: conn(float(i)/NI-float(j)/NE,sigIE,fI))
-  #print('5')
+  print('5')
   C6=Connection(networkI, networkI, 'gi', weight=gII, sparseness=lambda i,j: conn(float(i)/NI-float(j)/NI,sigII,fI))
-  #print('6')
+  print('6')
+
 
 
 
 if saveconnections:
-  CEE = sparse.csr_matrix(C1.W)
-  CEI = sparse.csr_matrix(C3.W)
-  CIE = sparse.csr_matrix(C5.W)
-  CII = sparse.csr_matrix(C6.W)
+  CEE = csr_matrix(C1.W)
+  CEI = csr_matrix(C3.W)
+  CIE = csr_matrix(C5.W)
+  CII = csr_matrix(C6.W)
   np.savez_compressed('connections_sp', CEEd=CEE.data, CEEi=CEE.indices, CEEp=CEE.indptr, CEEs=CEE.shape, 
             CEId=CEI.data, CEIi=CEI.indices, CEIp=CEI.indptr, CEIs=CEI.shape, 
             CIEd=CIE.data, CIEi=CIE.indices, CIEp=CIE.indptr, CIEs=CIE.shape, 
