@@ -180,9 +180,9 @@ run(stim_on,report='text')
 
 ##2nd step of the simulation: stim presentation
 pos=arange(NE)
-networkE.Iext=stimE*exp(-0.5*(pos/float(NE)-0.5)**2/(epsE**2))#stimE*(1.+epsE*cos(2*pi*(pos/float(NE)-0.5)))
+networkE.Iext=stimE*exp(-0.5*(pos/float(NE)-0.8)**2/(epsE**2))#stimE*(1.+epsE*cos(2*pi*(pos/float(NE)-0.5)))
 pos=arange(NI)
-networkI.Iext=stimI*(1.+epsI*cos(2*pi*(pos/float(NI)-0.5)))
+networkI.Iext=stimI*(1.+epsI*cos(2*pi*(pos/float(NI)-0.8)))
 run(stim_off-stim_on,report='text')
 
 ##3rd step of the simulation: delay period
