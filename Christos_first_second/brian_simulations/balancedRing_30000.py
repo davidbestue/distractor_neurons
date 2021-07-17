@@ -121,7 +121,7 @@ networkI.Iext=0*mV
 
 
 if loadconnections:
-  loader = np.load('/home/david/Desktop/brian_simulations/connections_sp_10000.npz', allow_pickle=True)
+  loader = np.load('/home/david/Desktop/brian_simulations/connections_sp_30000.npz', allow_pickle=True)
   WW = csr_matrix((loader['CEEd'], loader['CEEi'], loader['CEEp']), shape=loader['CEEs'])
   WW[WW != 0] = 1
   C1=Connection(networkE, networkE, 'gea', weight=gEEA*WW)
