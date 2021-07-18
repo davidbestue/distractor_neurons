@@ -15,7 +15,12 @@ import pickle
 
 def model(loadconnections=False, saveconnections=True, dt_clock=0.1, stimon=2000, stimoff=3000, 
   epsE=30, epsI=0, timesimulation=10, N=30000, K=1500, 
-  tE = 20, tI=10, ta=3, tn=50, tg=4, td=200, tf=450, Ustp = 0.03, ro=28.0 )
+  tE = 20, tI=10, ta=3, tn=50, tg=4, td=200, tf=450, 
+  Ustp = 0.03, ro=28.0, vt=20, vr=-3.33, fe=0., fi=0.,
+  eea=533.3, een=0.95, eia=67.2, ein=7.4, ie=-138.6, ii=-90.6, 
+  sigmaEE=30, sigmaEI=35, sigmaIE=30, sigmaII=30, 
+
+   )
 
 
 
@@ -45,21 +50,18 @@ synfact_ss = u_ss/(1.+taud*R0*u_ss)
 synfact_ss0 = u_ss0/(1.+taud*R0*u_ss0)
 ntaud=(u_ss-synfact_ss0)/(synfact_ss0*R0*u_ss) #to avoid scaling
 
-Vt  = 20*mV          # spike threshold
-Vr  = -3.33*mV          # reset value
-refE= 0*ms                # refractory periods
-refI= 0*ms                # refractory periods
+Vt  = vt*mV          # spike threshold
+Vr  = vr*mV          # reset value
+refE= fe*ms                # refractory periods
+refI= fi*ms                # refractory periods
 
-gEEA=533.3*mV*ms  
-gEEN=0.95*533.3*mV*ms  
-gEIA=67.2*mV*ms  
-gEIN=1*7.4*mV*ms
-gIE=-138.6*mV*ms
-gII=-90.6*mV*ms
-sigmaEE=30 #60 # E-to-E footprint in degrees
-sigmaEI=35 #70 # E-to-E footprint in degrees
-sigmaIE=30 # 60 # E-to-E footprint in degrees
-sigmaII=30 #60 # E-to-E footprint in degrees
+gEEA=eea*mV*ms  
+gEEN=een*eea*mV*ms  
+gEIA=eia*mV*ms  
+gEIN=ein*mV*ms
+gIE=ie*mV*ms
+gII=ii*mV*ms
+
 
 #these are intermediate calculations needed for the equations below
 
