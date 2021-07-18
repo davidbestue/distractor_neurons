@@ -27,3 +27,7 @@ results = Parallel(n_jobs = numcores)(delayed(simulation)(extE=extE, name_conect
 io.savemat('/home/david/Desktop/brian_simulations/results_simulations',{'extEs':extEs, 'spktm': results})
 
 
+
+### One simulation (create connections)
+one_simulation =  simulation(saveconnections=True, save_name='connections_sp_1000', loadconnections=False, N=1000)
+io.savemat('/home/david/Desktop/brian_simulations/single_simulation',{'spktm': one_simulation})
