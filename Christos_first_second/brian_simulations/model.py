@@ -14,7 +14,8 @@ import pickle
 
 
 def model(loadconnections=False, saveconnections=True, dt_clock=0.1, stimon=2000, stimoff=3000, 
-  epsE=30,  )
+  epsE=30, epsI=0, timesimulation=10, N=30000, K=1500, 
+  tE = 20, tI=10, ta=3, tn=50, tg=4, td=200, tf=450, Ustp = 0.03, ro=28.0 )
 
 
 
@@ -24,24 +25,20 @@ defaultclock.dt = dt_clock*ms
 stim_on=stimon*ms
 stim_off=stimoff*ms
 stimE=0.1*2.4*mV # stimulus input
-
 stimI=0*mV
-epsI=0
-runtime=10*second
 
-N=30000 #10000 # total number of neurons
-print(N)
-K=1500 #250 # total number of inputs
-tauE=20*ms 
-tauI=10*ms 
+runtime=timesimulation*second
 
-taua = 3*ms # AMPA synapse decay
-taun = 50*ms # NMDA synapse decay
-taug = 4*ms # GABA synapse decay
-Ustp = 0.03 # 0.03
-taud = 200*ms
-tauf = 450*ms
-R0 = 28.0/second
+tauE=tE*ms 
+tauI=tI*ms 
+
+taua = ta*ms # AMPA synapse decay
+taun = tu*ms # NMDA synapse decay
+taug = tg*ms # GABA synapse decay
+ # 0.03
+taud = td*ms
+tauf = tf*ms
+R0 = ro/second
 u_ss = Ustp*(1.+R0*tauf)/(1.+Ustp*R0*tauf)
 u_ss0= 0.03*(1.+R0*tauf)/(1.+0.03*R0*tauf)
 synfact_ss = u_ss/(1.+taud*R0*u_ss)
