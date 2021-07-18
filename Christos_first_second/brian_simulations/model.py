@@ -42,7 +42,7 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     tauE=tE*ms 
     tauI=tI*ms 
     taua = ta*ms # AMPA synapse decay
-    taun = tu*ms # NMDA synapse decay
+    taun = tn*ms # NMDA synapse decay
     taug = tg*ms # GABA synapse decay
     taud = td*ms
     tauf = tf*ms
