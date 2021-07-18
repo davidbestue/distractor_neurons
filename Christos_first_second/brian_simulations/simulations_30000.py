@@ -16,14 +16,17 @@ if numcores<10:
 
 
 ### One simulation
-one_simulation =  simulation(name_conections='connections_sp_30000.npz', N=30000, extE=2)
-io.savemat('/home/david/Desktop/brian_simulations/single_simulation_ext2',{'spktm': one_simulation})
+# one_simulation =  simulation(name_conections='connections_sp_30000.npz', N=30000, extE=5)
+# io.savemat('/home/david/Desktop/brian_simulations/single_simulation_ext5',{'spktm': one_simulation})
 
 
 
 
 ### Multiple simulations in paralel
-extEs = list(np.linspace(0,2,10))
+extEs = list(np.linspace(1,5,20))
+extEs = [round(extEs[x],2) for x in range(len(extEs))]
+
+
 results = Parallel(n_jobs = numcores)(delayed(simulation)(extE=extE, name_conections='connections_sp_30000.npz', N=30000)  for extE in extEs)    
 
 io.savemat('/home/david/Desktop/brian_simulations/results_simulations',{'extEs':extEs, 'spktm': results})
