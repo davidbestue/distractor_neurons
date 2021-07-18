@@ -23,11 +23,11 @@ if numcores<10:
 
 
 ### Multiple simulations in paralel
-extEs = list(np.linspace(1,5,20))
+extEs = list(np.linspace(-0.5, 1,20))
 extEs = [round(extEs[x],2) for x in range(len(extEs))]
+extEs
 
+results = Parallel(n_jobs = numcores)(delayed(simulation)(extE=extE, name_conections='connections_sp_1000.npz', N=1000)  for extE in extEs)    
 
-results = Parallel(n_jobs = numcores)(delayed(simulation)(extE=extE, name_conections='connections_sp_30000.npz', N=30000)  for extE in extEs)    
-
-io.savemat('/home/david/Desktop/brian_simulations/results_simulations',{'extEs':extEs, 'spktm': results})
+io.savemat('/home/david/Desktop/brian_simulations/results_simulations_1000',{'extEs':extEs, 'spktm': results})
 
