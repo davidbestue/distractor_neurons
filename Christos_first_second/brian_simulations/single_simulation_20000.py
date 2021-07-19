@@ -15,13 +15,13 @@ if numcores<10:
 
 
 ## One simulation
-one_simulation =  simulation(loadconnections=False, saveconnections=True, save_name='connections_sp_20000', N=20000)
-io.savemat('/home/david/Desktop/brian_simulations/single_simulation_20000',{'spktm': one_simulation})
-
-
-# ## One simulation
-# one_simulation =  simulation(name_conections='connections_sp_20000.npz', N=20000)
+# one_simulation =  simulation(loadconnections=False, saveconnections=True, save_name='connections_sp_20000', N=20000)
 # io.savemat('/home/david/Desktop/brian_simulations/single_simulation_20000',{'spktm': one_simulation})
+
+
+## One simulation
+one_simulation =  simulation(name_conections='connections_sp_20000.npz', N=20000)
+io.savemat('/home/david/Desktop/brian_simulations/single_simulation2_20000',{'spktm': one_simulation})
 
 
 
