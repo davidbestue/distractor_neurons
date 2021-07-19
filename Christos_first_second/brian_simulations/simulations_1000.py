@@ -14,12 +14,9 @@ if numcores<10:
 
 
 
-
 ### One simulation
 # one_simulation =  simulation(name_conections='connections_sp_30000.npz', N=30000, extE=5)
 # io.savemat('/home/david/Desktop/brian_simulations/single_simulation_ext5',{'spktm': one_simulation})
-
-
 
 
 ### Multiple simulations in paralel
