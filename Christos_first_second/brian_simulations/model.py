@@ -27,7 +27,7 @@ def simulation(loadconnections=True, name_conections='connections_sp_20000.npz',
   timesimulation=10, dt_clock=0.1, stimon=2000, stimoff=3000, pos_stim=0.5,
   epsE=60, epsI=0, 
   N=20000, prop_e=0.8, prop_i=0.2, K=500, 
-  tE = 20*ms , tI=10, ta=3, tn=50, tg=4, td=200, tf=450, 
+  tauE = 20*ms , tauI=10*ms, taua=3*ms, taun=50*ms, taug=4*ms, td=200, tf=450, 
   Ustp = 0.04, Ustp0 = 0.03, ro=20.0, vt=20, vr=-3.33, fe=0., fi=0., 
   eea=533.3, een=0.95, eia=67.2, ein=7.4, ie=-138.6, ii=-90.6, 
   sigmaEE=30, sigmaEI=35, sigmaIE=30, sigmaII=30, 
@@ -42,11 +42,10 @@ def simulation(loadconnections=True, name_conections='connections_sp_20000.npz',
     stimI=stim_strI*mV
     runtime=timesimulation*second
     ### Taus for the spiking rate model of persistent activity
-    tauE=tE #*ms 
-    tauI=tI*ms 
-    taua = ta*ms # AMPA synapse decay
-    taun = tn*ms # NMDA synapse decay
-    taug = tg*ms # GABA synapse decay
+    
+    #taua AMPA synapse decay
+    #taun NMDA synapse decay
+    #taug GABA synapse decay
     ### STP equations (http://www.scholarpedia.org/article/Short-term_synaptic_plasticity)
     taud = td*ms # synaptic depression tau
     tauf = tf*ms # synaptic facilitation tau
