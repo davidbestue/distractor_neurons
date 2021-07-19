@@ -25,10 +25,10 @@ def conn(k,sig,C):
 def simulation(loadconnections=True, name_conections='connections_sp_30000.npz', 
   saveconnections=False, save_name='connections_sp_30000',
   timesimulation=10, dt_clock=0.1, stimon=2000, stimoff=3000, pos_stim=0.5,
-  epsE=60, epsI=0, 
-  N=30000, prop_e=0.8, prop_i=0.2, K=500, 
+  epsE=30, epsI=0, 
+  N=30000, prop_e=0.8, prop_i=0.2, K=1500, 
   tE = 20, tI=10, ta=3, tn=50, tg=4, td=200, tf=450, 
-  Ustp = 0.04, Ustp0 = 0.03, ro=20.0, vt=20, vr=-3.33, fe=0., fi=0., 
+  Ustp = 0.03, ro=28.0, vt=20, vr=-3.33, fe=0., fi=0., 
   eea=533.3, een=0.95, eia=67.2, ein=7.4, ie=-138.6, ii=-90.6, 
   sigmaEE=30, sigmaEI=35, sigmaIE=30, sigmaII=30, 
   extE=0., extI=0., 
@@ -52,7 +52,7 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     tauf = tf*ms # synaptic facilitation tau
     R0 = ro/second
     u_ss = Ustp*(1.+R0*tauf)/(1.+Ustp*R0*tauf)
-    u_ss0= Ustp0*(1.+R0*tauf)/(1.+Ustp0*R0*tauf)
+    u_ss0= 0.03*(1.+R0*tauf)/(1.+0.03*R0*tauf)
     synfact_ss = u_ss/(1.+taud*R0*u_ss)
     synfact_ss0 = u_ss0/(1.+taud*R0*u_ss0)
     ntaud=(u_ss-synfact_ss0)/(synfact_ss0*R0*u_ss) #to avoid scaling
@@ -64,7 +64,7 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     gEEA=eea*mV*ms  
     gEEN=een*eea*mV*ms  
     gEIA=eia*mV*ms  
-    gEIN=ein*mV*ms
+    gEIN=1*ein*mV*ms
     gIE=ie*mV*ms
     gII=ii*mV*ms
     #these are intermediate calculations needed for the equations below
