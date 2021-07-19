@@ -24,20 +24,22 @@ def conn(k,sig,C):
 
 def simulation(loadconnections=True, name_conections='connections_sp_30000.npz', 
   saveconnections=False, save_name='connections_sp_30000',
-  dt_clock=0.1, stimon=2000, stimoff=3000,  
-  epsE=30, epsI=0, timesimulation=10, N=30000, prop_e=0.8, prop_i=0.2, K=1500, 
+  timesimulation=10, dt_clock=0.1, stimon=2000, stimoff=3000, pos_stim=0.5,
+  epsE=30, epsI=0, 
+  N=30000, prop_e=0.8, prop_i=0.2, K=1500, 
   tE = 20, tI=10, ta=3, tn=50, tg=4, td=200, tf=450, 
   Ustp = 0.03, ro=28.0, vt=20, vr=-3.33, fe=0., fi=0., 
   eea=533.3, een=0.95, eia=67.2, ein=7.4, ie=-138.6, ii=-90.6, 
   sigmaEE=30, sigmaEI=35, sigmaIE=30, sigmaII=30, 
-  extE=0., extI=0., stim_str = 0.24, pos_stim=0.5):
+  extE=0., extI=0., 
+  stim_strE = 2.4,  stim_strI = 0.):
     #############
     defaultclock.reinit()
     defaultclock.dt = dt_clock*ms
     stim_on=stimon*ms
     stim_off=stimoff*ms
-    stimE=stim_str*mV # stimulus input
-    stimI=0*mV
+    stimE=0.1*stim_strE*mV # stimulus input
+    stimI=stim_strI*mV
     runtime=timesimulation*second
     ### Taus for the spiking rate model of persistent activity
     tauE=tE*ms 
@@ -62,7 +64,7 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     gEEA=eea*mV*ms  
     gEEN=een*eea*mV*ms  
     gEIA=eia*mV*ms  
-    gEIN=ein*mV*ms
+    gEIN=1*ein*mV*ms
     gIE=ie*mV*ms
     gII=ii*mV*ms
     #these are intermediate calculations needed for the equations below
