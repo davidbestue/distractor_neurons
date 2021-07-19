@@ -151,6 +151,7 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     mystpEEN=STP(C2,taud=taud,tauf=tauf,U=Ustp)
     #########
     #########
+    #########
     spikes=SpikeMonitor(networkE)
     ### 1st step simulation: until stim on
     run(stim_on,report='text')
