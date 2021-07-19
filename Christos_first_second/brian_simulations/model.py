@@ -101,7 +101,7 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     networkI=NeuronGroup(NI,model=eqs,threshold=Vt,reset=Vr, refractory=refI)
     networkE.tau=tauE
     networkI.tau=tauI
-    networkE.Ix=1.66*sqrt(KE)*mV
+    networkE.Ix=1.66*sqrt(KE)*mV ##maintain the same S/N ratio (KE number conection per neuron (SPARSE))
     networkI.Ix=1.85*0.83*sqrt(KE)*mV
     networkE.V = Vr + rand(NE)*(Vt - Vr) #Vt-2.0*mV + rand(NE) * 2.0*mV
     networkI.V = Vr + rand(NI)*(Vt - Vr) #Vt-2.0*mV + rand(NI) * 2.0*mV
