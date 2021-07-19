@@ -22,18 +22,21 @@ def conn(k,sig,C):
 
 
 ### 
-def simulation(loadconnections=True, name_conections='connections_sp_20000.npz', 
-  saveconnections=False, save_name='connections_sp_20000',
+def simulation(N, loadconnections=True, 
+  saveconnections=False, 
   timesimulation=10, dt_clock=0.1, stim_on=2000*ms, stim_off=3000*ms, pos_stim=0.5,
   epsE=60, epsI=0, 
-  N=20000, prop_e=0.8, prop_i=0.2, K=500, 
+  prop_e=0.8, prop_i=0.2, 
   tauE = 20*ms , tauI=10*ms, taua=3*ms, taun=50*ms, taug=4*ms, taud =200*ms, tauf=450*ms, 
   Ustp = 0.04, Ustp0 = 0.03, R0=20.0/second, Vt=20*mV, Vr=-3.33*mV, refE=0.*ms, refI=0.*ms, 
-  gEEA=533.3*mV*ms, gEEN=0.92*mV*ms, gEIA=67.2*mV*ms, gEIN=7.4*mV*ms, gIE=-138.6*mV*ms, gII=-90.6*mV*ms, 
+  gEEA=533.3*mV*ms, gEEN=490.64*mV*ms, gEIA=67.2*mV*ms, gEIN=7.4*mV*ms, gIE=-138.6*mV*ms, gII=-90.6*mV*ms, 
   sigmaEE=30, sigmaEI=35, sigmaIE=30, sigmaII=30, 
   extE=0.*mV, extI=0.*mV, 
   stimE=0.24*mV,  stimI = 0.*mV):
   ##############  
+  K=int(N/40)
+  name_conections='m1_connections_' + str(N) + '.npz'
+  save_name='m1_connections_' + str(N)
   ############## Simulation of spiking neurons
   ##############    
   ### Taus for the spiking rate model of persistent activity
