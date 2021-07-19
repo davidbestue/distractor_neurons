@@ -108,7 +108,7 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     networkE.Iext=extE*mV #### External input (IE0 en el rate model)
     networkI.Iext=extI*mV
     ##
-    if loadconnections: ##dependent on the number of neurons, if you run a simulation with different number of neurons run with loadconnections=False the first time
+    if loadconnections: ## quicker
       loader = np.load('/home/david/Desktop/brian_simulations/' + str(name_conections), allow_pickle=True)
       WW = csr_matrix((loader['CEEd'], loader['CEEi'], loader['CEEp']), shape=loader['CEEs'])
       WW[WW != 0] = 1
@@ -135,8 +135,8 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
       C6=Connection(networkI, networkI, 'gi', weight=gII, sparseness=lambda i,j: conn(float(i)/NI-float(j)/NI,sigII,fI))
     ###########
     ###########
-    ###########
-    if saveconnections:
+    ########### 
+    if saveconnections: ## do this the if you run a simulation with different number of neurons for the first time
       CEE = csr_matrix(C1.W)
       CEI = csr_matrix(C3.W)
       CIE = csr_matrix(C5.W)
@@ -155,6 +155,7 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     ### 1st step simulation: until stim on
     run(stim_on,report='text')
     ##2nd step of the simulation: stim presentation
+    ## If I am not wrong, here I specify the location with this "float(NE)-0.5", being on the center
     pos=arange(NE)
     networkE.Iext=stimE*exp(-0.5*(pos/float(NE)-0.5)**2/(epsE**2))#stimE*(1.+epsE*cos(2*pi*(pos/float(NE)-0.5)))
     pos=arange(NI)
