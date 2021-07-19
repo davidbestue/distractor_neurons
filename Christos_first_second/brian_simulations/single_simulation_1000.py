@@ -15,12 +15,11 @@ if numcores<10:
 
 
 ## First simulation
-one_simulation =  simulation(N=1000, loadconnections=False, saveconnections=True)
-io.savemat('/home/david/Desktop/brian_simulations/single_simulation',{'spktm': one_simulation})
+# one_simulation =  simulation(N=1000, loadconnections=False, saveconnections=True)
+# io.savemat('/home/david/Desktop/brian_simulations/m1single_simulation',{'spktm': one_simulation})
 
 
 # ## One simulation
-# one_simulation =  simulation2(N=80000)
-# io.savemat('/home/david/Desktop/brian_simulations/single_simulation',{'spktm': one_simulation})
-
+one_simulation =  simulation(N=1000, extE=10.*mV)
+io.savemat('/home/david/Desktop/brian_simulations/m1single_simulation',{'spktm': one_simulation})
 
