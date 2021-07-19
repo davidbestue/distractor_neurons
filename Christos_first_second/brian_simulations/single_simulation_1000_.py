@@ -24,4 +24,3 @@ io.savemat('/home/david/Desktop/brian_simulations/single_simulation',{'spktm': o
 # io.savemat('/home/david/Desktop/brian_simulations/single_simulation',{'spktm': one_simulation})
 
 
-
