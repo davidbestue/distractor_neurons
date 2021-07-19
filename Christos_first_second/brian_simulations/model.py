@@ -56,8 +56,9 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     ntaud=(u_ss-synfact_ss0)/(synfact_ss0*R0*u_ss) #to avoid scaling
     Vt  = vt*mV          # spike threshold
     Vr  = vr*mV          # reset value
-    refE= fe*ms                # refractory periods
-    refI= fi*ms                # refractory periods
+    refE= fe*ms          # refractory periods
+    refI= fi*ms          # refractory periods
+    ### Conductances
     gEEA=eea*mV*ms  
     gEEN=een*eea*mV*ms  
     gEIA=eia*mV*ms  
@@ -104,10 +105,10 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     networkI.Ix=1.85*0.83*sqrt(KE)*mV
     networkE.V = Vr + rand(NE)*(Vt - Vr) #Vt-2.0*mV + rand(NE) * 2.0*mV
     networkI.V = Vr + rand(NI)*(Vt - Vr) #Vt-2.0*mV + rand(NI) * 2.0*mV
-    networkE.Iext=extE*mV
+    networkE.Iext=extE*mV #### External input (IE0 en el rate model)
     networkI.Iext=extI*mV
     ##
-    if loadconnections:
+    if loadconnections: ##dependent on the number of neurons, if you run a simulation with different number of neurons run with loadconnections=False the first time
       loader = np.load('/home/david/Desktop/brian_simulations/' + str(name_conections), allow_pickle=True)
       WW = csr_matrix((loader['CEEd'], loader['CEEi'], loader['CEEp']), shape=loader['CEEs'])
       WW[WW != 0] = 1
