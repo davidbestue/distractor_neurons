@@ -164,8 +164,8 @@ def simulation(loadconnections=True, name_conections='connections_sp_20000.npz',
   networkI.Iext=stimI*(1.+epsI*cos(2*pi*(pos/float(NI)-pos_stim)))
   run(stim_off-stim_on,report='text')
   ##3rd step of the simulation: delay period
-  networkE.Iext=extE*mV
-  networkI.Iext=extI*mV
+  networkE.Iext=extE
+  networkI.Iext=extI
   counts=SpikeCounter(networkE)
   run(runtime-stim_off,report='text')
   #last_sec=10*second - 1*second
