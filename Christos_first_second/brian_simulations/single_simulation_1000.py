@@ -20,7 +20,7 @@ if numcores<10:
 
 
 ## One simulation
-one_simulation =  simulation(name_conections='connections_sp_1000.npz', N=1000)
+one_simulation =  simulation(name_conections='connections_sp_1000.npz', N=1000, stimE=8.24*mV)
 io.savemat('/home/david/Desktop/brian_simulations/single_simulation_1000',{'spktm': one_simulation})
 
 
