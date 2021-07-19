@@ -30,13 +30,13 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
   Ustp = 0.03, ro=28.0, vt=20, vr=-3.33, fe=0., fi=0., 
   eea=533.3, een=0.95, eia=67.2, ein=7.4, ie=-138.6, ii=-90.6, 
   sigmaEE=30, sigmaEI=35, sigmaIE=30, sigmaII=30, 
-  extE=0., extI=0.):
+  extE=0., extI=0., stim_str = 0.24, pos_stim=0.5):
     #############
     defaultclock.reinit()
     defaultclock.dt = dt_clock*ms
     stim_on=stimon*ms
     stim_off=stimoff*ms
-    stimE=0.1*2.4*mV # stimulus input
+    stimE=stim_str*mV # stimulus input
     stimI=0*mV
     runtime=timesimulation*second
     ### Taus for the spiking rate model of persistent activity
@@ -156,10 +156,11 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     run(stim_on,report='text')
     ##2nd step of the simulation: stim presentation
     ## If I am not wrong, here I specify the location with this "float(NE)-0.5", being on the center
+    ## pos_stim is a fraction where 0 is the first neuron (0) and 1 is the last one(360). 0.5 means stimulation in the middle (180)
     pos=arange(NE)
-    networkE.Iext=stimE*exp(-0.5*(pos/float(NE)-0.5)**2/(epsE**2))#stimE*(1.+epsE*cos(2*pi*(pos/float(NE)-0.5)))
+    networkE.Iext=stimE*exp(-0.5*(pos/float(NE)-pos_stim)**2/(epsE**2))#stimE*(1.+epsE*cos(2*pi*(pos/float(NE)-0.5)))
     pos=arange(NI)
-    networkI.Iext=stimI*(1.+epsI*cos(2*pi*(pos/float(NI)-0.5)))
+    networkI.Iext=stimI*(1.+epsI*cos(2*pi*(pos/float(NI)-pos_stim)))
     run(stim_off-stim_on,report='text')
     ##3rd step of the simulation: delay period
     networkE.Iext=extE*mV
