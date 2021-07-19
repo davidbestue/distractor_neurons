@@ -39,14 +39,15 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     stimE=0.1*2.4*mV # stimulus input
     stimI=0*mV
     runtime=timesimulation*second
+    ### Taus for the spiking rate model of persistent activity
     tauE=tE*ms 
     tauI=tI*ms 
     taua = ta*ms # AMPA synapse decay
     taun = tn*ms # NMDA synapse decay
     taug = tg*ms # GABA synapse decay
-    taud = td*ms # synaptic depression
-    tauf = tf*ms # synaptic facilitation 
     ### STP equations (http://www.scholarpedia.org/article/Short-term_synaptic_plasticity)
+    taud = td*ms # synaptic depression tau
+    tauf = tf*ms # synaptic facilitation tau
     R0 = ro/second
     u_ss = Ustp*(1.+R0*tauf)/(1.+Ustp*R0*tauf)
     u_ss0= 0.03*(1.+R0*tauf)/(1.+0.03*R0*tauf)
