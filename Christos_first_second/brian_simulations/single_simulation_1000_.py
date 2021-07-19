@@ -1,7 +1,7 @@
 #import brian_no_units
 
 
-from model import * 
+from model2 import * 
 from joblib import Parallel, delayed
 import multiprocessing
 
@@ -15,8 +15,8 @@ if numcores<10:
 
 
 ## One simulation
-one_simulation =  simulation(loadconnections=False, saveconnections=True, save_name='connections_sp_1000_', N=1000, K=25)
-io.savemat('/home/david/Desktop/brian_simulations/single_simulation_1000_',{'spktm': one_simulation})
+one_simulation =  simulation2(loadconnections=False, saveconnections=True, save_name='connections_N1000')
+io.savemat('/home/david/Desktop/brian_simulations/single_simulation',{'spktm': one_simulation})
 
 
 # ## One simulation

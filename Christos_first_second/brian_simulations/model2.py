@@ -22,7 +22,7 @@ def conn(k,sig,C):
 
 
 ### 
-def simulation(loadconnections=True, name_conections='connections_sp_20000.npz', 
+def simulation2(loadconnections=True, name_conections='connections_sp_20000.npz', 
   saveconnections=False, save_name='connections_sp_20000',
   timesimulation=10, dt_clock=0.1, stim_on=2000*ms, stim_off=3000*ms, pos_stim=0.5,
   epsE=60, epsI=0, 
