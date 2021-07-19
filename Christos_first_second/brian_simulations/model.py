@@ -44,8 +44,9 @@ def simulation(loadconnections=True, name_conections='connections_sp_30000.npz',
     taua = ta*ms # AMPA synapse decay
     taun = tn*ms # NMDA synapse decay
     taug = tg*ms # GABA synapse decay
-    taud = td*ms
-    tauf = tf*ms
+    taud = td*ms # synaptic depression
+    tauf = tf*ms # synaptic facilitation 
+    ### STP equations (http://www.scholarpedia.org/article/Short-term_synaptic_plasticity)
     R0 = ro/second
     u_ss = Ustp*(1.+R0*tauf)/(1.+Ustp*R0*tauf)
     u_ss0= 0.03*(1.+R0*tauf)/(1.+0.03*R0*tauf)
