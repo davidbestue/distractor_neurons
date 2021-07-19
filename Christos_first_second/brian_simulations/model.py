@@ -24,48 +24,44 @@ def conn(k,sig,C):
 ### 
 def simulation(loadconnections=True, name_conections='connections_sp_20000.npz', 
   saveconnections=False, save_name='connections_sp_20000',
-  timesimulation=10, dt_clock=0.1, stimon=2000, stimoff=3000, pos_stim=0.5,
+  timesimulation=10, dt_clock=0.1, stim_on=2000*ms, stim_off=3000*ms, pos_stim=0.5,
   epsE=60, epsI=0, 
   N=20000, prop_e=0.8, prop_i=0.2, K=500, 
-  tauE = 20*ms , tauI=10*ms, taua=3*ms, taun=50*ms, taug=4*ms, td=200, tf=450, 
-  Ustp = 0.04, Ustp0 = 0.03, ro=20.0, vt=20, vr=-3.33, fe=0., fi=0., 
-  eea=533.3, een=0.95, eia=67.2, ein=7.4, ie=-138.6, ii=-90.6, 
+  tauE = 20*ms , tauI=10*ms, taua=3*ms, taun=50*ms, taug=4*ms, taud =200*ms, tauf=450*ms, 
+  Ustp = 0.04, Ustp0 = 0.03, R0=20.0/second, Vt=20*mV, Vr=-3.33*mV, refE=0.*ms, refI=0.*ms, 
+  gEEA=533.3*mV*ms, gEEN=0.9*mV*ms, gEIA=67.2*mV*ms, gEIN=7.4*mV*ms, gIE=-138.6*mV*ms, gII=-90.6*mV*ms, 
   sigmaEE=30, sigmaEI=35, sigmaIE=30, sigmaII=30, 
   extE=0., extI=0., 
-  stim_strE = 2.4,  stim_strI = 0.):
+  stimE=0.24*mV,  stimI = 0.*mV):
     #############
     defaultclock.reinit()
     defaultclock.dt = dt_clock*ms
-    stim_on=stimon*ms
-    stim_off=stimoff*ms
-    stimE=0.1*stim_strE*mV # stimulus input
-    stimI=stim_strI*mV
     runtime=timesimulation*second
     ### Taus for the spiking rate model of persistent activity
-    
     #taua AMPA synapse decay
     #taun NMDA synapse decay
     #taug GABA synapse decay
     ### STP equations (http://www.scholarpedia.org/article/Short-term_synaptic_plasticity)
-    taud = td*ms # synaptic depression tau
-    tauf = tf*ms # synaptic facilitation tau
-    R0 = ro/second
+    ### taud  # synaptic depression tau
+    ### tauf # synaptic facilitation tau
+    ###########
+    ### Equations STP
     u_ss = Ustp*(1.+R0*tauf)/(1.+Ustp*R0*tauf)
     u_ss0= Ustp0*(1.+R0*tauf)/(1.+Ustp0*R0*tauf)
     synfact_ss = u_ss/(1.+taud*R0*u_ss)
     synfact_ss0 = u_ss0/(1.+taud*R0*u_ss0)
     ntaud=(u_ss-synfact_ss0)/(synfact_ss0*R0*u_ss) #to avoid scaling
-    Vt  = vt*mV          # spike threshold
-    Vr  = vr*mV          # reset value
-    refE= fe*ms          # refractory periods
-    refI= fi*ms          # refractory periods
+    #Vt spike threshold
+    #Vr  reset value
+    #refE  refractory periods
+    #refI refractory periods
     ### Conductances
-    gEEA=eea*mV*ms  
-    gEEN=een*eea*mV*ms  
-    gEIA=eia*mV*ms  
-    gEIN=ein*mV*ms
-    gIE=ie*mV*ms
-    gII=ii*mV*ms
+    #gEEA=eea*mV*ms  
+    #gEEN=een*eea*mV*ms  
+    #gEIA=eia*mV*ms  
+    #gEIN=ein*mV*ms
+    #gIE=ie*mV*ms
+    #gII=ii*mV*ms
     #these are intermediate calculations needed for the equations below
     NE=int(ceil(prop_e*N)) # number of excitatory neurons
     NI=int(floor(prop_i*N)) # number of inhibitory neurons
