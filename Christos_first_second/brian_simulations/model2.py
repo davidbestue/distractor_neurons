@@ -38,6 +38,9 @@ def simulation2(N, loadconnections=True, saveconnections=False,
   save_name='connections_' + str(N)
   ############## Simulation of spiking neurons
   ##############    
+  ### Ext same paremeters as in the paper Hansel & Mato, 2013
+  ##################################################
+  ##################################################
   ### Taus for the spiking rate model of persistent activity
   ### taua AMPA synapse decay
   ### taun NMDA synapse decay
