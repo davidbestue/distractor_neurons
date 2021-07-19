@@ -173,13 +173,3 @@ def simulation(loadconnections=True, name_conections='connections_sp_20000.npz',
   return spikes.it
 
 
-
-# #### rates=counts.count/(runtime-stim_off)
-# #### Save the files
-# io.savemat('/home/david/Desktop/brian_simulations/results_simulation_30000',{'rate':rates, 'spktm': spikes.it})
-# ##spiketime in the dictionary format
-# dict_spiketimes = spikes.spiketimes
-# pickle.dump( dict_spiketimes, open( "/home/david/Desktop/brian_simulations/dict_spiketimes_30000.pkl", "wb" ) )
-
-
-
