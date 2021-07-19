@@ -21,7 +21,7 @@ def conn(k,sig,C):
   return value
 
 
-
+### 
 def simulation(loadconnections=True, name_conections='connections_sp_30000.npz', 
   saveconnections=False, save_name='connections_sp_30000',
   timesimulation=10, dt_clock=0.1, stimon=2000, stimoff=3000, pos_stim=0.5,
