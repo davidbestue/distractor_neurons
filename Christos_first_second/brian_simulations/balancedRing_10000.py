@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 import pickle
 
 
-
 defaultclock.reinit()
 defaultclock.dt = 0.1*ms
 
