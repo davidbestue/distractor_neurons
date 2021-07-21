@@ -235,7 +235,7 @@ def run_simulation(i):
 
 #Parallel(n_jobs=numcores)(delayed(run_simulation)(i) for i in range(numcores))
 
-run_simulation(i)
+run_simulation(1)
 
 
 # pool = mp.Pool(processes=numcores, maxtasksperchild=1)   
