@@ -47,6 +47,9 @@ def readout(i, t, sim_time, N_e):
 
     return decs, n_wins
 
+
+
+
 def run_simulation(i): 
 
     global par
@@ -225,51 +228,6 @@ def run_simulation(i):
 
     rates=counts.count/(runtime-stim_off)
 
-    i,t         = spikes.it
-    
-    fr_center   = []
-    for n in range(int(runtime/ms)-250):
-        fr_center.append(4*sum((i[(t>=n*ms) & (t<n*ms+250*ms)] >= stimat-10) \
-                         & (i[(t>=n*ms) & (t<n*ms+250*ms)] <= stimat+10))/21.)
-                         
-    fr_delay = np.zeros(NE)
-    fr_iti   = np.zeros(NE)
-
-    fr_0sec  = np.zeros(NE)
-    fr_1sec  = np.zeros(NE)
-    fr_3sec  = np.zeros(NE)
-    for n in range(NE):
-        fr_delay[n] = 4*sum(i[t>=runtime-250*ms] == n)
-        fr_iti[n]   = 4*sum(i[(t>=stim_on-250*ms) & (t<stim_on)] == n)
-        fr_0sec[n]  = 4*sum(i[(t>=stim_off) & (t<stim_off+250 * ms)] == n)
-        fr_1sec[n]  = 4*sum(i[(t>=stim_off+750*ms) & (t<stim_off+1000*ms)] == n)
-        fr_3sec[n]  = 4*sum(i[(t>=stim_off+2750*ms) & (t<stim_off+3000*ms)] == n)
-    fr_delay = np.roll(fr_delay, NE/2-stimat)
-    fr_iti =  np.roll(fr_iti, NE/2-stimat)
-    fr_0sec = np.roll(fr_0sec, NE/2-stimat)
-    fr_1sec = np.roll(fr_1sec, NE/2-stimat)
-    fr_3sec = np.roll(fr_3sec, NE/2-stimat)
-
-    dec_0sec   = decode(fr_0sec, NE)
-    dec_1sec   = decode(fr_1sec, NE)
-    dec_3sec   = decode(fr_3sec, NE)
-    
-    popdectm, nwins = readout(i, t, runtime, NE)
-    popdectm = np.array(popdectm)
-    popdectm = np.angle(np.exp(1j*(popdectm - stimat/float(NE)*2*np.pi))) + np.pi
-
-    with open(beh_log, 'a') as myfile:
-	myfile.write(log_file\
-	    +"; "+str(stimat)+"; "+str(dec_0sec)+"; "+str(dec_1sec)+"; "+str(dec_3sec)\
-	    +"; "+str(popdectm.tolist() )+'\n')
-
-    with open(fr_log, 'a') as myfile:
-	myfile.write(log_file+'; '+str(stimat)+"; "+str(list(fr_center))+'\n')
-
-    with open(fr3_log, 'a') as myfile:
-	myfile.write(log_file+'; '+str(stimat)+"; "+str(list(fr_1sec))+'; '+str(list(fr_delay))+'\n')
-
-    print 'saved'
     io.savemat('results_balancedRing',{'rate':counts.count, 'spktm': spikes.it})
 
 #####################################################################################################
@@ -278,13 +236,15 @@ def run_simulation(i):
 
 #Parallel(n_jobs=numcores)(delayed(run_simulation)(i) for i in range(numcores))
 
+run_simulation
 
-pool = mp.Pool(processes=numcores, maxtasksperchild=1)   
-myseeds = range(0, numcores)
-args = [(sd) for sd in myseeds]
-pool.map(run_simulation, args, chunksize=1)
-#
 
-print 'all sims finished'
-print time.time() - start_time 
+# pool = mp.Pool(processes=numcores, maxtasksperchild=1)   
+# myseeds = range(0, numcores)
+# args = [(sd) for sd in myseeds]
+# pool.map(run_simulation, args, chunksize=1)
+# #
+
+# print 'all sims finished'
+# print time.time() - start_time 
 
