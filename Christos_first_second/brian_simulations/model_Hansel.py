@@ -227,7 +227,7 @@ def run_simulation(i):
 
     rates=counts.count/(runtime-stim_off)
 
-    io.savemat('results_balancedRing',{'rate':counts.count, 'spktm': spikes.it})
+    io.savemat('results_balancedRing_hansel',{'rate':counts.count, 'spktm': spikes.it})
 
 #####################################################################################################
 #                                    RUN SIMULATIONS                                                #
@@ -235,7 +235,7 @@ def run_simulation(i):
 
 #Parallel(n_jobs=numcores)(delayed(run_simulation)(i) for i in range(numcores))
 
-run_simulation
+run_simulation(i)
 
 
 # pool = mp.Pool(processes=numcores, maxtasksperchild=1)   
