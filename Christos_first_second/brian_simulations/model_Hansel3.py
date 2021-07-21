@@ -47,7 +47,7 @@ def readout(i, t, sim_time, N_e):
 
     return decs, n_wins
 
-def run_simulation(i, IEext): 
+def run_simulation(i, IEext=0.): 
 
     global par
     log_file    = "h3_simulation_%i_%f_%s_%i" %(os.getpid(), time.time(), socket.gethostname(), i)
@@ -279,5 +279,5 @@ def run_simulation(i, IEext):
 #Parallel(n_jobs=numcores)(delayed(run_simulation)(i) for i in range(numcores))
 
 
-run_simulation(1)
+run_simulation(1, IEext=0.5)
 
