@@ -49,7 +49,6 @@ def readout(i, t, sim_time, N_e):
 
 
 
-
 def run_simulation(i): 
 
     global par
