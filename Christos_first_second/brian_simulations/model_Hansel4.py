@@ -50,11 +50,7 @@ def readout(i, t, sim_time, N_e):
 def run_simulation(i, IEext=0., pos_stim=0.5): 
 
     global par
-    log_file    = "h31_simulation_%i_%f_%s_%i" %(os.getpid(), time.time(), socket.gethostname(), i)
-    beh_log     = "h31_output_beh%d.txt" %(par)
-    fr_log      = "h31_output_fr%d.txt" %(par)
-    fr3_log     = "h31_output_bump%d.txt" %(par)
-    
+    log_file    = "simulation_%i_%f_%s_%i" %(os.getpid(), time.time(), socket.gethostname(), i)
     print log_file
     
     
