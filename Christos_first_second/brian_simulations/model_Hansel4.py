@@ -51,8 +51,11 @@ def readout(i, t, sim_time, N_e):
 def run_simulation(i, IEext=0., pos_stim=0.5, save_file=False): 
 
     global par
-    save_file    = "simulation_%i_%f_%s_%i" %(os.getpid(), time.time(), socket.gethostname(), i)
-    print save_file
+    time_s = int(str(time.time()).split('.')[0])
+    save_name    = "simulation_%i_%i_%s_%i" %(os.getpid(), time_s, socket.gethostname(), i)
+    print save_name
+
+    simulation_20222_1626951069.790437_berili_1 
     
     
     loadconnections = True #False
