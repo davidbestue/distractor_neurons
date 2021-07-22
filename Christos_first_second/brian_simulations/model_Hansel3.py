@@ -279,5 +279,5 @@ def run_simulation(i, IEext=0.):
 #Parallel(n_jobs=numcores)(delayed(run_simulation)(i) for i in range(numcores))
 
 
-run_simulation(1, IEext=0.5)
+run_simulation(1, IEext=0.2)
 
