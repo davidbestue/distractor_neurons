@@ -229,7 +229,7 @@ def run_simulation(i, IEext=0., pos_stim=0.5, save_file=False):
     popdectm = np.angle(np.exp(1j*(popdectm - pos_stim*2*np.pi))) #+ np.pi
 
     if save_file == True:
-        io.savemat(save_file ,{'rate':counts.count, 'spktm': spikes.it, 'popdectm': popdectm})
+        io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'popdectm': popdectm})
     #
 
     return spikes.it
