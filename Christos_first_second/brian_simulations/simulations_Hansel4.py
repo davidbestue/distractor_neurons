@@ -20,4 +20,4 @@ if numcores<10:
 
 
 ## One simulation
-one_simulation = run_simulation(1, IEext=0.2, pos_stim=0.5, save_file=True)
+one_simulation = run_simulation(IEext=0.2, pos_stim=0.5, save_file=True)

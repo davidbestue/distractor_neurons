@@ -18,7 +18,7 @@ numcores   = mp.cpu_count()
 defaultclock.reinit()
 defaultclock.dt = 0.1*ms
 
-par = int(sys.argv[1])
+
 
 def decode(firing_rate, N_e):
     angles = np.arange(0,N_e)*2*np.pi/N_e
@@ -30,7 +30,7 @@ def decode(firing_rate, N_e):
     return angle 
 
 
-def readout(i, t, sim_time, N_e):
+def readout(t, sim_time, N_e):
     w1      = 100*ms
     w2      = 250*ms
     n_wins  = int((sim_time-w2)/w1)
@@ -39,7 +39,7 @@ def readout(i, t, sim_time, N_e):
     for ti in range(int(n_wins)):
         fr  = np.zeros(N_e)
         idx = ((t>ti*w1-w2/2) & (t<ti*w1+w2/2))
-        ii  = i[idx]
+        ii  = 1
         for n in range(N_e):
             fr[n] = sum(ii == n)
         dec = decode(fr, N_e)
@@ -48,11 +48,11 @@ def readout(i, t, sim_time, N_e):
     return decs, n_wins
 
 
-def run_simulation(i, IEext=0., pos_stim=0.5, save_file=False): 
+def run_simulation(IEext=0., pos_stim=0.5, save_file=False): 
 
     global par
     time_s = int(str(time.time()).split('.')[0])
-    save_name    = "simulation_%i_%i_%s_%i" %(os.getpid(), time_s, socket.gethostname(), i)
+    save_name    = "simulation_%i_%i_%s" %(os.getpid(), time_s, socket.gethostname())
     print save_name
 
     loadconnections = True #False
@@ -224,7 +224,7 @@ def run_simulation(i, IEext=0., pos_stim=0.5, save_file=False):
 
     i,t         = spikes.it
     
-    popdectm, nwins = readout(i, t, runtime, NE)
+    popdectm, nwins = readout(t, runtime, NE)
     popdectm = np.array(popdectm)
     popdectm = np.angle(np.exp(1j*(popdectm - pos_stim*2*np.pi))) #+ np.pi
     angletm = np.angle(np.exp(1j*(popdectm)))
