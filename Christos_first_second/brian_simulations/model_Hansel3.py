@@ -50,10 +50,10 @@ def readout(i, t, sim_time, N_e):
 def run_simulation(i, IEext=0.): 
 
     global par
-    log_file    = "h3_simulation_%i_%f_%s_%i" %(os.getpid(), time.time(), socket.gethostname(), i)
-    beh_log     = "h3_output_beh%d.txt" %(par)
-    fr_log      = "h3_output_fr%d.txt" %(par)
-    fr3_log     = "h3_output_bump%d.txt" %(par)
+    log_file    = "h31_simulation_%i_%f_%s_%i" %(os.getpid(), time.time(), socket.gethostname(), i)
+    beh_log     = "h31_output_beh%d.txt" %(par)
+    fr_log      = "h31_output_fr%d.txt" %(par)
+    fr3_log     = "h31_output_bump%d.txt" %(par)
     
     print log_file
     
@@ -270,7 +270,7 @@ def run_simulation(i, IEext=0.):
 	myfile.write(log_file+'; '+str(stimat)+"; "+str(list(fr_1sec))+'; '+str(list(fr_delay))+'\n')
 
     print 'saved'
-    io.savemat('results_balancedRing_hansel3',{'rate':counts.count, 'spktm': spikes.it})
+    io.savemat('results_balancedRing_hansel3_1',{'rate':counts.count, 'spktm': spikes.it})
 
 #####################################################################################################
 #                                    RUN SIMULATIONS                                                #
