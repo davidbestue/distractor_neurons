@@ -47,11 +47,12 @@ def readout(i, t, sim_time, N_e):
 
     return decs, n_wins
 
-def run_simulation(i, IEext=0., pos_stim=0.5): 
+
+def run_simulation(i, IEext=0., pos_stim=0.5, save_file=False): 
 
     global par
-    log_file    = "simulation_%i_%f_%s_%i" %(os.getpid(), time.time(), socket.gethostname(), i)
-    print log_file
+    save_file    = "simulation_%i_%f_%s_%i" %(os.getpid(), time.time(), socket.gethostname(), i)
+    print save_file
     
     
     loadconnections = True #False
@@ -227,7 +228,11 @@ def run_simulation(i, IEext=0., pos_stim=0.5):
     popdectm = np.array(popdectm)
     popdectm = np.angle(np.exp(1j*(popdectm - stimat/float(NE)*2*np.pi))) #+ np.pi
 
-    io.savemat('results_balancedRing_hansel4',{'rate':counts.count, 'spktm': spikes.it, 'popdectm': popdectm})
+    if save_file == True:
+        io.savemat(save_file ,{'rate':counts.count, 'spktm': spikes.it, 'popdectm': popdectm})
+    #
+
+    return spikes.it
 
 #####################################################################################################
 #                                    RUN SIMULATIONS                                                #
@@ -236,5 +241,5 @@ def run_simulation(i, IEext=0., pos_stim=0.5):
 #Parallel(n_jobs=numcores)(delayed(run_simulation)(i) for i in range(numcores))
 
 
-run_simulation(1, IEext=0.2, pos_stim=0.5)
+result = run_simulation(1, IEext=0.2, pos_stim=0.5, save_file=True)
 
