@@ -227,9 +227,10 @@ def run_simulation(i, IEext=0., pos_stim=0.5, save_file=False):
     popdectm, nwins = readout(i, t, runtime, NE)
     popdectm = np.array(popdectm)
     popdectm = np.angle(np.exp(1j*(popdectm - pos_stim*2*np.pi))) #+ np.pi
+    angletm = np.angle(np.exp(1j*(popdectm)))
 
     if save_file == True:
-        io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'popdectm': popdectm})
+        io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'popdectm': popdectm, 'angletm': angletm})
     #
 
     return spikes.it
@@ -241,5 +242,5 @@ def run_simulation(i, IEext=0., pos_stim=0.5, save_file=False):
 #Parallel(n_jobs=numcores)(delayed(run_simulation)(i) for i in range(numcores))
 
 
-result = run_simulation(1, IEext=0.2, pos_stim=0.5, save_file=True)
+##result = run_simulation(1, IEext=0.2, pos_stim=0.5, save_file=True)
 
