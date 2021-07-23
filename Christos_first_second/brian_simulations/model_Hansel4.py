@@ -228,7 +228,7 @@ def run_simulation(IEext=0., pos_stim=0.5, save_file=False, ix=1):
     dectm = np.array([np.degrees(popdectm[i]) for i in range(len(popdectm))] )
     errtm = np.array([np.degrees(popdectm[i])-360*pos_stim for i in range(len(popdectm))] )
     if save_file == True:
-        io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'errtm': errtm, 'dectm': dectm})
+        io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'errtm': errtm, 'dectm': dectm, 'ratedelay':rates})
     #
 
     return spikes.it
