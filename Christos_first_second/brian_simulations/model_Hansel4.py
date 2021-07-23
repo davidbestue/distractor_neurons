@@ -48,7 +48,7 @@ def readout(i, t, sim_time, N_e):
     return decs, n_wins
 
 
-def run_simulation(IEext=0., pos_stim=0.5, save_file=False, i=1): 
+def run_simulation(IEext=0., pos_stim=0.5, save_file=False, ix=1): 
 
     global par
     time_s = int(str(time.time()).split('.')[0])
@@ -178,12 +178,12 @@ def run_simulation(IEext=0., pos_stim=0.5, save_file=False, i=1):
     else:
         fE = float(KE)/float(NE)
         fI = float(KI)/float(NI)
-        C1=Connection(networkE, networkE, 'gea', weight=gEEA, sparseness=lambda i,j: conn(float(i)/NE-float(j)/NE,sigEE,fE))
+        C1=Connection(networkE, networkE, 'gea', weight=gEEA, sparseness=lambda ix,j: conn(float(ix)/NE-float(j)/NE,sigEE,fE))
         C2=Connection(networkE, networkE, 'gen', weight=gEEN/gEEA*C1.W)
-        C3=Connection(networkE, networkI, 'gea', weight=gEIA, sparseness=lambda i,j: conn(float(i)/NE-float(j)/NI,sigEI,fE))
+        C3=Connection(networkE, networkI, 'gea', weight=gEIA, sparseness=lambda ix,j: conn(float(ix)/NE-float(j)/NI,sigEI,fE))
         C4=Connection(networkE, networkI, 'gen', weight=gEIN/gEIA*C3.W)
-        C5=Connection(networkI, networkE, 'gi', weight=gIE, sparseness=lambda i,j: conn(float(i)/NI-float(j)/NE,sigIE,fI))
-        C6=Connection(networkI, networkI, 'gi', weight=gII, sparseness=lambda i,j: conn(float(i)/NI-float(j)/NI,sigII,fI))
+        C5=Connection(networkI, networkE, 'gi', weight=gIE, sparseness=lambda ix,j: conn(float(ix)/NI-float(j)/NE,sigIE,fI))
+        C6=Connection(networkI, networkI, 'gi', weight=gII, sparseness=lambda ix,j: conn(float(ix)/NI-float(j)/NI,sigII,fI))
 
     if saveconnections:
         CEE = sparse.csr_matrix(C1.W)
@@ -224,7 +224,7 @@ def run_simulation(IEext=0., pos_stim=0.5, save_file=False, i=1):
 
     i,t         = spikes.it
     
-    popdectm, nwins = readout(t, runtime, NE)
+    popdectm, nwins = readout(i, t, runtime, NE)
     popdectm = np.array(popdectm)
     errtm = np.angle(np.exp(1j*(popdectm - pos_stim*2*np.pi))) #+ np.pi
     #popdectm = np.angle(np.exp(1j*(popdectm - stimat/float(NE)*2*np.pi))) + np.pi
