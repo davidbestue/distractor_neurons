@@ -205,7 +205,7 @@ def run_simulation(IEext=0., pos_stim=0.5, save_file=False, ix=1):
 
     #  
     ## pos_stim is a fraction where 0 is the first neuron (0) and 1 is the last one(360). 0.5 means stimulation in the middle (180)
-    ## 0.75 means stimulating at 90 (1-0.75=0.25; 0.35*360=90). 0.25 means stimulating at 270 (1-0.25=0.75; 0.75*360=270)
+    ## 0.75 means stimulating at 90 (1-0.75=0.25; 0.25*360=90). 0.25 means stimulating at 270 (1-0.25=0.75; 0.75*360=270)
     pos=arange(NE)
     networkE.Iext=stimE*exp(-0.5*(pos/float(NE)-pos_stim)**2/(epsE**2))#stimE*(1.+epsE*cos(2*pi*(pos/float(NE)-0.5)))
     pos=arange(NI)
@@ -231,7 +231,7 @@ def run_simulation(IEext=0., pos_stim=0.5, save_file=False, ix=1):
         io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'errtm': errtm, 'dectm': dectm, 'ratedelay':rates})
     #
 
-    return spikes.it
+    return rates, dectm[-1], errtm[-1], 360*pos_stim, IEext
 
 #####################################################################################################
 #                                    RUN SIMULATIONS                                                #
