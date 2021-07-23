@@ -30,7 +30,7 @@ def decode(firing_rate, N_e):
     return angle 
 
 
-def readout(t, sim_time, N_e):
+def readout(i, t, sim_time, N_e):
     w1      = 100*ms
     w2      = 250*ms
     n_wins  = int((sim_time-w2)/w1)
@@ -39,7 +39,7 @@ def readout(t, sim_time, N_e):
     for ti in range(int(n_wins)):
         fr  = np.zeros(N_e)
         idx = ((t>ti*w1-w2/2) & (t<ti*w1+w2/2))
-        ii  = 1
+        ii  = i[idx]
         for n in range(N_e):
             fr[n] = sum(ii == n)
         dec = decode(fr, N_e)
@@ -48,7 +48,7 @@ def readout(t, sim_time, N_e):
     return decs, n_wins
 
 
-def run_simulation(IEext=0., pos_stim=0.5, save_file=False): 
+def run_simulation(IEext=0., pos_stim=0.5, save_file=False, i=1): 
 
     global par
     time_s = int(str(time.time()).split('.')[0])
@@ -226,11 +226,12 @@ def run_simulation(IEext=0., pos_stim=0.5, save_file=False):
     
     popdectm, nwins = readout(t, runtime, NE)
     popdectm = np.array(popdectm)
-    popdectm = np.angle(np.exp(1j*(popdectm - pos_stim*2*np.pi))) #+ np.pi
-    angletm = np.angle(np.exp(1j*(popdectm)))
+    errtm = np.angle(np.exp(1j*(popdectm - pos_stim*2*np.pi))) #+ np.pi
+    #popdectm = np.angle(np.exp(1j*(popdectm - stimat/float(NE)*2*np.pi))) + np.pi
+    dectm = np.angle(np.exp(1j*(popdectm)))
 
     if save_file == True:
-        io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'popdectm': popdectm, 'angletm': angletm})
+        io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'errtm': errtm, 'dectm': dectm})
     #
 
     return spikes.it
