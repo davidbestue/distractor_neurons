@@ -20,24 +20,12 @@ if numcores<10:
 
 
 ## One simulation
-one_simulation = run_simulation(IEext=0.2, pos_stim=0.5, save_file=True)
+#one_simulation = run_simulation(IEext=0.2, pos_stim=0.5, save_file=True)
 
-
-def readout(i, t, sim_time, N_e):
-    w1      = 100*ms
-    w2      = 250*ms
-    n_wins  = int((sim_time-w2)/w1)
-    decs = []
-    for ti in range(int(n_wins)):
-        fr  = np.zeros(N_e)
-        idx = ((t>ti*w1-w2/2) & (t<ti*w1+w2/2))
-        ii  = i[idx]
-        for n in range(N_e):
-            fr[n] = sum(ii == n)
-        dec = decode(fr, N_e)
-        decs.append(dec)
-    return decs, n_wins
-
+start_time = time.time()
+numcores   = mp.cpu_count()
+defaultclock.reinit()
+defaultclock.dt = 0.1*ms
 
 
 IEext=0.
