@@ -225,11 +225,8 @@ def run_simulation(IEext=0., pos_stim=0.5, save_file=False, ix=1):
     i,t         = spikes.it
     
     popdectm, nwins = readout(i, t, runtime, NE)
-    popdectm = np.array(popdectm)
-    errtm = np.angle(np.exp(1j*(popdectm - pos_stim*2*np.pi))) #+ np.pi
-    #popdectm = np.angle(np.exp(1j*(popdectm - stimat/float(NE)*2*np.pi))) + np.pi
-    dectm = np.angle(np.exp(1j*(popdectm)))
-
+    dectm = np.array([np.degrees(popdectm[i]) for i in range(len(popdectm))] )
+    errdec = np.array([np.degrees(popdectm[i])-360*(1-pos_stim) for i in range(len(popdectm))] )
     if save_file == True:
         io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'errtm': errtm, 'dectm': dectm})
     #
