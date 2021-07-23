@@ -23,17 +23,17 @@ if numcores<10:
 
 ### Multiple simulations in paralel
 
-extEs = [0, 0.2, 0.5, 1, 2]
+extEs = [0, 0.5, 1]
 n_ext = len(extEs)
 positions = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 n_pos = len(positions)
 
-number_ = 100
+number_ = 1
 
 extEs_p = extEs*n_pos*number_
 positions_p = positions*n_ext*number_ 
 
-results = Parallel(n_jobs = numcores)(delayed(run_simulation)(IEext=extE, pos_stim=pos, save_file=False)  for extE, pos in zip(extEs_p, positions_p))    
+results = Parallel(n_jobs = numcores)(delayed(run_simulation)(IEext=extE, pos_stim=pos, save_file=True)  for extE, pos in zip(extEs_p, positions_p))    
 
 # io.savemat('/home/david/Desktop/brian_simulations/results_simulations_1000',{'extEs':extEs, 'spktm': results})
 
