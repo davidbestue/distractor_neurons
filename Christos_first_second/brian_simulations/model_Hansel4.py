@@ -202,7 +202,6 @@ def run_simulation(IEext=0., pos_stim=0.5, save_file=False, ix=1):
     spikes=SpikeMonitor(networkE)
 
     run(stim_on,report='text')
-
     #  
     ## pos_stim is a fraction where 0 is the first neuron (0) and 1 is the last one(360). 0.5 means stimulation in the middle (180)
     ## 0.75 means stimulating at 90 (1-0.75=0.25; 0.25*360=90). 0.25 means stimulating at 270 (1-0.25=0.75; 0.75*360=270)
