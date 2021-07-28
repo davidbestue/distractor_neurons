@@ -16,7 +16,7 @@ if numcores<10:
 
 ## One simulation
 
-run_simulation(IEext=1, pos_stim=0.5, save_file=True, path='/home/david/Desktop/brian_simulations_albert/')
+run_simulation(IEext=1, pos_stim=0.5, paralel_simulation=False, path='/home/david/Desktop/brian_simulations_albert/')
 #one_simulation = run_simulation(IEext=0.2, pos_stim=0.75, save_file=True)
 ##one_simulation = run_simulation(IEext=0.2, pos_stim=0.25, save_file=False)
 
@@ -25,18 +25,18 @@ run_simulation(IEext=1, pos_stim=0.5, save_file=True, path='/home/david/Desktop/
 
 ### Multiple simulations in paralel
 
-extEs = [0, 0.5, 1]
-#n_ext = len(extEs)
-positions = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-#n_pos = len(positions)
+# extEs = [0, 0.5, 1]
+# #n_ext = len(extEs)
+# positions = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+# #n_pos = len(positions)
 
-number_ = 5
+# number_ = 5
 
 
-for extE in extEs:
-	for pos in positions:
-		for n in range(number_):
-			results = run_simulation(IEext=extE, pos_stim=pos, save_file=True, path='/home/david/Desktop/brian_simulations_albert/simulations2')
+# for extE in extEs:
+# 	for pos in positions:
+# 		for n in range(number_):
+# 			results = run_simulation(IEext=extE, pos_stim=pos, paralel_simulation=True, path='/home/david/Desktop/brian_simulations_albert/simulations2')
 
 
 

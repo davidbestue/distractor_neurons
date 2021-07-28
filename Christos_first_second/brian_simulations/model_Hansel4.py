@@ -48,7 +48,7 @@ def readout(i, t, sim_time, N_e):
     return decs, n_wins
 
 
-def run_simulation(IEext=0., pos_stim=0.5, save_file=False, ix=1, path_='/home/david/Desktop/brian_simulations_albert/'): 
+def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1, path_='/home/david/Desktop/brian_simulations_albert/'): 
 
     global par
     time_s = int(str(time.time()).split('.')[0])
@@ -226,11 +226,14 @@ def run_simulation(IEext=0., pos_stim=0.5, save_file=False, ix=1, path_='/home/d
     popdectm, nwins = readout(i, t, runtime, NE)
     dectm = np.array([np.degrees(popdectm[i]) for i in range(len(popdectm))] )
     errtm = np.array([np.degrees(popdectm[i])-360*pos_stim for i in range(len(popdectm))] )
-    if save_file == True:
+    if paralel_simulation == True:
         #io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'errtm': errtm, 'dectm': dectm, 'ratedelay':rates})
         save_name2 = path + save_name
         io.savemat(save_name2 ,{'errtm': errtm, 'dectm': dectm, 'ratedelay':rates, 'IEext':IEext, 'pos_stim':pos_stim})
-    #
+    else:
+        save_name2 = path + save_name
+        io.savemat(save_name2 ,{'spktm': spikes.it})
+
 
     #return rates, dectm[-1], errtm[-1], 360*pos_stim, IEext
 
