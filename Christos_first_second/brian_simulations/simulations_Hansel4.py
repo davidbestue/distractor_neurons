@@ -36,7 +36,7 @@ run_simulation(IEext=1, pos_stim=0.5, paralel_simulation=False, path_='/home/dav
 # for extE in extEs:
 # 	for pos in positions:
 # 		for n in range(number_):
-# 			results = run_simulation(IEext=extE, pos_stim=pos, paralel_simulation=True, path='/home/david/Desktop/brian_simulations_albert/simulations2')
+# 			results = run_simulation(IEext=extE, pos_stim=pos, paralel_simulation=True, path_='/home/david/Desktop/brian_simulations_albert/simulations2')
 
 
 
