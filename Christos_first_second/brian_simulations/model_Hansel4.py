@@ -230,10 +230,10 @@ def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1,
     errtm = np.array([np.degrees(popdectm[i])-360*pos_stim for i in range(len(popdectm))] )
     if paralel_simulation == True:
         #io.savemat(save_name ,{'rate':counts.count, 'spktm': spikes.it, 'errtm': errtm, 'dectm': dectm, 'ratedelay':rates})
-        save_name2 = path + save_name
+        save_name2 = path_ + save_name
         io.savemat(save_name2 ,{'errtm': errtm, 'dectm': dectm, 'ratedelay':rates, 'IEext':IEext, 'pos_stim':pos_stim})
     else:
-        save_name2 = path + save_name
+        save_name2 = path_ + save_name
         io.savemat(save_name2 ,{'spktm': spikes.it})
 
 
