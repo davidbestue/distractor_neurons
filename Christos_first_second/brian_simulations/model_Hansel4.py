@@ -48,7 +48,9 @@ def readout(i, t, sim_time, N_e):
     return decs, n_wins
 
 
-def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1, path_='/home/david/Desktop/brian_simulations_albert/'): 
+def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1, 
+                    path_='/home/david/Desktop/brian_simulations_albert/', 
+                    connections_path='/home/david/Desktop/brian_simulations_albert/connections_sp.npz'): 
 
     global par
     time_s = int(str(time.time()).split('.')[0])
@@ -159,7 +161,7 @@ def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1, path_
     networkI.Iext=0*mV
 
     if loadconnections:
-        loader = np.load('connections_sp.npz', allow_pickle=True)
+        loader = np.load(connections_path, allow_pickle=True)
         WW = sparse.csr_matrix((loader['CEEd'], loader['CEEi'], loader['CEEp']), shape=loader['CEEs'])
         WW[WW != 0] = 1
         C1=Connection(networkE, networkE, 'gea', weight=gEEA*WW)
