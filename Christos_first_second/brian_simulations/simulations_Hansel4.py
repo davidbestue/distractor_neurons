@@ -31,7 +31,6 @@ positions = [np.round(np.linspace(0,1,n_)[x],2) for x in range(n_)]
 
 number_ = 10
 
-
 for extE in extEs:
 	for pos in positions:
 		for n in range(number_):
