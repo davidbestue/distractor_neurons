@@ -41,4 +41,3 @@ for extE in extEs:
 
 
 
-simulation_8334_1627912824_nitrogen.mat 
