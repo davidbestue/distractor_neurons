@@ -234,7 +234,7 @@ def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1,
         io.savemat(save_name2 ,{'errtm': errtm, 'dectm': dectm, 'ratedelay':rates, 'IEext':IEext, 'pos_stim':pos_stim})
     else:
         save_name2 = path_ + save_name
-        io.savemat(save_name2 ,{'spktm': spikes.it})
+        io.savemat(save_name2 ,{'spktm': spikes.it, 'errtm': errtm, 'dectm': dectm, 'ratedelay':rates, 'IEext':IEext, 'pos_stim':pos_stim})
 
 
     #return rates, dectm[-1], errtm[-1], 360*pos_stim, IEext
