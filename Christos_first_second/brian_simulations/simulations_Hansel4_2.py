@@ -31,9 +31,9 @@ positions = [np.round(np.linspace(0,1,n_)[x],2) for x in range(n_)]
 number_ = 10
 
 for extE in extEs:
-	for pos in positions:
-		for n in range(number_):
-			results = run_simulation(IEext=extE, pos_stim=pos, paralel_simulation=True, path_='/home/david/Desktop/brian_simulations_albert/simulations3/')
+    for pos in positions:
+        for n in range(number_):
+            results = run_simulation(IEext=extE, pos_stim=pos, paralel_simulation=True, path_='/home/david/Desktop/brian_simulations_albert/simulations3/')
 
 
 
