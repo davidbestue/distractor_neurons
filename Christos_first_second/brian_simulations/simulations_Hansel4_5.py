@@ -8,7 +8,7 @@ import multiprocessing
 
 numcores = multiprocessing.cpu_count() 
 if numcores>20:
-    numcores=numcores-10
+    numcores=numcores-5
 if numcores<10:
     numcores=numcores-3
 
