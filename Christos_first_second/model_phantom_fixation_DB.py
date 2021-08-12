@@ -239,7 +239,7 @@ def model_fixation(totalTime, targ_onset_1, targ_onset_2, presentation_period, a
         
         # phantom condition
         if phantom_on == 'off':
-            if i< stimon1-1000: ##fixation 1sec antes de stim presentation
+            if i< stimon1-1000/dt: ##fixation 1sec antes de stim presentation
                 IE= GEE*dot(WE,rE) - GIE*dot(WI,rI) + background_silent; ##before 1st stim, inhibition of the network
         if phantom_on == 'on':
             if i< float(phantom_onset/dt):
