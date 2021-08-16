@@ -220,7 +220,7 @@ def model_fixation(totalTime, targ_onset_1, targ_onset_2, presentation_period, a
     ##print(1)
     background_on = (I0E+phantom_st) * ones((N,1))
     background = background_s 
-    ##noisee
+    ##noise
     #numcores = multiprocessing.cpu_count()
     #noisepopE = np.array( Parallel(n_jobs = numcores)(delayed(ornstein_uhlenbeck)(t_final=totalTime, delta_t=dt, theta=k_noise)  for n in range(N)) )
     #noisepopI = np.array( Parallel(n_jobs = numcores)(delayed(ornstein_uhlenbeck)(t_final=totalTime, delta_t=dt, theta=k_noise)  for n in range(N)) )
