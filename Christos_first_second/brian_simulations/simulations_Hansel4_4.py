@@ -1,6 +1,5 @@
 #import brian_no_units
 
-
 from model_Hansel4 import * 
 from joblib import Parallel, delayed
 import multiprocessing
