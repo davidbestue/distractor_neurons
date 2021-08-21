@@ -19,7 +19,6 @@ if numcores<10:
 ##one_simulation = run_simulation(IEext=0.2, pos_stim=0.25, save_file=False)
 
 
-
 #######################################
 
 ### Multiple simulations in paralel
