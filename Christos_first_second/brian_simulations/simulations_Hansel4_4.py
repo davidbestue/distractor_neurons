@@ -12,15 +12,12 @@ if numcores<10:
     numcores=numcores-3
 
 
-
 ## One simulation
 #run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, path_='/home/david/Desktop/brian_simulations_albert/')
 #one_simulation = run_simulation(IEext=0.2, pos_stim=0.75, save_file=True)
 ##one_simulation = run_simulation(IEext=0.2, pos_stim=0.25, save_file=False)
 
-
 #######################################
-
 ### Multiple simulations in paralel
 extEs = [0, 1.25]
 n_ext = len(extEs)
