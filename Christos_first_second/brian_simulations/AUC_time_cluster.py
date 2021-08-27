@@ -12,6 +12,11 @@ from scipy import misc
 import os
 from sklearn.preprocessing import label_binarize
 from sklearn.metrics import roc_curve, auc
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
 
 from joblib import Parallel, delayed
 import multiprocessing
