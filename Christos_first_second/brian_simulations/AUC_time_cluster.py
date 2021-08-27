@@ -46,12 +46,12 @@ def circ_dist(a1,a2):
 path_ = '/home/david/Desktop/brian_simulations_albert/simulations5'
 all_= os.listdir(path_)
 
+
 N0 = 20000
 time_s =7
 N=0.8*N0 #(el 80% son excitadoras)
 rounding = 2 ##round the timing
 w=10 #100ms
-
 
 ##########
 ##########
@@ -60,7 +60,7 @@ pos_stim=[]
 Iexts = []
 firings_wind = []
 
-for sim_ in range(len(all_)): 
+for sim_ in np.arange(0,500,100): #range(len(all_)): 
     print(sim_)
     simx = io.loadmat(path_ + '/' + all_[sim_])
     ####
@@ -93,7 +93,7 @@ for sim_ in range(len(all_)):
     for N in range(np.shape(Matrix_spikes)[0]):
         neuron_fr = []
         for i in range(len(t1s)):
-            neuron_fr.append(Matrix_spikes[N, t1s[i]:t2s[i]].sum()/ (w*time_s/f) ) ## works fine, same methos as in the function
+            neuron_fr.append(Matrix_spikes[N, t1s[i]:t2s[i]].sum()/ (w*time_s/float(f)) ) ## works fine, same methos as in the function
         #
         fr_time.append(neuron_fr)
     ###
@@ -111,8 +111,9 @@ firings_wind = np.array(firings_wind)
 
 ########
 ########
-Neurons_  = np.arange(0,16000,100) ## np.arange(0,16000,10) 
-Windows_ =np.arange(0,70,10)  ## np.arange(0,70,1)
+Neurons_  = np.arange(0,16000,1000) ## np.arange(0,16000,10) 
+Windows_ =np.arange(0,70,1)  ## np.arange(0,70,1)
+
 
 #######
 #######
