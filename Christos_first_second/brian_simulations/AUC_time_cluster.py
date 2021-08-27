@@ -60,7 +60,7 @@ pos_stim=[]
 Iexts = []
 firings_wind = []
 
-for sim_ in np.arange(0,500,100): #range(len(all_)): 
+for sim_ in range(len(all_)): 
     print(sim_)
     simx = io.loadmat(path_ + '/' + all_[sim_])
     ####
@@ -111,7 +111,7 @@ firings_wind = np.array(firings_wind)
 
 ########
 ########
-Neurons_  = np.arange(0,16000,1000) ## np.arange(0,16000,10) 
+Neurons_  = np.arange(0,16000,50) ## np.arange(0,16000,10) 
 Windows_ =np.arange(0,70,1)  ## np.arange(0,70,1)
 
 
