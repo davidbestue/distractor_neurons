@@ -106,8 +106,8 @@ firings_wind = np.array(firings_wind)
 
 ########
 ########
-Neurons_  = np.arange(0,16000,10) ## np.arange(0,16000,1) 
-Windows_ =np.arange(0,70,1)  ## np.arange(0,70,1)
+Neurons_  = np.arange(0,16000,100) ## np.arange(0,16000,10) 
+Windows_ =np.arange(0,70,10)  ## np.arange(0,70,1)
 
 #######
 #######
