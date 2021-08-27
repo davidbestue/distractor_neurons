@@ -57,7 +57,7 @@ firings_wind = []
 
 for sim_ in range(len(all_)): 
     print(sim_)
-    simx = io.loadmat(path_ + '\\' + all_[sim_])
+    simx = io.loadmat(path_ + '/' + all_[sim_])
     ####
     #### save position and I0E of each simulation
     ####
