@@ -59,7 +59,7 @@ pos_stim=[]
 Iexts = []
 firings_wind = []
 
-for sim_ in np.arange(0,500,100): ##simulations used (all or a fraction e.j. np.arange(0,500,100)) )
+for sim_ in np.arange(0,500,1): ##simulations used (all or a fraction e.j. np.arange(0,500,100)) )
     #
     print(sim_)
     simx = io.loadmat(path_ + '/' + all_[sim_])
@@ -113,7 +113,7 @@ firings_wind = np.array(firings_wind)
 
 ###########################
 
-Neurons_  = np.arange(0,16000,1000) ## np.arange(0,16000,1) ##elegir las neuronas que uso
+Neurons_  = np.arange(0,16000,100) ## np.arange(0,16000,1) ##elegir las neuronas que uso
 Windows_ =np.arange(0, time_s, w)/1000 
 Windows_ = [int(Windows_[x]) for x in range(len(Windows_))]
 
@@ -188,4 +188,26 @@ for idx_Iext, IEXT in enumerate(Iext_):
 
 ###
 
-auc_
+Mean_auc = []
+exts=[]
+times_=[]
+
+for idx_Iext, IEXT in enumerate(Iext_):
+    for idx_wind, wind in enumerate(Windows_):
+        auc_wind = auc_[idx_Iext, idx_wind, :] 
+        ind = np.isnan(auc_wind)
+        ##
+        Mean_auc.append(np.mean(auc_wind[~ind]) )
+        exts.append(IEXT)
+        times_.append(wind*w)
+        
+##
+
+df_mean_auc = pd.DataFrame({'AUC':Mean_auc, 'Iext':exts, 'time':times_})
+df_mean_auc['stimulation'] = df_mean_auc['Iext'].replace([0,1.25], ['OFF', 'ON'])
+df_mean_auc['lim_RF'] = lim_RF
+df_mean_auc['wind_size_ms'] = w
+
+df_mean_auc
+
+
