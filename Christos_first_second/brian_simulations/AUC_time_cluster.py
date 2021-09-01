@@ -48,52 +48,52 @@ all_= os.listdir(path_)
 
 
 N0 = 20000
-time_s =7
+time_s =7000 #(ms)
 N=0.8*N0 #(el 80% son excitadoras)
 rounding = 2 ##round the timing
-w=10 #100ms
+w=1000 #(ms)
 
-##########
-##########
 
+################# NEEEEEEW #############################
 pos_stim=[]
 Iexts = []
 firings_wind = []
 
-for sim_ in range(len(all_)): 
+for sim_ in np.arange(0,500,100): ##simulations used (all or a fraction e.j. np.arange(0,500,100)) )
+    #
     print(sim_)
-    simx = io.loadmat(path_ + '/' + all_[sim_])
+    simx = io.loadmat(path_ + '\\' + all_[sim_])
     ####
     #### save position and I0E of each simulation
     ####
     pos_stim.append(360*simx['pos_stim'][0][0])
     Iexts.append(simx['IEext'][0][0])
-    ####
-    #### For each simulation I will calculate the firing rate in windows of 100ms
-    ####
-    ####
-    #### STEP 1: put all the spikes in the shape (neuron, time) ##time dimension here is 700
-    ####
-    spikes = simx['spktm'] ##all the spike times
-    Matrix_spikes = np.zeros([int(0.8*N0), time_s*10**2])
+
+    spikes = simx['spktm']
+    
+    Matrix_spikes=np.zeros([int(0.8*N0), time_s])
+
     neurons_ = np.array([int(spikes[0][x]) for x in range(len(spikes[0]))])
-    times_ = np.array([int(spikes[1][x]*10**rounding) for x in range(len(spikes[1]))])
+
+    times_ = np.array([spikes[1][x] for x in range(len(spikes[1]))])
     times_ = times_ - min(times_)
+    times_ = np.array([int(times_[x]*1000) for x in range(len(times_))])
+
+    # dimensions = neurons, time_s
     for t, n in zip(times_, neurons_ ):
         Matrix_spikes[n,t]=1
     ##
     ####
     #### STEP 2: calculate firing of each neuron in windows of 100ms (10)
     ####
-    f = np.shape(Matrix_spikes)[1] #700
-    t1s = np.arange(0,f,w)
-    t2s = np.arange(w,f+w,w)
+    t1s = np.arange(0, time_s ,w)
+    t2s = np.arange(w, time_s+w, w)
     ##
     fr_time = []
     for N in range(np.shape(Matrix_spikes)[0]):
         neuron_fr = []
         for i in range(len(t1s)):
-            neuron_fr.append(Matrix_spikes[N, t1s[i]:t2s[i]].sum()/ (w*time_s/float(f)) ) ## works fine, same methos as in the function
+            neuron_fr.append(Matrix_spikes[N, t1s[i]:t2s[i]].sum()/ (1000/w) ) 
         #
         fr_time.append(neuron_fr)
     ###
@@ -103,21 +103,27 @@ for sim_ in range(len(all_)):
     ####
     firings_wind.append(fr_time)
     
-
+    
 ##
 IExts = np.array(Iexts) 
 Positions=np.array(pos_stim)
 firings_wind = np.array(firings_wind)
 
-########
-########
-Neurons_  = np.arange(0,16000,50) ## np.arange(0,16000,10) 
-Windows_ =np.arange(0,70,1)  ## np.arange(0,70,1)
 
 
-#######
-#######
+###########################
+
+Neurons_  = np.arange(0,16000,1000) ## np.arange(0,16000,1) ##elegir las neuronas que uso
+Windows_ =np.arange(0, time_s, w)/1000 
+Windows_ = [int(Windows_[x]) for x in range(len(Windows_))]
+
+
+################################
+
+
+
 Iext_ = [0, 1.25]
+
 
 lim_RF = 45/4 ##limit to consider a position is inside the RF of the neuron
 base_fpr = np.linspace(0, 1, 101)
@@ -178,32 +184,6 @@ for idx_Iext, IEXT in enumerate(Iext_):
             auc_[idx_Iext, idx_wind, idx_neuron] = auc(base_fpr, mean_tprs)
             ##
 
-#
-#
-
-#####
-
-### Mean AUC of all neurons in each Iex and window
-Mean_auc = []
-exts=[]
-times_=[]
-
-for idx_Iext, IEXT in enumerate(Iext_):
-    for idx_wind, wind in enumerate(Windows_):
-        auc_wind = auc_[idx_Iext, idx_wind, :] 
-        ind = np.isnan(auc_wind)
-        ##
-        Mean_auc.append(np.mean(auc_wind[~ind]) )
-        exts.append(IEXT)
-        times_.append(wind*w)
-        
-##
-
-df_mean_auc = pd.DataFrame({'AUC':Mean_auc, 'Iext':exts, 'time':times_})
-df_mean_auc[' '] = df_mean_auc['Iext'].replace([0,1.25], ['OFF', 'ON'])
 
 
-#####
-
-
-
+            
