@@ -62,7 +62,7 @@ firings_wind = []
 for sim_ in np.arange(0,500,100): ##simulations used (all or a fraction e.j. np.arange(0,500,100)) )
     #
     print(sim_)
-    simx = io.loadmat(path_ + '\\' + all_[sim_])
+    simx = io.loadmat(path_ + '/' + all_[sim_])
     ####
     #### save position and I0E of each simulation
     ####
