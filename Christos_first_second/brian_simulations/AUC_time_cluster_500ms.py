@@ -187,7 +187,6 @@ for idx_Iext, IEXT in enumerate(Iext_):
 
 
 ###
-
 Mean_auc = []
 exts=[]
 times_=[]
