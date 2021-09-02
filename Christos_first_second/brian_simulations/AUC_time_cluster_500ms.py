@@ -114,8 +114,8 @@ firings_wind = np.array(firings_wind)
 ###########################
 
 Neurons_  = np.arange(0,16000,100) ## np.arange(0,16000,1) ##elegir las neuronas que uso
-Windows_ =np.arange(0, time_s, w)/1000 
-Windows_ = [int(Windows_[x]) for x in range(len(Windows_))]
+Windows_ =np.arange(0, time_s, w)/float(1000) 
+#Windows_ = [int(Windows_[x]) for x in range(len(Windows_))]
 
 
 ################################
@@ -149,7 +149,7 @@ for idx_Iext, IEXT in enumerate(Iext_):
             nx_rates_iex = firings_wind[IExts==IEXT]
             ###
             ### Get the firing of the neuron at a certain window in each simulation
-            nx_rates = np.array([nx_rates_iex[n][Neuron, wind] for n in range(len(nx_rates_iex))])
+            nx_rates = np.array([nx_rates_iex[n][Neuron, idx_wind] for n in range(len(nx_rates_iex))])
             ###
             dfx = pd.DataFrame({'position':nx_positions, 'rate':nx_rates, 'Neuron':Neuron, 'wind':wind})
             ###
