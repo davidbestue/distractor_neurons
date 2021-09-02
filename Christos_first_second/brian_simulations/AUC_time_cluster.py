@@ -93,7 +93,7 @@ for sim_ in np.arange(0,500,1): ##simulations used (all or a fraction e.j. np.ar
     for N in range(np.shape(Matrix_spikes)[0]):
         neuron_fr = []
         for i in range(len(t1s)):
-            neuron_fr.append(Matrix_spikes[N, t1s[i]:t2s[i]].sum()/ (1000/w) ) 
+            neuron_fr.append(Matrix_spikes[N, t1s[i]:t2s[i]].sum()/ float(1000/w) ) 
         #
         fr_time.append(neuron_fr)
     ###
@@ -208,6 +208,6 @@ df_mean_auc['stimulation'] = df_mean_auc['Iext'].replace([0,1.25], ['OFF', 'ON']
 df_mean_auc['lim_RF'] = lim_RF
 df_mean_auc['wind_size_ms'] = w
 
-df_mean_auc
+df_mean_auc.to_excel('/home/david/Desktop/brian_simulations_albert/windows_1s_auc_roc.xlsx')
 
 

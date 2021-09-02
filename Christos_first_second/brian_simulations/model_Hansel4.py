@@ -221,7 +221,7 @@ def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1,
 
     run(runtime-stim_off,report='text')
 
-    rates=counts.count/(runtime-stim_off)
+    rates=counts.count/(runtime-stim_off) ##rates during the whole delay period! 
 
     i,t         = spikes.it
     
