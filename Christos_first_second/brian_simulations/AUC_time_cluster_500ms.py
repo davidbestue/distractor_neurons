@@ -198,7 +198,7 @@ for idx_Iext, IEXT in enumerate(Iext_):
         ##
         Mean_auc.append(np.mean(auc_wind[~ind]) )
         exts.append(IEXT)
-        times_.append(wind*w)
+        times_.append(wind*1000)
         
 ##
 
