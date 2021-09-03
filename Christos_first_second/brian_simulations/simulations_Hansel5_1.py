@@ -19,18 +19,18 @@ one_simulation = run_simulation(IEext=0., pos_stim=0.25, gee=475.0)
 
 #######################################
 ### Multiple simulations in paralel
-# extEs = [0, 1.25]
+# extEs = [0, 0.5]
 # n_ext = len(extEs)
 
 # n_=25
 # positions = [np.round(np.linspace(0,1,n_)[x],2) for x in range(n_)]
 
-# number_ = 10
+# number_ = 5
 
 # for extE in extEs:
 # 	for pos in positions:
 # 		for n in range(number_):
-# 			results = run_simulation(IEext=extE, pos_stim=pos, paralel_simulation=False, path_='/home/david/Desktop/brian_simulations_albert/simulations5/')
+# 			results = run_simulation(IEext=extE, pos_stim=pos, gee=475.0, paralel_simulation=False, path_='/home/david/Desktop/brian_simulations_albert/simulations8/')
 
 
 
