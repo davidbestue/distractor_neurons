@@ -14,7 +14,7 @@ if numcores<10:
 
 ## One simulation
 ## run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, path_='/home/david/Desktop/brian_simulations_albert/')
-one_simulation = run_simulation(IEext=0., pos_stim=0.25, gee=475.0)
+one_simulation = run_simulation(IEext=0., pos_stim=0.25, gee=477.0)
 #one_simulation = run_simulation(IEext=0.2, pos_stim=0.25, save_file=False)
 
 #######################################
@@ -30,7 +30,7 @@ one_simulation = run_simulation(IEext=0., pos_stim=0.25, gee=475.0)
 # for extE in extEs:
 # 	for pos in positions:
 # 		for n in range(number_):
-# 			results = run_simulation(IEext=extE, pos_stim=pos, gee=475.0, paralel_simulation=False, path_='/home/david/Desktop/brian_simulations_albert/simulations8/')
+# 			results = run_simulation(IEext=extE, pos_stim=pos, gee=????????????????????????????, paralel_simulation=False, path_='/home/david/Desktop/brian_simulations_albert/simulations8/')
 
 
 
