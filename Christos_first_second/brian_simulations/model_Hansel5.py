@@ -48,7 +48,7 @@ def readout(i, t, sim_time, N_e):
     return decs, n_wins
 
 
-def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1, 
+def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1, gee=533.3,
                     path_='/home/david/Desktop/brian_simulations_albert/', 
                     connections_path='/home/david/Desktop/brian_simulations_albert/connections_sp.npz'): 
 
@@ -91,7 +91,7 @@ def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1,
     refE= 0*ms                # refractory periods
     refI= 0*ms                # refractory periods
 
-    gEEA=533.3*mV*ms  #### Start by changing it!!!
+    gEEA=gee*mV*ms  #### Start by changing it!!!
     gEEN=0.92*533.3*mV*ms  
     gEIA=67.2*mV*ms  
     gEIN=1*7.4*mV*ms  #imbl: factor 0.5
