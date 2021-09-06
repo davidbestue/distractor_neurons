@@ -237,4 +237,3 @@ df_mean_auc[' '] = df_mean_auc['Iext'].replace([0, 0.5], ['OFF', 'ON'])
 
 df_mean_auc.to_excel('/home/david/Desktop/brian_simulations_albert/auc_time_100_newregime2.xlsx')
 
-
