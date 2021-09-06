@@ -69,7 +69,7 @@ def err_deg(a1,ref):
 ###
 
 
-path_ =  '/home/david/Desktop/brian_simulations_albert/simultations8'
+path_ =  '/home/david/Desktop/brian_simulations_albert/simulations8'
 all_= os.listdir(path_)
 
 
