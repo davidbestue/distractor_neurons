@@ -15,7 +15,6 @@ if numcores<10:
 ## One simulation
 one_simulation = run_simulation(IEext=0.5, pos_stim=0.25, gee=490.0)
 
-
 #######################################
 ## Multiple simulations in paralel
 # extEs = [0, 0.5]
