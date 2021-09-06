@@ -13,7 +13,7 @@ if numcores<10:
 
 
 ## One simulation
-#one_simulation = run_simulation(IEext=0.5, pos_stim=0.25, gee=480.0)
+#one_simulation = run_simulation(IEext=0.5, pos_stim=0.25, gee=490.0)
 
 #######################################
 # Multiple simulations in paralel
@@ -28,7 +28,7 @@ number_ = 5
 for extE in extEs:
 	for pos in positions:
 		for n in range(number_):
-			results = run_simulation(IEext=extE, pos_stim=pos, gee=480.0, paralel_simulation=False, path_='/home/david/Desktop/brian_simulations_albert/simulations8/')
+			results = run_simulation(IEext=extE, pos_stim=pos, gee=490.0, paralel_simulation=False, path_='/home/david/Desktop/brian_simulations_albert/simulations9/')
 
 
 
