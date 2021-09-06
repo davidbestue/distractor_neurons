@@ -17,7 +17,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-
 from joblib import Parallel, delayed
 import multiprocessing
 
@@ -27,7 +26,6 @@ if numcores>20:
     numcores=numcores-5
 if numcores<10:
     numcores=numcores-3
-
 
 
 
