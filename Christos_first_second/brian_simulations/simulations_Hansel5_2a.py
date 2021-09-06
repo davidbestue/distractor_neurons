@@ -17,7 +17,7 @@ if numcores<10:
 
 #######################################
 # Multiple simulations in paralel
-extEs = [0, 0.5]
+extEs = [0]
 n_ext = len(extEs)
 
 n_=25
