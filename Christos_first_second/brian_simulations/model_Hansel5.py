@@ -247,3 +247,4 @@ def run_simulation(IEext=0., pos_stim=0.5, paralel_simulation=False, ix=1, gee=5
 ##result = run_simulation(1, IEext=0.2, pos_stim=0.5, save_file=True)
 ##
 ##
+##
